@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Box, Typography } from '@mui/material'
+import { HeroCard, Navbar } from '@/components'
 
 export const metadata = {
   title: 'Next-news',
@@ -8,8 +9,9 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <Box>
-      <Typography variant='h4'>Next-news</Typography>
+    <Box sx={{ width: '100vw', minHeight: '100vh', pt: '1.75rem', background: '#F4F6F5' }}>
+      <Navbar />
+      <HeroCard />
     </Box>
   )
 }

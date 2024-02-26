@@ -1,16 +1,31 @@
 'use client'
-import { Roboto } from 'next/font/google'
+import { Inter, Spectral } from 'next/font/google'
 import { createTheme } from '@mui/material/styles'
 
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
+const spectral = Spectral({
+  weight: ['300', '400', '500', '600', '700', '800'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+const inter = Inter({
+  weight: ['400'],
   subsets: ['latin'],
   display: 'swap',
 })
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#171717',
+    },
+    text: {
+      primary: '#171717',
+      disabled: '#7C7C7C',
+    },
+  },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    htmlFontSize: 16,
+    fontFamily: spectral.style.fontFamily,
   },
 })
 
