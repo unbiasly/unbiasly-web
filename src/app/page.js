@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from '@mui/material'
-import { HeroCard, Navbar } from '@/components'
+import { Navbar, HeroSection, InfoSection } from '@/components'
 
 export const metadata = {
   title: 'Unbiasly | News',
@@ -9,9 +9,20 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <Box sx={{ width: '100vw', minHeight: '100vh', pt: '1.75rem', background: '#F4F6F5' }}>
+    <Box
+      sx={{
+        width: '100vw',
+        minHeight: '100vh',
+        pt: '1.75rem',
+        background: '#F4F6F5',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
       <Navbar />
-      <HeroCard />
+      <HeroSection />
+      <InfoSection />
     </Box>
   )
 }

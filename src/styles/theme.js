@@ -31,6 +31,12 @@ const theme = createTheme({
       fontSize: '3rem',
       color: '#FFFFFF',
     },
+    h3: {
+      fontWeight: 600,
+      fontSize: '2.25rem',
+      color: '#171717',
+      textAlign: 'center',
+    },
     h5: {
       fontWeight: 500,
       fontSize: '1.5rem',
