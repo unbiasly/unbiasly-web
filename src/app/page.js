@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { HeroCard, Navbar } from '@/components'
 
 export const metadata = {
-  title: 'Next-news',
-  description: 'Next-news',
+  title: 'Unbiasly | News',
+  description: 'Absolute Truth, Guaranteed. Your Source for 100% Verified News!',
 }
 
 export default function Home() {

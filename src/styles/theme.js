@@ -26,6 +26,16 @@ const theme = createTheme({
   typography: {
     htmlFontSize: 16,
     fontFamily: spectral.style.fontFamily,
+    h3: {
+      fontWeight: 800,
+      fontSize: '3rem',
+      color: '#FFFFFF',
+    },
+    h5: {
+      fontWeight: 500,
+      fontSize: '1.5rem',
+      color: '#FFFFFF',
+    },
   },
 })
 

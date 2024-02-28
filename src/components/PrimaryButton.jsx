@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { Button } from '@mui/material'
 
 export default function PrimaryButton({ text }) {
@@ -10,6 +11,9 @@ export default function PrimaryButton({ text }) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        fontWeight: 700,
+        py: '0.5rem',
+        px: '1.5rem',
       }}
     >
       {text}

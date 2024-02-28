@@ -1,10 +1,7 @@
 import * as React from 'react'
 import Image from 'next/image'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
-import PrimaryButton from './PrimaryButton'
+import { AppBar, Box, Toolbar, Typography } from '@mui/material'
+import { PrimaryButton } from '@/components'
 
 export default function Navbar() {
   return (
@@ -23,19 +20,26 @@ export default function Navbar() {
         disableGutters
         sx={{ mx: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
       >
-        <Image src='/images/logo.svg' height={40} width={40} priority />
+        <Image src='/images/logo.svg' height={48} width={48} priority />
         <Box sx={{ display: 'flex' }}>
-          <Typography variant='body2' color='text.primary' fontWeight={600}>
+          <Typography variant='body1' color='text.disabled' fontWeight={600}>
             About Us
           </Typography>
-          <Typography variant='body2' color='text.primary' fontWeight={600} sx={{ mx: '3rem' }}>
+          <Typography variant='body1' color='text.disabled' fontWeight={600} sx={{ mx: '3rem' }}>
             Careers
           </Typography>
-          <Typography variant='body2' color='text.primary' fontWeight={600}>
+          <Typography variant='body1' color='text.disabled' fontWeight={600}>
             Blog
           </Typography>
         </Box>
-        <PrimaryButton text='Download Unbiasly' />
+        <PrimaryButton
+          text={
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              Download Unbiasly
+              <Image src='/images/download-btn.svg' height={18} width={40} priority style={{ marginLeft: '0.75rem' }} />
+            </Box>
+          }
+        />
       </Toolbar>
     </AppBar>
   )
