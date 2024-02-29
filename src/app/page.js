@@ -1,15 +1,28 @@
 import * as React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
+import { Navbar, HeroSection, InfoSection } from '@/components'
 
 export const metadata = {
-  title: 'Next-news',
-  description: 'Next-news',
+  title: 'Unbiasly | News',
+  description: 'Absolute Truth, Guaranteed. Your Source for 100% Verified News!',
 }
 
 export default function Home() {
   return (
-    <Box>
-      <Typography variant='h4'>Next-news</Typography>
+    <Box
+      sx={{
+        width: '100vw',
+        minHeight: '100vh',
+        pt: '1.75rem',
+        background: '#F4F6F5',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <Navbar />
+      <HeroSection />
+      <InfoSection />
     </Box>
   )
 }
