@@ -61,6 +61,9 @@ export default function HeroSection() {
           }}
         />
       </Card>
+      <Typography variant='h3' paragraph align='center'>
+        Absolute Truth, Guaranteed <br /> Your Source for 100% Verified News!
+      </Typography>
     </Container>
   )
 }

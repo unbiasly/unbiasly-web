@@ -35,7 +35,6 @@ const theme = createTheme({
       fontWeight: 600,
       fontSize: '2.25rem',
       color: '#171717',
-      textAlign: 'center',
     },
     h5: {
       fontWeight: 500,
