@@ -1,3 +1,6 @@
+'use client'
+
+import { inter } from '@/styles/theme'
 import { Box, Typography } from '@mui/material'
 import Image from 'next/image'
 import React from 'react'
@@ -21,10 +24,9 @@ export default function InfoCard({ color, icon, title, subtitle }) {
       <Typography variant='h5' sx={{ fontWeight: 800, color: '#171717', my: '0.75rem' }}>
         {title}
       </Typography>
-      <Typography variant='h6' sx={{ textAlign: 'center' }}>
+      <Typography variant='h6' align='center' sx={{ fontFamily: inter.style.fontFamily, fontWeight: 400 }}>
         {subtitle}
       </Typography>
     </Box>
   )
 }
-//images/info/icon-1

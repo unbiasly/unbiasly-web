@@ -8,7 +8,9 @@ export default function CompanionSection() {
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' }, my: '3rem' }}>
         <Grid container columnSpacing={8} justifyContent='center' alignItems='center'>
           <Grid item sm={7} xs={12}>
-            <Typography variant='h2'>How we are your trusted news companion?</Typography>
+            <Typography variant='h2' color='#FFFFFF'>
+              How we are your trusted news companion?
+            </Typography>
             <Typography variant='h5' align='justify' paragraph sx={{ my: '3.5rem' }}>
               "Welcome to our app, your comprehensive platform for staying informed. With a user-friendly interface, we
               offer a seamless experience for accessing verified news, keeping you updated on the latest events from

@@ -2,12 +2,13 @@
 import { Inter, Spectral } from 'next/font/google'
 import { createTheme } from '@mui/material/styles'
 
-const spectral = Spectral({
+export const spectral = Spectral({
   weight: ['300', '400', '500', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
 })
-const inter = Inter({
+
+export const inter = Inter({
   weight: ['400'],
   subsets: ['latin'],
   display: 'swap',
@@ -29,7 +30,7 @@ const theme = createTheme({
     h2: {
       fontWeight: 800,
       fontSize: '3.75rem',
-      color: '#FFFFFF',
+      color: '#171717',
     },
     h3: {
       fontWeight: 800,
@@ -48,8 +49,7 @@ const theme = createTheme({
       lineHeight: '2.75rem',
     },
     h6: {
-      fontFamily: inter.style.fontFamily,
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: '1.125rem',
       color: '#7C7C7C',
     },
