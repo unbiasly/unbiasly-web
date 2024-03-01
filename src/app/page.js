@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Box } from '@mui/material'
-import { Navbar, HeroSection, InfoSection } from '@/components'
+import { Navbar, HeroSection, InfoSection, CompanionSection } from '@/components'
 
 export const metadata = {
   title: 'Unbiasly | News',
@@ -23,6 +23,7 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <InfoSection />
+      <CompanionSection />
     </Box>
   )
 }

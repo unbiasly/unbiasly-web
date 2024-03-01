@@ -8,6 +8,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none; /* For Firefox */
+}
+
+body::-webkit-scrollbar {
+  width: 0; /* For Chrome, Safari, and Opera */
 }
 
 a {

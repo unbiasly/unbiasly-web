@@ -26,20 +26,32 @@ const theme = createTheme({
   typography: {
     htmlFontSize: 16,
     fontFamily: spectral.style.fontFamily,
+    h2: {
+      fontWeight: 800,
+      fontSize: '3.75rem',
+      color: '#FFFFFF',
+    },
     h3: {
       fontWeight: 800,
       fontSize: '3rem',
       color: '#FFFFFF',
     },
-    h3: {
+    h4: {
       fontWeight: 600,
       fontSize: '2.25rem',
       color: '#171717',
     },
     h5: {
-      fontWeight: 500,
+      fontWeight: 400,
       fontSize: '1.5rem',
       color: '#FFFFFF',
+      lineHeight: '2.75rem',
+    },
+    h6: {
+      fontFamily: inter.style.fontFamily,
+      fontWeight: 400,
+      fontSize: '1.125rem',
+      color: '#7C7C7C',
     },
   },
 })

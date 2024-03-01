@@ -8,10 +8,7 @@ export default function InfoSection() {
     <>
       <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box>
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
-        <Typography
-          variant='h3'
-          sx={{ fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-        >
+        <Typography variant='h4' align='center' sx={{ fontWeight: 800 }}>
           What Unbiasly Promises You
           <Image src='/images/hand-shake.svg' height={44} width={44} style={{ marginLeft: '1rem' }} priority />
         </Typography>

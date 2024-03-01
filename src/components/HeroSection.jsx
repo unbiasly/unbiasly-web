@@ -46,7 +46,13 @@ export default function HeroSection() {
             </Box>
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Image src='/images/screenshot-1.svg' height={372} width={227} priority style={{ marginBottom: '-8px' }} />
+            <Image
+              src='/images/screenshots/screenshot-1.svg'
+              height={372}
+              width={227}
+              priority
+              style={{ marginBottom: '-8px' }}
+            />
           </Grid>
         </Grid>
 
@@ -61,7 +67,7 @@ export default function HeroSection() {
           }}
         />
       </Card>
-      <Typography variant='h3' paragraph align='center'>
+      <Typography variant='h4' paragraph align='center'>
         Absolute Truth, Guaranteed <br /> Your Source for 100% Verified News!
       </Typography>
     </Container>
