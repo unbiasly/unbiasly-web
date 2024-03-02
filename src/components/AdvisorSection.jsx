@@ -11,13 +11,26 @@ export default function AdvisorSection() {
         </Typography>
         <Grid container columnSpacing={6} sx={{ mt: '3.125rem', mb: '5rem' }}>
           <Grid item xs={12} md={4}>
-            <AdvisorCard img='/images/team/img-1.svg' title='Rajveer Kaur' subtitle='Co- Founder & CCO' />
+            <AdvisorCard
+              img='/images/team/img-4.svg'
+              title='Uday Mahurkar'
+              subtitle='Ex-Information Commissioner, Govt. of India Former Deputy Editor, India Today Group Author, Senior Journalist'
+            />
           </Grid>
           <Grid item xs={12} md={4}>
-            <AdvisorCard img='/images/team/img-2.svg' title='Robin Singh' subtitle='Founder & CEO' />
+            <AdvisorCard
+              img='/images/team/img-5.svg'
+              title='Riyanka Roy'
+              subtitle='Ex- Lead, Policy and Teach Program, PathCheck, MIT LLM-University Of California Berkeley, USA'
+            />
           </Grid>
           <Grid item xs={12} md={4}>
-            <AdvisorCard img='/images/team/img-3.svg' title='Umesh Sharma' subtitle='Chief Technology Officer' />
+            <AdvisorCard
+              img='/images/team/img-6.svg'
+              title='Ashwani JP Singh'
+              subtitle='14 Years of Experience in Political & Government Affairs, Masters in Public Administration
+'
+            />
           </Grid>
         </Grid>
       </Container>
