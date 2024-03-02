@@ -11,7 +11,7 @@ export default function ContactSection() {
           sx={{ width: '70px', height: '70px', position: 'relative', mx: 'auto', mt: '4.25rem', objectFit: 'contain' }}
         >
           <Image
-            src='/images/quotes.svg'
+            src='/images/icons/quotes.svg'
             priority
             fill
             alt='quotes'
@@ -43,7 +43,7 @@ export default function ContactSection() {
           zIndex: 3,
         }}
       >
-        <Grid container spacing={0}>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={5} sx={{ backgroundColor: '#F7F7F9' }}>
             <Box
               sx={{

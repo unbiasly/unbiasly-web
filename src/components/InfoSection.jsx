@@ -2,11 +2,13 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import Image from 'next/image'
 import * as React from 'react'
 import InfoCard from './cards/InfoCard'
+import NewsTicker from './ui/NewsTicker'
 
 export default function InfoSection() {
   return (
     <>
       <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box>
+      {/* <NewsTicker /> */}
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
         <Typography variant='h4' align='center' sx={{ fontWeight: 800 }}>
           What Unbiasly Promises You

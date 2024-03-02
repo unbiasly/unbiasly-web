@@ -35,14 +35,14 @@ export default function HeroSection() {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <SecondaryButton text='Download App' />
                 <Image
-                  src='/images/google-icon.svg'
+                  src='/images/icons/google-icon.svg'
                   height={49}
                   width={49}
                   style={{ marginLeft: '1rem', marginRight: '1rem' }}
                   priority
                   alt='google-icon'
                 />
-                <Image src='/images/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
+                <Image src='/images/icons/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
               </Box>
             </Box>
           </Grid>

@@ -4,7 +4,15 @@ import { Box, Divider, Typography } from '@mui/material'
 
 export default function TeamCard({ img, title, subtitle }) {
   return (
-    <Box sx={{ backgroundColor: '#FFFFFF', borderRadius: '10px', p: '0 2rem 2.25rem 2rem', maxWidth: '25rem' }}>
+    <Box
+      sx={{
+        backgroundColor: '#FFFFFF',
+        borderRadius: '10px',
+        p: '0 2rem 2.25rem 2rem',
+        maxWidth: '25rem',
+        height: '100%',
+      }}
+    >
       <Divider aria-hidden='true' sx={{ mb: '1.75rem', border: '4px solid #171717' }} />
 
       <Box sx={{ width: '226px', height: '226px', position: 'relative', mx: 'auto', objectFit: 'contain' }}>
