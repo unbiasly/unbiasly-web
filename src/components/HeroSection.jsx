@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import { Box, Card, Container, Grid, Typography } from '@mui/material'
-import { SecondaryButton } from '@/components'
+import SecondaryButton from './ui/SecondaryButton'
 
 export default function HeroSection() {
   return (
@@ -40,8 +40,9 @@ export default function HeroSection() {
                   width={49}
                   style={{ marginLeft: '1rem', marginRight: '1rem' }}
                   priority
+                  alt='google-icon'
                 />
-                <Image src='/images/apple-icon.svg' height={49} width={49} priority />
+                <Image src='/images/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
               </Box>
             </Box>
           </Grid>
@@ -52,6 +53,7 @@ export default function HeroSection() {
               width={227}
               priority
               style={{ marginBottom: '-8px' }}
+              alt='screenshot'
             />
           </Grid>
         </Grid>

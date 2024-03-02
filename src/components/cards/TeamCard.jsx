@@ -12,6 +12,7 @@ export default function TeamCard({ img, title, subtitle }) {
           src={img}
           priority
           fill
+          alt='avatar'
           // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
         />
       </Box>

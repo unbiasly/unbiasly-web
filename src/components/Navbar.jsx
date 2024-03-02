@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
-import { PrimaryButton } from '@/components'
+import PrimaryButton from './ui/PrimaryButton'
 
 export default function Navbar() {
   return (
@@ -20,7 +20,7 @@ export default function Navbar() {
           disableGutters
           sx={{ mx: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
-          <Image src='/images/logo.svg' height={48} width={48} priority />
+          <Image src='/images/logo.svg' alt='logo' height={48} width={48} priority />
           <Box sx={{ display: 'flex' }}>
             <Typography variant='body1' color='text.disabled' fontWeight={600}>
               About Us
@@ -41,6 +41,7 @@ export default function Navbar() {
                   height={18}
                   width={40}
                   priority
+                  alt='play-store'
                   style={{ marginLeft: '0.75rem' }}
                 />
               </Box>

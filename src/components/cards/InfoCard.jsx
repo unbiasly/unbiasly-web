@@ -20,7 +20,7 @@ export default function InfoCard({ color, icon, title, subtitle }) {
         maxWidth: '25rem',
       }}
     >
-      <Image src={icon} height={40} width={40} priority />
+      <Image src={icon} alt='icon' height={40} width={40} priority />
       <Typography variant='h5' sx={{ fontWeight: 800, color: '#171717', my: '0.75rem' }}>
         {title}
       </Typography>

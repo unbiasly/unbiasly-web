@@ -10,7 +10,14 @@ export default function InfoSection() {
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
         <Typography variant='h4' align='center' sx={{ fontWeight: 800 }}>
           What Unbiasly Promises You
-          <Image src='/images/hand-shake.svg' height={44} width={44} style={{ marginLeft: '1rem' }} priority />
+          <Image
+            src='/images/hand-shake.svg'
+            alt='icon'
+            height={44}
+            width={44}
+            style={{ marginLeft: '1rem' }}
+            priority
+          />
         </Typography>
         <Grid container columnSpacing={6} sx={{ mt: '3.125rem', mb: '5rem' }}>
           <Grid item xs={12} md={4}>

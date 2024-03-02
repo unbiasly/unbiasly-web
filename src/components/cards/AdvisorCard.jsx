@@ -13,6 +13,7 @@ export default function TeamCard({ img, title, subtitle }) {
           priority
           fill
           // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          alt='avatar'
         />
       </Box>
       <Typography variant='h5' align='center' sx={{ color: '#171717', fontWeight: 800, mt: '2.5rem', mb: '0.75rem' }}>

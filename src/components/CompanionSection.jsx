@@ -24,6 +24,7 @@ export default function CompanionSection() {
                 src='/images/screenshots/screenshot-2.svg'
                 priority
                 fill
+                alt='screenshot-2'
                 // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               />
             </Box>

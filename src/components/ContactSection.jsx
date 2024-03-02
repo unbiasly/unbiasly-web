@@ -5,8 +5,8 @@ import ContactForm from './cards/ContactForm'
 
 export default function ContactSection() {
   return (
-    <React.Fragment>
-      <Box>
+    <Box sx={{ position: 'relative', zIndex: 1, width: '100%' }}>
+      <Box sx={{ position: 'relative', zIndex: 3 }}>
         <Box
           sx={{ width: '70px', height: '70px', position: 'relative', mx: 'auto', mt: '4.25rem', objectFit: 'contain' }}
         >
@@ -14,6 +14,7 @@ export default function ContactSection() {
             src='/images/quotes.svg'
             priority
             fill
+            alt='quotes'
             // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           />
         </Box>
@@ -24,52 +25,108 @@ export default function ContactSection() {
           - Mahatma Gandhi
         </Typography>
       </Box>
-      <Box sx={{ backgroundColor: '#FFFFFF', mx: 'auto', width: '100%', mt: '7rem' }}>
-        <Container
-          maxWidth='lg'
-          disableGutters
-          sx={{
-            border: '1px solid #EEEEEEEE',
-            borderRadius: '60px 40px 40px 60px',
-          }}
-        >
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={5} sx={{ backgroundColor: '#F7F7F9' }}>
-              <Box
+
+      <Container
+        maxWidth='lg'
+        disableGutters
+        sx={{
+          border: '1px solid #EEEEEEEE',
+          borderRadius: '60px 40px 40px 60px',
+          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+          //  boxShadow: '6px 6px 32px 0px #F4F6F5'
+          backgroundColor: '#FFFFFF',
+          mx: 'auto',
+          width: '100%',
+          mt: '7rem',
+          mb: '5.625rem',
+          position: 'relative',
+          zIndex: 3,
+        }}
+      >
+        <Grid container spacing={0}>
+          <Grid item xs={12} md={5} sx={{ backgroundColor: '#F7F7F9' }}>
+            <Box
+              sx={{
+                position: 'relative',
+                mx: '0.875rem',
+                width: '466px',
+                height: '440px',
+                objectFit: 'contain',
+              }}
+            >
+              <Image
+                src='/images/illustration.svg'
+                priority
+                fill
+                alt='illustration'
+                // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              />
+            </Box>
+
+            <Typography variant='h4' align='center' sx={{ mt: '1rem', mx: '4.625rem' }}>
+              We pledge to present you with only the most{' '}
+              <em>
+                <b>accurate</b>{' '}
+              </em>{' '}
+              and{' '}
+              <em>
+                <b>reliable</b>
+              </em>{' '}
+              news!
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <Box sx={{ mt: '4rem', mx: '3rem' }}>
+              <Typography
+                variant='h6'
                 sx={{
-                  position: 'relative',
-                  mx: '0.875rem',
-                  width: '466px',
-                  height: '440px',
-                  objectFit: 'contain',
+                  fontSize: '1.25rem',
+                  lineHeight: '2.25rem',
+                  fontWeight: 700,
+                  color: '#171717CC',
+                  display: 'flex',
+                  alignItems: 'center',
+                  mb: '0.875rem',
                 }}
               >
                 <Image
-                  src='/images/illustration.svg'
+                  src='/images/dash-symbol.svg'
+                  height={3}
+                  width={30}
                   priority
-                  fill
-                  // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                  alt='symbol'
+                  style={{ marginRight: '0.5rem' }}
                 />
-              </Box>
-
-              <Typography variant='h4' align='center' sx={{ mt: '1rem', mx: '4.625rem' }}>
-                We pledge to present you with only the most{' '}
-                <em>
-                  <b>accurate</b>{' '}
-                </em>{' '}
-                and{' '}
-                <em>
-                  <b>reliable</b>
-                </em>{' '}
-                news!
+                Get In Touch
               </Typography>
-            </Grid>
-            <Grid item xs={12} md={7}>
+              <Typography
+                variant='h4'
+                paragraph
+                sx={{
+                  fontSize: '2.5rem',
+                  lineHeight: '3.5rem',
+                  fontWeight: 700,
+                }}
+              >
+                Have something to tell us? <br /> Contact Us Now!
+              </Typography>
               <ContactForm />
-            </Grid>
+            </Box>
           </Grid>
-        </Container>
-      </Box>
-    </React.Fragment>
+        </Grid>
+      </Container>
+
+      <Box
+        sx={{
+          position: 'absolute',
+          zIndex: 2,
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          height: '40rem',
+          backgroundColor: '#FFFFFF',
+        }}
+      />
+    </Box>
   )
 }
