@@ -8,6 +8,7 @@ import {
   TeamSection,
   AdvisorSection,
   ContactSection,
+  FooterSection,
 } from '@/components'
 
 export const metadata = {
@@ -35,6 +36,7 @@ export default function Home() {
       <TeamSection />
       <AdvisorSection />
       <ContactSection />
+      <FooterSection />
     </Box>
   )
 }
