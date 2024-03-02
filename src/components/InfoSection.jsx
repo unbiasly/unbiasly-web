@@ -10,7 +10,11 @@ export default function InfoSection() {
       <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box>
       {/* <NewsTicker /> */}
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
-        <Typography variant='h4' align='center' sx={{ fontWeight: 800 }}>
+        <Typography
+          variant='h4'
+          align='center'
+          sx={{ fontWeight: 800, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
           What Unbiasly Promises You
           <Image
             src='/images/hand-shake.svg'

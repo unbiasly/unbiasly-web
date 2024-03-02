@@ -41,6 +41,7 @@ export default function ContactSection() {
           mb: '5.625rem',
           position: 'relative',
           zIndex: 3,
+          overflow: 'hidden',
         }}
       >
         <Grid container spacing={2}>
