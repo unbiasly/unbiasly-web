@@ -11,7 +11,9 @@ export default function SecondaryButton({ text }) {
         fontWeight: 600,
         color: '#171717',
         backgroundColor: '#F4F6F5',
+        '&:hover': { backgroundColor: '#F4F6F599' },
         px: '2rem',
+        textWrap: 'nowrap',
       }}
     >
       {text}

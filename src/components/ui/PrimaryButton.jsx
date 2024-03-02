@@ -19,6 +19,7 @@ export default function PrimaryButton({ text, large, onClick }) {
         height: large ? '4.375rem' : '2.5rem',
         width: '13.5rem',
         textWrap: 'nowrap',
+        '&:hover': { backgroundColor: '#171717CC' },
       }}
     >
       {text}

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Box, Container, Divider, Grid, Typography } from '@mui/material'
+import { Box, Container, Divider, Grid, IconButton, Typography } from '@mui/material'
 
 export default function FooterSection() {
   return (
@@ -107,10 +107,18 @@ export default function FooterSection() {
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', gap: '1.25rem' }}>
-              <Image src='/images/icons/instagram.svg' height={32} width={32} alt='instagram icon' />
-              <Image src='/images/icons/facebook.svg' height={32} width={32} alt='facebook icon' />
-              <Image src='/images/icons/twitter.svg' height={32} width={32} alt='twitter icon' />
-              <Image src='/images/icons/linkedin.svg' height={32} width={32} alt='linkedin icon' />
+              <IconButton sx={{ p: 0 }}>
+                <Image src='/images/icons/instagram.svg' height={32} width={32} alt='instagram icon' />
+              </IconButton>
+              <IconButton sx={{ p: 0 }}>
+                <Image src='/images/icons/facebook.svg' height={32} width={32} alt='facebook icon' />
+              </IconButton>
+              <IconButton sx={{ p: 0 }}>
+                <Image src='/images/icons/twitter.svg' height={32} width={32} alt='twitter icon' />
+              </IconButton>
+              <IconButton sx={{ p: 0 }}>
+                <Image src='/images/icons/linkedin.svg' height={32} width={32} alt='linkedin icon' />
+              </IconButton>
             </Box>
           </Box>
         </Grid>

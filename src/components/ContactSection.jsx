@@ -32,8 +32,7 @@ export default function ContactSection() {
         sx={{
           border: '1px solid #EEEEEEEE',
           borderRadius: '60px 40px 40px 60px',
-          boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-          //  boxShadow: '6px 6px 32px 0px #F4F6F5'
+          boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
           backgroundColor: '#FFFFFF',
           mx: 'auto',
           width: '100%',

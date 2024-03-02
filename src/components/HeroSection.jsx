@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Image from 'next/image'
-import { Box, Card, Container, Grid, Typography } from '@mui/material'
+import { Box, Card, Container, Grid, IconButton, Typography } from '@mui/material'
 import SecondaryButton from './ui/SecondaryButton'
 
 export default function HeroSection() {
@@ -34,15 +34,19 @@ export default function HeroSection() {
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <SecondaryButton text='Download App' />
-                <Image
-                  src='/images/icons/google-icon.svg'
-                  height={49}
-                  width={49}
-                  style={{ marginLeft: '1rem', marginRight: '1rem' }}
-                  priority
-                  alt='google-icon'
-                />
-                <Image src='/images/icons/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
+                <IconButton sx={{ p: 0 }}>
+                  <Image
+                    src='/images/icons/google-icon.svg'
+                    height={49}
+                    width={49}
+                    style={{ marginLeft: '1rem', marginRight: '1rem' }}
+                    priority
+                    alt='google-icon'
+                  />
+                </IconButton>
+                <IconButton sx={{ p: 0 }}>
+                  <Image src='/images/icons/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
+                </IconButton>
               </Box>
             </Box>
           </Grid>
