@@ -6,7 +6,7 @@ export default function CompanionSection() {
   return (
     <Box sx={{ width: '100%', background: '#171717' }}>
       <Container maxWidth='lg' disableGutters sx={{ mx: { xs: '1rem', sm: '2rem', md: '4rem' }, my: '3rem' }}>
-        <Grid container columnSpacing={8} justifyContent='center' alignItems='center'>
+        <Grid container columnSpacing={6} justifyContent='space-between' alignItems='center'>
           <Grid item sm={7} xs={12}>
             <Typography variant='h2' color='#FFFFFF'>
               How we are your trusted news companion?
