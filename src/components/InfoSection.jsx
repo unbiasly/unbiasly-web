@@ -12,7 +12,7 @@ export default function InfoSection() {
 
   return (
     <>
-      <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box>
+       {/* <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box> */}
       {/* <NewsTicker /> */}
       <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
         <Container maxWidth='lg' disableGutters sx={{ mx: 'auto' }}>
