@@ -17,7 +17,7 @@ export default function InfoCard({ color, icon, title, subtitle }) {
         alignItems: 'center',
         p: '1.5rem',
         height: '100%',
-        maxWidth: '25rem',
+        maxWidth: '24rem',
         cursor: 'pointer',
         transition: 'box-shadow 0.25s ease-in-out',
         boxShadow: '0px -4px 24px 0px #2124270A',

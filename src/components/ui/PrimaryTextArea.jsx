@@ -1,7 +1,12 @@
+'use client'
+
 import * as React from 'react'
 import { Box, TextField } from '@mui/material'
+import { useCustomMediaQueries } from '@/hooks'
 
 export default function PrimaryTextArea({ name, placeholder, value, onChange, error, helperText, mt = false }) {
+  const { mobileMode } = useCustomMediaQueries()
+
   return (
     <Box sx={{ mt: mt ? '1.75rem' : 0 }}>
       <TextField
@@ -18,8 +23,8 @@ export default function PrimaryTextArea({ name, placeholder, value, onChange, er
         rows={3}
         sx={{
           '& .MuiInputBase-root': {
-            height: '8.75rem',
-            padding: '1.25rem 2.25rem 1.25rem 2.25rem',
+            height: mobileMode ? '7rem' : '8.75rem',
+            padding: mobileMode ? '1rem 2.25rem 1rem 2.25rem' : '1.25rem 2.25rem 1.25rem 2.25rem',
             border: 0,
             borderRadius: '28px',
             background: '#F4F6F5',

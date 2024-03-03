@@ -4,10 +4,12 @@ import * as React from 'react'
 import { Box } from '@mui/material'
 import PrimaryTextField from '../ui/PrimaryTextField'
 import PrimaryButton from '../ui/PrimaryButton'
-import { useSnackbarNotifier } from '@/hooks'
+import { useCustomMediaQueries, useSnackbarNotifier } from '@/hooks'
 import PrimaryTextArea from '../ui/PrimaryTextArea'
 
 export default function ContactForm() {
+  const { mobileMode } = useCustomMediaQueries()
+
   const { showErrorMessage } = useSnackbarNotifier()
 
   const [fields, setFields] = React.useState({
@@ -70,7 +72,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Box sx={{ my: '3.25rem' }}>
+    <Box sx={{ my: mobileMode ? '2rem' : '3.25rem' }}>
       <PrimaryTextField
         name='name'
         placeholder='Name'
