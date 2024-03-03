@@ -1,6 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import { Box, Container, Divider, Grid, IconButton, Typography } from '@mui/material'
+import Link from 'next/link'
+import SecondaryLink from './ui/SecondaryLink'
+import PrimaryIconButton from './ui/PrimaryIconButton'
 
 export default function FooterSection() {
   return (
@@ -13,6 +16,9 @@ export default function FooterSection() {
               background: `linear-gradient(0deg, #171717, #171717), linear-gradient(180deg, #171717 80%, rgba(0, 0, 0, 0) 83%, rgba(255, 255, 255, 0.3) 100%)`,
               p: '2.5rem 2.5rem 0 2.5rem',
               height: '100%',
+              transition: 'box-shadow 0.25s ease-in-out',
+              boxShadow: '0px -4px 24px 0px #2124270A',
+              '&:hover': { boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)' },
             }}
           >
             <Typography variant='h3' align='center' sx={{ fontSize: '2.5rem', fontWeight: 600 }} paragraph>
@@ -31,13 +37,23 @@ export default function FooterSection() {
             <Grid container spacing={2} sx={{ mt: '2.75rem' }}>
               <Grid item xs={12} sm={6}>
                 <Image src='/images/qr.svg' height={240} width={240} alt='left-dash' />
-                <Image
-                  src='/images/links.svg'
-                  height={38}
-                  width={248}
-                  alt='left-dash'
-                  style={{ marginTop: '1.25rem' }}
-                />
+
+                <Box
+                  sx={{
+                    mt: '1.25rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    maxWidth: '240px',
+                  }}
+                >
+                  <Link href='#'>
+                    <Image src='/images/icons/play-store.svg' height={38} width={126} alt='play-store' />
+                  </Link>
+
+                  <Link href='#'>
+                    <Image src='/images/icons/app-store.svg' height={38} width={126} alt='app-store' />
+                  </Link>
+                </Box>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Image
@@ -59,66 +75,74 @@ export default function FooterSection() {
               background: '#FFFFFF',
               p: '1.25rem 6.5rem 2.5rem 2.5rem',
               height: '100%',
+              transition: 'box-shadow 0.25s ease-in-out',
+              boxShadow: '0px -4px 24px 0px #2124270A',
+              '&:hover': { boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)' },
             }}
           >
-            <Image src='/images/logo.svg' alt='logo' height={68} width={68} priority />
+            <Link href='/' prefetch>
+              <Box
+                sx={{
+                  cursor: 'pointer',
+                  width: '68px',
+                  height: '68px',
+                  position: 'relative',
+                  objectFit: 'contain',
+                  overflow: 'hidden',
+                  borderRadius: '16px',
+                  transition: 'box-shadow 0.25s ease-in-out',
+                  boxShadow: '0px -4px 24px 0px #2124270A',
+                  '&:hover': {
+                    boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
+                  },
+                }}
+              >
+                <Image
+                  src='/images/logo.svg'
+                  alt='logo'
+                  fill
+                  priority
+                  // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                />
+              </Box>
+            </Link>
             <Typography variant='h6' sx={{ mt: '1rem', fontWeight: 400 }} paragraph>
               Green Park, Delhi India
               <br />
               110016
             </Typography>
 
-            <Box sx={{ mt: '2.5rem', mb: '1.875rem' }}>
-              <Typography variant='body1' sx={{ fontWeight: 500, display: 'flex', alignItems: 'center' }} paragraph>
-                <Image
-                  src='/images/icons/email.svg'
-                  height={19}
-                  width={19}
-                  alt='email icon'
-                  style={{ marginRight: '0.625rem' }}
-                />
-                support@unbiasly.com
-              </Typography>
+            <Box sx={{ mt: '2.5rem', mb: '1.875rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <SecondaryLink
+                href='mailto:support@unbiasly.com'
+                startIcon='/images/icons/email.svg'
+                text='support@unbiasly.com'
+              />
+              <SecondaryLink href='tel:+919999999999' startIcon='/images/icons/phone.svg' text='+91 99999 99999' />
+            </Box>
 
-              <Typography variant='body1' sx={{ fontWeight: 500, display: 'flex', alignItems: 'center' }} paragraph>
-                <Image
-                  src='/images/icons/phone.svg'
-                  height={19}
-                  width={19}
-                  alt='phone icon'
-                  style={{ marginRight: '0.625rem' }}
-                />
-                +91 9999999999
-              </Typography>
-            </Box>
             <Divider aria-hidden='true' sx={{ border: '1px solid #17171714' }} />
-            <Box sx={{ my: '2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <Typography variant='body1' sx={{ fontWeight: 500 }} paragraph>
-                FAQs
-              </Typography>
-              <Typography variant='body1' sx={{ fontWeight: 500 }} paragraph>
-                Contact us
-              </Typography>
-              <Typography variant='body1' sx={{ fontWeight: 500 }} paragraph>
-                Privacy policy
-              </Typography>
-              <Typography variant='body1' sx={{ fontWeight: 500 }} paragraph>
-                Terms & conditions
-              </Typography>
+
+            <Box sx={{ my: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <SecondaryLink text='FAQs' />
+              <SecondaryLink text='Contact us' />
+              <SecondaryLink text='Privacy policy' />
+              <SecondaryLink text='Terms & conditions' />
             </Box>
+
             <Box sx={{ display: 'flex', gap: '1.25rem' }}>
-              <IconButton sx={{ p: 0 }}>
+              <PrimaryIconButton>
                 <Image src='/images/icons/instagram.svg' height={32} width={32} alt='instagram icon' />
-              </IconButton>
-              <IconButton sx={{ p: 0 }}>
+              </PrimaryIconButton>
+              <PrimaryIconButton>
                 <Image src='/images/icons/facebook.svg' height={32} width={32} alt='facebook icon' />
-              </IconButton>
-              <IconButton sx={{ p: 0 }}>
+              </PrimaryIconButton>
+              <PrimaryIconButton>
                 <Image src='/images/icons/twitter.svg' height={32} width={32} alt='twitter icon' />
-              </IconButton>
-              <IconButton sx={{ p: 0 }}>
+              </PrimaryIconButton>
+              <PrimaryIconButton>
                 <Image src='/images/icons/linkedin.svg' height={32} width={32} alt='linkedin icon' />
-              </IconButton>
+              </PrimaryIconButton>
             </Box>
           </Box>
         </Grid>

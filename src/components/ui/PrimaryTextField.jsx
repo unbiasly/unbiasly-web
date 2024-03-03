@@ -22,10 +22,9 @@ export default function PrimaryTextField({ name, placeholder, value, onChange, e
             borderRadius: '51px',
             background: '#F4F6F5',
             transition: 'box-shadow 0.25s ease-in-out',
-            boxShadow: 'none',
-            '&:focus-within': {
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-            },
+            boxShadow: '0px -4px 24px 0px #2124270A',
+            '&:hover': { boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' },
+            '&:focus-within': { boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)' },
           },
           '& .MuiOutlinedInput-notchedOutline': {
             border: 'none',

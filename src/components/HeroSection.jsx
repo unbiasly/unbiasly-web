@@ -2,6 +2,8 @@ import * as React from 'react'
 import Image from 'next/image'
 import { Box, Card, Container, Grid, IconButton, Typography } from '@mui/material'
 import SecondaryButton from './ui/SecondaryButton'
+import Link from 'next/link'
+import PrimaryIconButton from './ui/PrimaryIconButton'
 
 export default function HeroSection() {
   return (
@@ -15,6 +17,9 @@ export default function HeroSection() {
           position: 'relative',
           border: 0,
           overflow: 'hidden',
+          transition: 'box-shadow 0.25s ease-in-out',
+          boxShadow: '0px -4px 24px 0px #2124270A',
+          '&:hover': { boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)' },
         }}
       >
         <Grid
@@ -33,20 +38,26 @@ export default function HeroSection() {
                 Your steadfast companion for credible news coverage!
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <SecondaryButton text='Download App' />
-                <IconButton sx={{ p: 0 }}>
-                  <Image
-                    src='/images/icons/google-icon.svg'
-                    height={49}
-                    width={49}
-                    style={{ marginLeft: '1rem', marginRight: '1rem' }}
-                    priority
-                    alt='google-icon'
-                  />
-                </IconButton>
-                <IconButton sx={{ p: 0 }}>
-                  <Image src='/images/icons/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
-                </IconButton>
+                <Link href='#'>
+                  <SecondaryButton text='Download App' />
+                </Link>
+                <Link href='#'>
+                  <PrimaryIconButton>
+                    <Image
+                      src='/images/icons/google-icon.svg'
+                      height={49}
+                      width={49}
+                      style={{ marginLeft: '1rem', marginRight: '1rem' }}
+                      priority
+                      alt='google-icon'
+                    />
+                  </PrimaryIconButton>
+                </Link>
+                <Link href='#'>
+                  <PrimaryIconButton>
+                    <Image src='/images/icons/apple-icon.svg' height={49} width={49} priority alt='apple-icon' />
+                  </PrimaryIconButton>
+                </Link>
               </Box>
             </Box>
           </Grid>

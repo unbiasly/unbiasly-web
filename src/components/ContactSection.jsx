@@ -32,7 +32,6 @@ export default function ContactSection() {
         sx={{
           border: '1px solid #EEEEEEEE',
           borderRadius: '60px 40px 40px 60px',
-          boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
           backgroundColor: '#FFFFFF',
           mx: 'auto',
           width: '100%',
@@ -41,6 +40,8 @@ export default function ContactSection() {
           position: 'relative',
           zIndex: 3,
           overflow: 'hidden',
+          boxShadow: '0px -4px 24px 0px #2124270A',
+          // boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
         }}
       >
         <Grid container spacing={2}>

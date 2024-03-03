@@ -4,7 +4,7 @@ import AdvisorCard from './cards/AdvisorCard'
 
 export default function AdvisorSection() {
   return (
-    <Box sx={{ backgroundColor: '#FFFFFF', mx: 'auto', width: '100%' }}>
+    <Box sx={{ backgroundColor: '#FFFFFF', mx: 'auto', width: '100%', boxShadow: '0px -4px 24px 0px #2124270A' }}>
       <Container maxWidth='lg' sx={{ my: '5.625rem' }}>
         <Typography variant='h2' align='center' sx={{ mb: '4.25rem' }}>
           Our Honorary Advisors

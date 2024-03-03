@@ -11,6 +11,10 @@ export default function TeamCard({ img, title, subtitle }) {
         p: '0 2rem 2.25rem 2rem',
         maxWidth: '25rem',
         height: '100%',
+        cursor: 'pointer',
+        transition: 'box-shadow 0.25s ease-in-out',
+        boxShadow: '0px -4px 24px 0px #2124270A',
+        '&:hover': { boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.1)' },
       }}
     >
       <Divider aria-hidden='true' sx={{ mb: '1.75rem', border: '4px solid #171717' }} />

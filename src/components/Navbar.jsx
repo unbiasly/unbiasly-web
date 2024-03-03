@@ -2,6 +2,8 @@ import * as React from 'react'
 import Image from 'next/image'
 import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
 import PrimaryButton from './ui/PrimaryButton'
+import Link from 'next/link'
+import PrimaryLink from './ui/PrimaryLink'
 
 export default function Navbar() {
   return (
@@ -20,33 +22,56 @@ export default function Navbar() {
           disableGutters
           sx={{ mx: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
-          <Image src='/images/logo.svg' alt='logo' height={48} width={48} priority />
-          <Box sx={{ display: 'flex' }}>
-            <Typography variant='body1' color='text.disabled' fontWeight={600}>
-              About Us
-            </Typography>
-            <Typography variant='body1' color='text.disabled' fontWeight={600} sx={{ mx: '3rem' }}>
-              Careers
-            </Typography>
-            <Typography variant='body1' color='text.disabled' fontWeight={600}>
-              Blog
-            </Typography>
+          <Link href='/' prefetch>
+            <Box
+              sx={{
+                cursor: 'pointer',
+                width: '40px',
+                height: '40px',
+                position: 'relative',
+                objectFit: 'contain',
+                my: 'auto',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                transition: 'box-shadow 0.25s ease-in-out',
+                boxShadow: '0px -4px 24px 0px #2124270A',
+                '&:hover': {
+                  boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
+                },
+              }}
+            >
+              <Image
+                src='/images/logo.svg'
+                alt='logo'
+                fill
+                priority
+                // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              />
+            </Box>
+          </Link>
+
+          <Box sx={{ display: 'flex', gap: '3rem' }}>
+            <PrimaryLink text='About Us' />
+            <PrimaryLink text='Careers' />
+            <PrimaryLink text='Blog' />
           </Box>
-          <PrimaryButton
-            text={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                Download Unbiasly
-                <Image
-                  src='/images/download-btn.svg'
-                  height={18}
-                  width={40}
-                  priority
-                  alt='play-store'
-                  style={{ marginLeft: '0.75rem' }}
-                />
-              </Box>
-            }
-          />
+          <Link href='#'>
+            <PrimaryButton
+              text={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  Download Unbiasly
+                  <Image
+                    src='/images/download-btn.svg'
+                    height={18}
+                    width={40}
+                    priority
+                    alt='play-store'
+                    style={{ marginLeft: '0.75rem' }}
+                  />
+                </Box>
+              }
+            />
+          </Link>
         </Toolbar>
       </AppBar>
     </Container>

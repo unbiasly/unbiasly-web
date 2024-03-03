@@ -19,7 +19,9 @@ export default function PrimaryButton({ text, large, onClick }) {
         height: large ? '4.375rem' : '2.5rem',
         width: '13.5rem',
         textWrap: 'nowrap',
-        '&:hover': { backgroundColor: '#171717CC' },
+        transition: 'background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out',
+        boxShadow: '0px -4px 24px 0px #2124270A',
+        '&:hover': { backgroundColor: '#171717E6', boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)' },
       }}
     >
       {text}
