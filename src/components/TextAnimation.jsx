@@ -1,12 +1,11 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { Toolbar, Typography } from '@mui/material'
+import React from 'react'
+import { Typography } from '@mui/material'
 import './TextAnimation.css'
-import Image from 'next/image'
 
 const TextAnimation = () => {
   const texts = ['NEWS', 'TRENDING', 'FASHION', 'HEALTH', 'SPORTS', 'TECHNOLOGY', 'WORLD', 'POLITICS', 'ENTERTAINMENT']
-  const duplicatedTexts = [...texts, ...texts, ...texts, ...texts, ...texts, ...texts, ...texts, ...texts]
+  const duplicatedTexts = [...texts, ...texts]
 
   return (
     <div className='marquee'>
@@ -18,7 +17,7 @@ const TextAnimation = () => {
                 <img
                   src='/images/icons/white-bullet.svg'
                   alt='white-bullet'
-                  style={{ width: '100%', maxWidth: '28px', height: 'auto' }}
+                  style={{ width: '100%', maxWidth: '28px', height: 'auto', marginLeft: '1.25rem' }}
                 />
                 <Typography variant='h5' sx={{ mx: '1.25rem' }}>
                   {word}
