@@ -25,7 +25,7 @@ export default function InfoCard({ color, icon, title, subtitle }) {
       }}
     >
       <Image src={icon} alt='icon' height={40} width={40} priority />
-      <Typography variant='h5' sx={{ fontWeight: 800, color: '#171717', my: '0.75rem' }}>
+      <Typography variant='h5' align='center' sx={{ fontWeight: 800, color: '#171717', my: '0.75rem' }}>
         {title}
       </Typography>
       <Typography variant='h6' align='center' sx={{ fontFamily: inter.style.fontFamily, fontWeight: 400 }}>
