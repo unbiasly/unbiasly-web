@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { Box, Container, Grid, Typography } from '@mui/material'
 import InfoCard from './cards/InfoCard'
 import { useCustomMediaQueries } from '@/hooks'
+import { TextAnimation } from '.'
+
 // import NewsTicker from './ui/NewsTicker'
 
 export default function InfoSection() {
@@ -12,8 +14,9 @@ export default function InfoSection() {
 
   return (
     <>
-       {/* <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box> */}
+      {/* <Box sx={{ backgroundColor: '#171717', mt: '2.5rem', mb: '6.25rem', width: '100%' }}>text </Box> */}
       {/* <NewsTicker /> */}
+      <TextAnimation />
       <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
         <Container maxWidth='lg' disableGutters sx={{ mx: 'auto' }}>
           <Typography
