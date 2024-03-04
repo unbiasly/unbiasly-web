@@ -157,7 +157,7 @@ export default function HeroSection() {
           fontWeight={600}
           color='#171717'
         >
-          Absolute Truth, Guaranteed <br /> Your Source for 100% Verified News!
+          Absolute Truth, Guaranteed <br /> Your Source for 100 % Verified News!
         </Typography>
       </Container>
     </Box>
