@@ -1,16 +1,24 @@
 'use client'
-
 import * as React from 'react'
 import Image from 'next/image'
-import { AppBar, Box, Container, Toolbar, Typography } from '@mui/material'
-import PrimaryButton from './ui/PrimaryButton'
+import { AppBar, Box, Container, Toolbar } from '@mui/material'
 import Link from 'next/link'
 import PrimaryLink from './ui/PrimaryLink'
 import { useCustomMediaQueries } from '@/hooks'
-
+import { useState } from 'react'
+import SideBar from './SideBar'
+import PrimaryIconButton from './ui/PrimaryIconButton'
+import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
+import PrimaryButton from './ui/PrimaryButton'
 export default function Navbar() {
-  const { wideMobileMode, sm } = useCustomMediaQueries()
-
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const { wideMobileMode, sm, mobileMode } = useCustomMediaQueries()
+  const handleSidebarToggle = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+  const handleSidebarClose = () => {
+    setSidebarOpen(false)
+  }
   return (
     <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
       <Container maxWidth='md' disableGutters sx={{ mx: 'auto' }}>
@@ -46,16 +54,9 @@ export default function Navbar() {
                   },
                 }}
               >
-                <Image
-                  src='/images/logo.svg'
-                  alt='logo'
-                  fill
-                  priority
-                  // sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-                />
+                <Image src='/images/logo.svg' alt='logo' fill priority />
               </Box>
             </Link>
-
             {sm && (
               <Box sx={{ display: 'flex', gap: wideMobileMode ? '1rem' : '3rem' }}>
                 <PrimaryLink text='About Us' />
@@ -63,25 +64,35 @@ export default function Navbar() {
                 <PrimaryLink text='Blog' />
               </Box>
             )}
-            <Link href='#'>
-              <PrimaryButton
-                text={
-                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    Download Unbiasly
-                    {sm && (
-                      <Image
-                        src='/images/download-btn.svg'
-                        height={18}
-                        width={40}
-                        priority
-                        alt='play-store'
-                        style={{ marginLeft: '0.75rem' }}
-                      />
-                    )}
-                  </Box>
-                }
-              />
-            </Link>
+            {mobileMode && (
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: mobileMode ? '1rem' : '3rem' }}>
+                <PrimaryIconButton onClick={handleSidebarToggle}>
+                  <MenuRoundedIcon sx={{ fontSize: '2rem' }} />
+                </PrimaryIconButton>
+                <SideBar open={sidebarOpen} handleClose={handleSidebarClose} />
+              </Box>
+            )}
+            {!mobileMode && (
+              <Link href='#'>
+                <PrimaryButton
+                  text={
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      Download Unbiasly
+                      {sm && (
+                        <Image
+                          src='/images/download-btn.svg'
+                          height={18}
+                          width={40}
+                          priority
+                          alt='play-store'
+                          style={{ marginLeft: '0.75rem' }}
+                        />
+                      )}
+                    </Box>
+                  }
+                />
+              </Link>
+            )}
           </Toolbar>
         </AppBar>
       </Container>
