@@ -25,30 +25,18 @@ export default function SideBar({ open, handleClose }) {
       }}
     >
       <Box sx={{ display: 'flex', flexDirection: 'column', p: '1rem', width: '40%', rowGap: '2rem' }}>
-        <IconButton onClick={handleClose}>
-          <CloseRoundedIcon sx={{ color: '#171717' }} />
-        </IconButton>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start', ml: '-0.5rem' }}>
+          <IconButton onClick={handleClose}>
+            <CloseRoundedIcon sx={{ color: '#1717171' }} />
+          </IconButton>
+        </Box>
 
         <PrimaryLink text='About Us' />
         <PrimaryLink text='Careers' />
         <PrimaryLink text='Blog' />
 
         <Link href='#'>
-          <PrimaryButton
-            text={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                Download Unbiasly
-                <Image
-                  src='/images/download-btn.svg'
-                  height={18}
-                  width={40}
-                  alt='play-store'
-                  style={{ marginLeft: '0.75rem' }}
-                  loading={sm ? 'eager' : 'lazy'}
-                />
-              </Box>
-            }
-          />
+          <PrimaryButton text={<Box sx={{ display: 'flex', alignItems: 'center' }}>Download Unbiasly</Box>} />
         </Link>
       </Box>
     </Box>
