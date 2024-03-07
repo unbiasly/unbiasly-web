@@ -5,7 +5,7 @@ import './TextAnimation.css'
 
 const TextAnimation = () => {
   const texts = ['NEWS', 'TRENDING', 'FASHION', 'HEALTH', 'SPORTS', 'TECHNOLOGY', 'WORLD', 'POLITICS', 'ENTERTAINMENT']
-  const duplicatedTexts = [...texts, ...texts]
+  const duplicatedTexts = [...texts]
 
   return (
     <div className='marquee'>
