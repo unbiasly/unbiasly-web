@@ -1,3 +1,4 @@
+import { Navbar } from '@/components'
 import { Box, Typography } from '@mui/material'
 import React from 'react'
 
@@ -13,7 +14,9 @@ export default function Home() {
         flexDirection: 'column',
       }}
     >
-      <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem' }}>
+      <Navbar />
+
+      <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem', mt: '3rem' }}>
         Privacy Policy
       </Typography>
       <Typography variant='body1' align='justify' paragraph sx={{ my: '0.5rem', color: '#7C7C7C' }}>

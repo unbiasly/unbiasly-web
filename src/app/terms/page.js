@@ -1,6 +1,7 @@
+import React from 'react'
+import { Navbar } from '@/components'
 import OrderedList from '@/components/ui/OrderedList'
 import { Box, Typography } from '@mui/material'
-import React from 'react'
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
         flexDirection: 'column',
       }}
     >
-      <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem' }}>
+      <Navbar />
+
+      <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem', mt: '3rem' }}>
         Terms and Conditions ("Terms")
       </Typography>
       <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.25rem', mt: '1.5rem' }}>

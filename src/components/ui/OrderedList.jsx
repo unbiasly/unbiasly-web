@@ -5,7 +5,7 @@ function OrderedList({ index, children }) {
     <li style={{ listStyle: 'none', counterIncrement: 'list', marginTop: '0.5rem' }}>
       <span style={{ display: 'inline-block', width: '1em', textAlign: 'center' }}>
         ({String.fromCharCode(96 + index)})
-      </span>{' '}
+      </span>
       &nbsp;
       <span>{children}</span>
     </li>
