@@ -20,3 +20,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+li {
+  color: #7c7c7c;
+  text-align: justify;
+}
