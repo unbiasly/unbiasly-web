@@ -167,16 +167,14 @@ export default function FooterSection() {
                 </Box>
               </Link>
               <Typography variant='h6' sx={{ mt: '1rem', fontWeight: 400 }} paragraph>
-                Green Park, Delhi India
-                <br />
-                110016
+                C-11, Basement, Green Park Extension, Delhi, India - 110016
               </Typography>
 
               <Box sx={{ mt: '2.5rem', mb: '1.875rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <SecondaryLink
-                  href='mailto:support@unbiasly.com'
+                  href='mailto:info@unbiasly.ai'
                   startIcon='/images/icons/email.svg'
-                  text='support@unbiasly.com'
+                  text='info@unbiasly.ai'
                 />
                 <SecondaryLink href='tel:+919999999999' startIcon='/images/icons/phone.svg' text='+91 99999 99999' />
               </Box>
@@ -186,8 +184,8 @@ export default function FooterSection() {
               <Box sx={{ my: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <SecondaryLink text='FAQs' />
                 <SecondaryLink text='Contact us' />
-                <SecondaryLink text='Privacy policy' />
-                <SecondaryLink text='Terms & conditions' />
+                <SecondaryLink text='Privacy policy' href='/privacy' />
+                <SecondaryLink text='Terms & conditions' href='/terms' />
               </Box>
 
               <Box sx={{ display: 'flex', gap: '1.25rem' }}>
