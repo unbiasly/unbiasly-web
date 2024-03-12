@@ -15,6 +15,7 @@ export default function Home() {
       }}
     >
       <Navbar />
+
       <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem', mt: '3rem' }}>
         Privacy Policy
       </Typography>
