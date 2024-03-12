@@ -59,9 +59,9 @@ export default function Navbar() {
             </Link>
             {sm && (
               <Box sx={{ display: 'flex', gap: wideMobileMode ? '1rem' : '3rem' }}>
-                <PrimaryLink text='About Us' />
-                <PrimaryLink text='Careers' />
-                <PrimaryLink text='Blog' />
+                <PrimaryLink text='About Us' href='/' />
+                <PrimaryLink text='Careers' href='/' />
+                <PrimaryLink text='Blog' href='/' />
               </Box>
             )}
             {mobileMode && (
