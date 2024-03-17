@@ -1,18 +1,17 @@
-import { Typography } from '@mui/material'
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+import { Typography } from '@mui/material'
 
 export default function PrimaryLink({ text, href }) {
   return (
     <Link href={href ? href : '#'} prefetch>
       <Typography
-        variant='body1'
-        color='text.disabled'
+        variant='h5'
         sx={{
-          fontWeight: 600,
+          fontWeight: 400,
           position: 'relative',
           '&::after': {
-            content: "''",
+            content: { sm: "''" },
             position: 'absolute',
             bottom: '-1px',
             left: 0,

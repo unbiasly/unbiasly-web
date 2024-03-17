@@ -18,25 +18,17 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <Box
-      sx={{
-        width: '100vw',
-        minHeight: '100vh',
-        pt: '1.75rem',
-        background: '#F4F6F5',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <Navbar />
-      <HeroSection />
-      <InfoSection />
-      <CompanionSection />
-      <TeamSection />
-      <AdvisorSection />
-      <ContactSection />
-      <FooterSection />
-    </Box>
+    <>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#F4F6F5' }}>
+        <Navbar />
+        <HeroSection />
+        <InfoSection />
+        <CompanionSection />
+        <TeamSection />
+        {/* <AdvisorSection /> */}
+        {/* <ContactSection /> */}
+        {/* <FooterSection /> */}
+      </Box>
+    </>
   )
 }

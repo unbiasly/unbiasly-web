@@ -1,20 +1,33 @@
 'use client'
-import { Inter, Spectral } from 'next/font/google'
-import { createTheme } from '@mui/material/styles'
+import localFont from 'next/font/local'
+import { createTheme, responsiveFontSizes } from '@mui/material/styles'
 
-export const spectral = Spectral({
-  weight: ['300', '400', '500', '600', '700', '800'],
-  subsets: ['latin'],
-  display: 'swap',
+const californianFB = localFont({
+  src: [
+    {
+      path: './californian-fb/r.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: './californian-fb/i.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: './californian-fb/b.ttf',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: './californian-fb/eb.ttf',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
 })
 
-export const inter = Inter({
-  weight: ['400'],
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     primary: {
       main: '#171717',
@@ -26,34 +39,54 @@ const theme = createTheme({
   },
   typography: {
     htmlFontSize: 16,
-    fontFamily: spectral.style.fontFamily,
-    h2: {
-      fontWeight: 800,
+    fontFamily: californianFB.style.fontFamily,
+
+    h1: {
+      fontWeight: 700,
       fontSize: '3.75rem',
+      color: '#FFFFFF',
+      lineHeight: 1,
+    },
+    h2: {
+      fontWeight: 400,
+      fontSize: '3.25rem',
       color: '#171717',
+      lineHeight: 1.3,
     },
     h3: {
-      fontWeight: 800,
-      fontSize: '3rem',
-      color: '#FFFFFF',
+      fontWeight: 900,
+      fontSize: '2.5rem',
+      lineHeight: 1,
     },
     h4: {
-      fontWeight: 600,
-      fontSize: '2.25rem',
+      fontWeight: 700,
+      fontSize: '2.125rem',
+      lineHeight: 1.2,
       color: '#171717',
     },
     h5: {
       fontWeight: 400,
       fontSize: '1.5rem',
-      color: '#FFFFFF',
-      lineHeight: '2.75rem',
+      color: '#171717',
+      lineHeight: 1.2,
     },
     h6: {
-      fontWeight: 500,
+      fontWeight: 400,
       fontSize: '1.125rem',
-      color: '#7C7C7C',
+      lineHeight: 1.5,
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1110,
+      xl: 1536,
     },
   },
 })
+
+theme = responsiveFontSizes(theme)
 
 export default theme
