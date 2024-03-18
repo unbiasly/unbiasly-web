@@ -81,8 +81,8 @@ export default function TeamSection() {
             />
             <TeamCard
               img='/images/team/img-7.svg'
-              title='Umesh Sharma'
-              subtitle='Chief Technology Officer'
+              title='Kriti Agarwal'
+              subtitle='Chief Strategy Officer'
               caption='LSE-University of London, UK'
             />
           </Box>
