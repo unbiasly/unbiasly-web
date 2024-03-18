@@ -8,7 +8,7 @@ import SecondaryLink from './ui/SecondaryLink'
 import { useCustomMediaQueries } from '@/hooks'
 
 export default function FooterSection() {
-  const { md } = useCustomMediaQueries()
+  const { md, mobileMode } = useCustomMediaQueries()
 
   return (
     <>
@@ -47,12 +47,19 @@ export default function FooterSection() {
             <Grid item xs={6} sm={3} md={2}>
               <Typography
                 variant='body1'
-                align={{ xs: 'center', sm: 'start' }}
+                align={mobileMode ? 'center' : 'start'}
                 sx={{ mb: '1.125rem', color: '#FFFFFF', fontWeight: 700 }}
               >
                 Company
               </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: mobileMode ? 'center' : 'start',
+                  gap: '1rem',
+                }}
+              >
                 <SecondaryLink text='Privacy policy' href='/privacy' />
                 <SecondaryLink text='Terms & conditions' href='/terms' />
                 <SecondaryLink text='Contact us' />
@@ -62,12 +69,19 @@ export default function FooterSection() {
             <Grid item xs={6} sm={3} md={2}>
               <Typography
                 variant='body1'
-                align={{ xs: 'center', sm: 'start' }}
+                align={mobileMode ? 'center' : 'start'}
                 sx={{ mb: '1.125rem', color: '#FFFFFF', fontWeight: 700 }}
               >
                 Connect
               </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: mobileMode ? 'center' : 'start',
+                  gap: '0.75rem',
+                }}
+              >
                 <Link href='#'>
                   <Image src='/images/icons/facebook.svg' height={28} width={28} alt='facebook icon' />
                 </Link>
