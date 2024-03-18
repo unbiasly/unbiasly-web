@@ -1,14 +1,7 @@
-'use client'
-
 import * as React from 'react'
-
 import { Button } from '@mui/material'
-import { useCustomMediaQueries } from '@/hooks'
-import { LineWeight } from '@mui/icons-material'
 
 export default function PrimaryButton({ text, large, onClick }) {
-  const { mobileMode } = useCustomMediaQueries()
-
   return (
     <Button
       variant='contained'
