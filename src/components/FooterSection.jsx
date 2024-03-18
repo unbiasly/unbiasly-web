@@ -8,7 +8,7 @@ import SecondaryLink from './ui/SecondaryLink'
 import { useCustomMediaQueries } from '@/hooks'
 
 export default function FooterSection() {
-  const { md, sm } = useCustomMediaQueries()
+  const { md } = useCustomMediaQueries()
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function FooterSection() {
             <Grid item xs={6} sm={3} md={2}>
               <Typography
                 variant='body1'
-                align={sm ? 'start' : 'center'}
+                align={{ xs: 'center', sm: 'start' }}
                 sx={{ mb: '1.125rem', color: '#FFFFFF', fontWeight: 700 }}
               >
                 Company
@@ -62,7 +62,7 @@ export default function FooterSection() {
             <Grid item xs={6} sm={3} md={2}>
               <Typography
                 variant='body1'
-                align={sm ? 'start' : 'center'}
+                align={{ xs: 'center', sm: 'start' }}
                 sx={{ mb: '1.125rem', color: '#FFFFFF', fontWeight: 700 }}
               >
                 Connect
