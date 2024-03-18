@@ -1,100 +1,47 @@
 'use client'
 import * as React from 'react'
-import Image from 'next/image'
-import { AppBar, Box, Container, Toolbar } from '@mui/material'
 import Link from 'next/link'
+import Image from 'next/image'
 import PrimaryLink from './ui/PrimaryLink'
-import { useCustomMediaQueries } from '@/hooks'
-import { useState } from 'react'
 import SideBar from './SideBar'
-import PrimaryIconButton from './ui/PrimaryIconButton'
+import { useCustomMediaQueries } from '@/hooks'
+import { Box, Container, IconButton, Toolbar } from '@mui/material'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
-import PrimaryButton from './ui/PrimaryButton'
+
 export default function Navbar() {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { wideMobileMode, sm, mobileMode } = useCustomMediaQueries()
-  const handleSidebarToggle = () => {
-    setSidebarOpen(!sidebarOpen)
-  }
-  const handleSidebarClose = () => {
-    setSidebarOpen(false)
-  }
+  const { sm, wideMobileMode, mobileMode } = useCustomMediaQueries()
+  const [sidebarOpen, setSidebarOpen] = React.useState(false)
+
+  const logoSize = mobileMode ? 64 : 80
+
   return (
-    <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
-      <Container maxWidth='md' disableGutters sx={{ mx: 'auto' }}>
-        <AppBar
-          position='static'
-          sx={{
-            borderRadius: '60px',
-            maxHeight: '4rem',
-            background: '#FFFFFF',
-            boxShadow: '0px -4px 24px 0px #2124270A',
-            mx: 'auto',
-          }}
-        >
-          <Toolbar
-            disableGutters
-            sx={{ mx: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-          >
-            <Link href='/' prefetch>
-              <Box
-                sx={{
-                  cursor: 'pointer',
-                  width: '40px',
-                  height: '40px',
-                  position: 'relative',
-                  objectFit: 'contain',
-                  my: 'auto',
-                  borderRadius: '8px',
-                  overflow: 'hidden',
-                  transition: 'box-shadow 0.25s ease-in-out',
-                  boxShadow: '0px -4px 24px 0px #2124270A',
-                  '&:hover': {
-                    boxShadow: '10px 10px 20px rgba(0, 0, 0, 0.2)',
-                  },
-                }}
-              >
-                <Image src='/images/logo.svg' alt='logo' fill priority />
-              </Box>
-            </Link>
-            {sm && (
-              <Box sx={{ display: 'flex', gap: wideMobileMode ? '1rem' : '3rem' }}>
-                <PrimaryLink text='About Us' href='/' />
-                <PrimaryLink text='Careers' href='/' />
-                <PrimaryLink text='Blog' href='/' />
-              </Box>
+    <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' }, position: 'relative' }}>
+      <Container maxWidth='lg' disableGutters sx={{ mx: 'auto', my: '1.5rem' }}>
+        <Toolbar disableGutters sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <Link href='/' prefetch>
+            {wideMobileMode ? (
+              <Image src='/images/logo-sm.svg' alt='logo' height={logoSize} width={logoSize} priority />
+            ) : (
+              <Image src='/images/logo-lg.svg' alt='logo' height={164} width={164} priority />
             )}
-            {mobileMode && (
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: mobileMode ? '1rem' : '3rem' }}>
-                <PrimaryIconButton onClick={handleSidebarToggle}>
-                  <MenuRoundedIcon sx={{ fontSize: '2rem' }} />
-                </PrimaryIconButton>
-                <SideBar open={sidebarOpen} handleClose={handleSidebarClose} />
-              </Box>
-            )}
-            {!mobileMode && (
-              <Link href='#'>
-                <PrimaryButton
-                  text={
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      Download Unbiasly
-                      {sm && (
-                        <Image
-                          src='/images/download-btn.svg'
-                          height={18}
-                          width={40}
-                          priority
-                          alt='play-store'
-                          style={{ marginLeft: '0.75rem' }}
-                        />
-                      )}
-                    </Box>
-                  }
-                />
-              </Link>
-            )}
-          </Toolbar>
-        </AppBar>
+          </Link>
+          {sm && (
+            <Box sx={{ display: 'flex', gap: { sm: '3rem', lg: '5rem' } }}>
+              <PrimaryLink text='Home' href='/' />
+              <PrimaryLink text='Careers' href='/' />
+              <PrimaryLink text='Blog' href='/' />
+              <PrimaryLink text='Contact Us' href='/' />
+            </Box>
+          )}
+          {mobileMode && (
+            <>
+              <IconButton onClick={() => setSidebarOpen(!sidebarOpen)}>
+                <MenuRoundedIcon sx={{ fontSize: '1.5rem', color: '#171717' }} />
+              </IconButton>
+              <SideBar open={sidebarOpen} handleClose={() => setSidebarOpen(false)} />
+            </>
+          )}
+        </Toolbar>
       </Container>
     </Box>
   )

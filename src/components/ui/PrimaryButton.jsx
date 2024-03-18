@@ -1,28 +1,23 @@
-'use client'
-
 import * as React from 'react'
-
 import { Button } from '@mui/material'
-import { useCustomMediaQueries } from '@/hooks'
 
 export default function PrimaryButton({ text, large, onClick }) {
-  const { mobileMode } = useCustomMediaQueries()
-
   return (
     <Button
       variant='contained'
       onClick={onClick}
       sx={{
-        textTransform: 'capitalize',
-        borderRadius: '90px',
+        borderRadius: '40px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         p: 'auto',
         fontSize: large ? '1.125rem' : '0.875rem',
+        LineWeight: 1.25,
+        letterSpacing: '1.2px',
         fontWeight: 700,
         mt: large ? '1.75rem' : 0,
-        height: mobileMode && large ? '3.5rem' : large ? '4.375rem' : '2.5rem',
+        height: '46px',
         width: { xs: 'auto', sm: '13.5rem' },
         textWrap: 'nowrap',
         transition: 'background-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out',
