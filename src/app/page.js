@@ -10,14 +10,10 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#F4F6F5' }}>
-        <Navbar />
-        <HeroSection />
-        <InfoSection />
-        <CompanionSection />
-        <TeamSection />
-        <FooterSection />
-      </Box>
+      <HeroSection />
+      <InfoSection />
+      <CompanionSection />
+      <TeamSection />
     </>
   )
 }

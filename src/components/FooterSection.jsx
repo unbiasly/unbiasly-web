@@ -6,6 +6,7 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import Link from 'next/link'
 import SecondaryLink from './ui/SecondaryLink'
 import { useCustomMediaQueries } from '@/hooks'
+import { flag, indFlag } from '@/assets'
 
 export default function FooterSection() {
   const { md, mobileMode } = useCustomMediaQueries()
@@ -28,18 +29,22 @@ export default function FooterSection() {
                   Get the app
                 </Typography>
                 <Box sx={{ display: 'flex', gap: md ? '2rem' : '1.25rem' }}>
-                  <Image
-                    src='/images/icons/app-store.svg'
-                    height={md ? 60 : 54}
-                    width={md ? 140 : 126}
-                    alt='app-store'
-                  />
-                  <Image
-                    src='/images/icons/play-store.svg'
-                    height={md ? 60 : 54}
-                    width={md ? 137 : 123}
-                    alt='play-store'
-                  />
+                  <Link href='/' prefetch>
+                    <Image
+                      src='/images/icons/app-store.svg'
+                      height={md ? 60 : 54}
+                      width={md ? 140 : 126}
+                      alt='app-store'
+                    />
+                  </Link>
+                  <Link href='/' prefetch>
+                    <Image
+                      src='/images/icons/play-store.svg'
+                      height={md ? 60 : 54}
+                      width={md ? 137 : 123}
+                      alt='play-store'
+                    />
+                  </Link>
                 </Box>
               </Box>
             </Grid>
@@ -66,7 +71,7 @@ export default function FooterSection() {
                 <SecondaryLink text='Careers' />
               </Box>
             </Grid>
-            <Grid item xs={6} sm={3} md={2}>
+            <Grid item xs={6} sm={3} md={2} id='connect'>
               <Typography
                 variant='body1'
                 align={mobileMode ? 'center' : 'start'}
@@ -109,9 +114,14 @@ export default function FooterSection() {
           backgroundColor: '#000000',
           width: '100%',
           p: '1rem',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'center',
         }}
       >
-        Made with 💜 in Delhi &#x1f1ee; &#x1f1f3; India | © 2024 by Triverge Insight Pvt. Ltd.
+        Made with 💜 in Delhi
+        <Image src={flag} width={20} height={12.7} alt='flag of India' style={{ margin: '4px 8px 0 8px' }} /> India | ©
+        2024 by Triverge Insight Pvt. Ltd.
       </Typography>
     </>
   )

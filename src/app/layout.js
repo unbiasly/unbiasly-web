@@ -7,6 +7,8 @@ import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme from '@/styles/theme'
 import { SnackbarProvider } from 'notistack'
+import { Box } from '@mui/material'
+import { FooterSection, Navbar } from '@/components'
 
 export default function RootLayout(props) {
   return (
@@ -17,7 +19,11 @@ export default function RootLayout(props) {
             <ThemeProvider theme={theme}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
-              {props.children}
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#F4F6F5' }}>
+                <Navbar />
+                {props.children}
+                <FooterSection />
+              </Box>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </SnackbarProvider>

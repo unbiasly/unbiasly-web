@@ -30,7 +30,7 @@ export default function Navbar() {
               <PrimaryLink text='Home' href='/' />
               <PrimaryLink text='Careers' href='/' />
               <PrimaryLink text='Blog' href='/' />
-              <PrimaryLink text='Contact Us' href='/' />
+              <PrimaryLink text='Contact Us' href='#connect' />
             </Box>
           )}
           {mobileMode && (
