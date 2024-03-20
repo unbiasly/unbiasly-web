@@ -1,11 +1,16 @@
 import React from 'react'
 import OrderedList from '@/components/ui/OrderedList'
 import { Box, Container, Typography } from '@mui/material'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function Home() {
   return (
     <Box sx={{ width: '100vw', px: { xs: '1rem', sm: '2rem', md: '4rem' } }}>
       <Container maxWidth='lg' disableGutters sx={{ mx: 'auto', my: { xs: '2.5rem', sm: '4rem' } }}>
+        <div id='back-to-top-anchor'>
+          <ScrollToTop />
+        </div>
+
         <Typography variant='body1' sx={{ fontWeight: 600, fontSize: '1.5rem', mb: '1rem', mt: '3rem' }}>
           Terms and Conditions ("Terms")
         </Typography>
