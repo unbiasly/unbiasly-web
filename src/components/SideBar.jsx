@@ -29,7 +29,7 @@ export default function SideBar({ open, handleClose }) {
         <PrimaryLink text='Home' href='/' />
         <PrimaryLink text='Careers' href='/' />
         <PrimaryLink text='Blog' href='/' />
-        <PrimaryLink text='Contact Us' href='/' />
+        <PrimaryLink text='Contact Us' href='/contact' />
       </Box>
     </Box>
   )
