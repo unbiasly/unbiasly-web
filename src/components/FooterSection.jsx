@@ -6,7 +6,7 @@ import { Box, Container, Grid, Typography } from '@mui/material'
 import Link from 'next/link'
 import SecondaryLink from './ui/SecondaryLink'
 import { useCustomMediaQueries } from '@/hooks'
-import { flag, indFlag } from '@/assets'
+import { flag } from '@/assets'
 
 export default function FooterSection() {
   const { md, mobileMode } = useCustomMediaQueries()
@@ -67,11 +67,11 @@ export default function FooterSection() {
               >
                 <SecondaryLink text='Privacy policy' href='/privacy' />
                 <SecondaryLink text='Terms & conditions' href='/terms' />
-                <SecondaryLink text='Contact us' />
+                <SecondaryLink text='Contact us' href='/contact' />
                 <SecondaryLink text='Careers' />
               </Box>
             </Grid>
-            <Grid item xs={6} sm={3} md={2} id='connect'>
+            <Grid item xs={6} sm={3} md={2}>
               <Typography
                 variant='body1'
                 align={mobileMode ? 'center' : 'start'}
