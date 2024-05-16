@@ -87,16 +87,16 @@ export default function FooterSection() {
                   gap: '0.75rem',
                 }}
               >
-                <Link href='#'>
+                <Link href='https://www.facebook.com/people/Unbiasly/61557499654405/?mibextid=ZbWKwL'>
                   <Image src='/images/icons/facebook.svg' height={28} width={28} alt='facebook icon' />
                 </Link>
-                <Link href='#'>
+                <Link href='https://www.linkedin.com/company/unbiasly-ai/?originalSubdomain=in'>
                   <Image src='/images/icons/twitter.svg' height={28} width={28} alt='twitter icon' />
                 </Link>
-                <Link href='#'>
+                <Link href='https://www.instagram.com/unbiasly.ai/?igsh=ZHA1c3hzNmdkNGJ6'>
                   <Image src='/images/icons/instagram.svg' height={28} width={28} alt='instagram icon' />
                 </Link>
-                <Link href='#'>
+                <Link href='https://twitter.com/i/flow/login?redirect_after_login=%2FUnbiaslyAI'>
                   <Image src='/images/icons/linkedin.svg' height={28} width={28} alt='linkedin icon' />
                 </Link>
               </Box>
