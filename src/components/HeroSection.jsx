@@ -61,13 +61,13 @@ export default function HeroSection() {
               <PrimaryButton text='Download App' />
             </Link>
 
-            <Link href='#'>
+            <Link href='https://play.google.com/store/apps/details?id=com.unbiasly.app' target="_blank">
               <PrimaryIconButton>
                 <Image src='/images/icons/google-icon.svg' height={46} width={46} priority alt='google-icon' />
               </PrimaryIconButton>
             </Link>
 
-            <Link href='#'>
+            <Link href='https://apps.apple.com/in/app/unbiasly/id6477892005' target="_blank">
               <PrimaryIconButton>
                 <Image src='/images/icons/apple-icon.svg' height={46} width={46} priority alt='apple-icon' />
               </PrimaryIconButton>

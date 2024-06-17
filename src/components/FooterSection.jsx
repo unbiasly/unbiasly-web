@@ -29,7 +29,7 @@ export default function FooterSection() {
                   Get the app
                 </Typography>
                 <Box sx={{ display: 'flex', gap: md ? '2rem' : '1.25rem' }}>
-                  <Link href='/' prefetch>
+                  <Link href='https://apps.apple.com/in/app/unbiasly/id6477892005' target="_blank" prefetch>
                     <Image
                       src='/images/icons/app-store.svg'
                       height={md ? 60 : 54}
@@ -37,7 +37,7 @@ export default function FooterSection() {
                       alt='app-store'
                     />
                   </Link>
-                  <Link href='/' prefetch>
+                  <Link href='https://play.google.com/store/apps/details?id=com.unbiasly.app' target="_blank" prefetch>
                     <Image
                       src='/images/icons/play-store.svg'
                       height={md ? 60 : 54}

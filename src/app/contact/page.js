@@ -96,6 +96,7 @@ export default function Home() {
         disableGutters
         sx={{ mx: 'auto', mt: { xs: '0.5rem', sm: '2rem' }, mb: { xs: '2rem', sm: '5rem' } }}
       >
+      <span style={{display:"flex", justifyContent:"center",fontSize:"30px",fontWeight:600 ,marginBottom:"20px"}}>Contact Us</span>
         <Grid container sx={{ position: 'relative' }}>
           {md && (
             <Grid item xs={12} md={6}>
@@ -115,6 +116,17 @@ export default function Home() {
             </Grid>
           )}
           <Grid item xs={12} md={6}>
+       
+        <div style={{marginBottom:"10px",display:"flex",flexDirection:"column",gap:"5px"}}>
+         <div>
+          <span style={{fontWeight: "bold",fontSize:"18px"}}>Name :</span>
+          <span  style={{fontWeight: "500",fontSize:"17px",marginLeft:"2px"}}>Adv. Gagandeep Kaur</span>
+         </div>
+         <div>
+          <span style={{fontWeight: "bold",fontSize:"18px"}}>Email :</span>
+          <span  style={{fontWeight: "500",fontSize:"17px",marginLeft:"2px"}}>gagandeep@unbiasly.ai</span>
+         </div>      
+        </div>
             <PrimaryTextField
               name='name'
               placeholder='Name'
