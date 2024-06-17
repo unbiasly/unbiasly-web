@@ -33,19 +33,19 @@ export default function TeamSection() {
                 caption='University of Delhi'
               />
             </Grid>
-            <Grid item xs={12} sm={6} lg={3}>
+            {/* <Grid item xs={12} sm={6} lg={3}>
               <TeamCard
                 img='/images/team/img-3.svg'
                 title='Umesh Sharma'
                 subtitle='Chief Technology Officer'
                 caption='Carnegie Mellon University, USA'
               />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} sm={6} lg={3}>
               <TeamCard
                 img='/images/team/img-7.svg'
-                title='Umesh Sharma'
-                subtitle='Chief Technology Officer'
+                title='Kriti Agarwal'
+                subtitle='Co-founder CSO'
                 caption='LSE-University of London, UK'
               />
             </Grid>
