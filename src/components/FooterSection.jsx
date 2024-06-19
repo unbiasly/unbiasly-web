@@ -65,7 +65,7 @@ export default function FooterSection() {
                   gap: '1rem',
                 }}
               >
-                <SecondaryLink text='Privacy policy' href='/privacy' />
+                <SecondaryLink text='Privacy policy' href='/privacy-policy' />
                 <SecondaryLink text='Terms & conditions' href='/terms' />
                 <SecondaryLink text='Contact us' href='/contact' />
                 <SecondaryLink text='Careers' />

@@ -14,7 +14,7 @@ export default function Home() {
           Privacy Policy
         </Typography>
         <Typography variant='body1' align='justify' paragraph sx={{ my: '0.5rem', color: '#7C7C7C' }}>
-          Our Privacy Policy was last updated on 12<sup>th</sup> March. This Privacy Policy describes Our policies and
+          Our Privacy Policy was last updated on 19<sup>th</sup> June. This Privacy Policy describes Our policies and
           procedures on the collection, use and disclosure of Your information when You use the Service and tells You
           about Your privacy rights and how the law protects You. We use Your Personal data to provide and improve the
           Service. By using the Service, You agree to the collection and use of information in accordance with this
@@ -466,6 +466,26 @@ export default function Home() {
           </Box>
           <Typography variant='body1' align='justify' sx={{ color: '#7C7C7C', my: '0.5rem' }}>
             We appreciate your ongoing support in our efforts to protect your personal information.
+          </Typography>
+          <Typography variant='body1' sx={{ fontWeight: 600, mt: '1rem' }}>
+            SECURITY OF YOUR PERSONAL DATA
+          </Typography>
+          <Typography variant='body1' align='justify' paragraph sx={{ my: '0.5rem', color: '#7C7C7C' }}>
+            The security of Your Personal Data is important to Us, but remember that no method of transmission over the
+            Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable
+            means to protect Your Personal Data, We cannot guarantee its absolute security.
+          </Typography>
+          <Typography variant='body1' sx={{ fontWeight: 600, mt: '1rem' }}>
+            CHILDREN'S PRIVACY
+          </Typography>
+          <Typography variant='body1' align='justify' paragraph sx={{ my: '0.5rem', color: '#7C7C7C' }}>
+            Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable
+            information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your
+            child has provided Us with Personal Data, please contact Us. If We become aware that We have collected
+            Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to
+            remove that information from Our servers. If We need to rely on consent as a legal basis for processing Your
+            information and Your country requires consent from a parent, We may require Your parent's consent before We
+            collect and use that information.
           </Typography>
         </>
       </Container>
