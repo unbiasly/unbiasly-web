@@ -166,25 +166,24 @@ export default function Home() {
 
         <ul style={{ marginLeft: '1.25rem' }}>
           <li>
-            <b> To provide and maintain Our Service,</b> which includes monitoring how the Service is used.{' '}
+            <b> To provide and maintain our Service,</b>  including to monitor the usage of our Service{' '}
           </li>
           <li>
-            <b>Managing Your Account:</b> This involves overseeing your registration as a user of the Service. The
-            Personal Data You provide allows you to access various features and functionalities available to registered
-            users.
+            <b>Managing Your Account:</b> to manage Your registration as a user of the Service. The Personal Data You provide can give You access to different functionalities of the Service that are available to You as a registered user.
           </li>
 
           <li>
             <b>Performance of a contract:</b> This includes activities related to the creation, fulfillment, and
             management of purchase contracts for services you've bought or any other agreement with us via the Service.
           </li>
+
           <li>
-            <b>Contacting you:</b> We may contact you via email or similar electronic communication methods, like push
-            notifications on a mobile app, for updates or informational messages about the features or services you've
-            contracted with us. This also encompasses essential security updates when needed or sensible for their
-            implementation.
+            <b> To contact You:</b> To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.
           </li>
 
+          <li>
+            <b> To manage Your requests:</b> To attend and manage Your requests to Us.
+          </li>
           <li>
             <b>Handling your inquiries and requests,</b> making sure we address and manage them efficiently.
           </li>
