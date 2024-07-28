@@ -17,7 +17,10 @@ export default function AppStores() {
         >
           <Image src={AppleStore} alt="Apple Store" className="max-w-[163px]" />
         </Link>
-        <Link href="#" target="_blank">
+        <Link
+          href="https://play.google.com/store/apps/details?id=com.unbiasly.app"
+          target="_blank"
+        >
           <Image
             src={GoogleStore}
             alt="Google Store"
