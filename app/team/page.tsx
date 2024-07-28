@@ -9,24 +9,24 @@ import Link from "next/link";
 
 const userProfiles = [
   {
-    photo: "/people/rajveer-kaur.png",
-    name: "Rajveer Kaur",
-    contactUrl: "https://www.linkedin.com/in/rajveer-kaur-b493b1265",
-    designation: "Co- Founder & CCO",
-    workplace: "University of Delhi",
-  },
-  {
     photo: "/people/robin-singh.png",
     name: "Robin Singh",
     contactUrl: "https://x.com/robinjpsingh",
-    designation: "Founder & CEO",
+    designation: "Founder and Chief Executive Officer",
+    workplace: "University of Delhi",
+  },
+  {
+    photo: "/people/rajveer-kaur.png",
+    name: "Rajveer Kaur",
+    contactUrl: "https://www.linkedin.com/in/rajveer-kaur-b493b1265",
+    designation: "Co-founder & Chief Content Officer",
     workplace: "University of Delhi",
   },
   {
     photo: "/people/kriti-agarwal.png",
     name: "Kriti Agarwal",
     contactUrl: "https://x.com/KritiAgarwal29",
-    designation: "Co-Founder & CSO",
+    designation: "Co-founder and Chief Strategy Officer",
     workplace: "LSE-University of London, UK",
   },
 ];
