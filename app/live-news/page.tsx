@@ -4,7 +4,6 @@ import ContentContainer from "@/components/custom/content-container";
 import { Switch } from "@/components/ui/switch";
 import { cn, timeElapsed } from "@/lib/utils";
 import { Language, NewsArticlesResponse } from "@/service/api.interface";
-import AppApi from "@/service/app.api";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -12,6 +11,7 @@ import PageTitle from "@/components/custom/page-title";
 import { DateFilter, dateFiltersData, useFilter } from "./hooks";
 import MobileFilter from "./mobile-filter";
 import Image from "next/image";
+import { handleResponse } from "@/service/fetchClient";
 
 type NewsCardProps = {
   image: string;
@@ -91,12 +91,12 @@ const DateFilters: React.FC<DateFiltersProps> = ({
 const useArticles = (language: Language, monthYear?: string) =>
   useInfiniteQuery({
     queryKey: ["articles", language, monthYear],
-    queryFn: ({ pageParam }) =>
-      AppApi.getArticles({
-        page: pageParam,
-        language,
-        monthYear,
-      }),
+    queryFn: ({ pageParam }) => {
+      return fetch("/live-news/api", {
+        method: "POST",
+        body: JSON.stringify({ language, page: pageParam, monthYear }),
+      }).then<NewsArticlesResponse>(handleResponse);
+    },
     initialPageParam: 1,
     getNextPageParam: (lastPage: NewsArticlesResponse, _, lastPageParam) =>
       lastPage.articles.length > 0 ? lastPageParam + 1 : undefined,
@@ -115,7 +115,6 @@ export default function LiveNews() {
     fetchNextPage,
     isError,
   } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH);
-
   const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {
     if (!entry?.isIntersecting) return;
     fetchNextPage();

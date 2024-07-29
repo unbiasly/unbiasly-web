@@ -1,4 +1,4 @@
-const handleResponse = <T>(response: Response) => {
+export const handleResponse = <T>(response: Response) => {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
@@ -10,16 +10,12 @@ const commonHeaders = {
 };
 
 const fetchClient = {
-  get: <T>(url: string) =>
-    fetch(url, {
-      referrerPolicy: "unsafe-url",
-    }).then<T>(handleResponse),
+  get: <T>(url: string) => fetch(url).then<T>(handleResponse),
   post: <T>(url: string, body: object) =>
     fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
       headers: commonHeaders,
-      referrerPolicy: "unsafe-url",
     }).then<T>(handleResponse),
 };
 

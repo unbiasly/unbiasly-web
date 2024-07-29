@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { format, parseISO } from "date-fns";
 import AppApi from "@/service/app.api";
 import { BlogPostResponse } from "@/service/api.interface";
+import { handleResponse } from "@/service/fetchClient";
 
 type BlogCardProps = {
   title: string;
@@ -69,7 +70,11 @@ const BlogCard: React.FC<BlogCardProps> = ({
 export default function BlogPosts() {
   const { data, fetchNextPage } = useInfiniteQuery({
     queryKey: ["blogPosts"],
-    queryFn: ({ pageParam }) => AppApi.getBlogPosts(pageParam),
+    queryFn: ({ pageParam }) => {
+      return fetch(`/blog/api?page=${pageParam}`).then<BlogPostResponse>(
+        handleResponse
+      );
+    },
     initialPageParam: 1,
     getNextPageParam: (lastPage: BlogPostResponse) =>
       lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,

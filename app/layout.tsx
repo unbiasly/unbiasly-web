@@ -10,9 +10,6 @@ const inter = Merriweather({ weight: ["400", "700"], subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Unbiasly AI",
   description: "Unbiasly AI",
-  other: {
-    "Content-Security-Policy": "upgrade-insecure-requests",
-  },
 };
 
 export default function RootLayout({
