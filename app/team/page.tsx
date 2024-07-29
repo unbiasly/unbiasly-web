@@ -44,19 +44,6 @@ const advisors = [
           Fellow - CodeX, The Stanford Center for Legal Informatics,
           LLM-University of California Berkeley, USA
         </p>
-        <p className="mt-2">
-          Riyanka Roy Choudhury a distinguished Fellow at CodeX, Stanford&apos;s
-          Center for Legal Informatics, harnesses over 9 years of experience in
-          leading legal tech projects to address the ethical and legal facets of
-          artificial intelligence. At the National University of Singapore, she
-          pioneers a legal framework focusing on AI Ethics, with an emphasis on
-          Explainability & Fairness. Her expertise also extends to her role as
-          an Expert Panelist at MIT Sloan&apos;s Responsible AI project.
-          Acknowledged by prestigious institutions like Meta, IBM, and MIT,
-          Riyanka&apos;s mission is to bridge the gap between theoretical and
-          practical applications in AI ethics, advocating for responsible and
-          equitable technological advancements.
-        </p>
       </>
     ),
   },
@@ -74,20 +61,6 @@ const advisors = [
           16 Years of Experience in Political & Government Affairs, Founder
           Green Governance India, Founding Member GCTC, Founder - People’s
           Parliament School
-        </p>
-        <p className="mt-2">
-          Ashwani JP Singh is an adept Additional Private Secretary to Shri
-          Gajendra Singh Shekhawat, Union Minister for Culture and Tourism,
-          known for his strategic thinking and leadership in administration and
-          operations. With a Master&apos;s in Public Administration, he excels
-          in policy research, parliamentary duties, and stakeholder engagement.
-          His role also involves meticulous coordination during the
-          Minister&apos;s tours and enhancing social media outreach.
-          Ashwani&apos;s versatility is further demonstrated by his tenure as
-          Officer on Special Duty to Smt. Droupadi Murmu, the NDA Presidential
-          candidate, where he managed critical campaign responsibilities with
-          precision. His experience spans various governmental roles,
-          contributing significantly to policy-making and public service.
         </p>
       </>
     ),
