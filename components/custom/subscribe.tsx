@@ -6,6 +6,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import AppApi from "@/service/app.api";
+import { NewsletterSubscribeResponse } from "@/service/api.interface";
+import { handleResponse } from "@/service/fetchClient";
 
 type FormData = {
   email: string;
@@ -24,8 +26,12 @@ const SubscribeForm = () => {
   });
 
   const useSubscribe = useMutation({
-    mutationFn: ({ email }: { email: string }) =>
-      AppApi.subscribeToNewsletter(email),
+    mutationFn: ({ email }: { email: string }) => {
+      return fetch("/subscribe/api", {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      }).then<NewsletterSubscribeResponse>(handleResponse);
+    },
   });
 
   const onSubmit = handleSubmit((data) => {
