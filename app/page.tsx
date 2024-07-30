@@ -43,7 +43,11 @@ export default function Home() {
           </p>
           <p className="mt-4 lg:mt-[6.63rem]">
             We are a small team based in New Delhi.{" "}
-            <Link href="#" className="text-hyperlink underline">
+            <Link
+              href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
+              target="_blank"
+              className="text-hyperlink underline"
+            >
               Come work with us
             </Link>
           </p>
