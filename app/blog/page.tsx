@@ -8,15 +8,19 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import BlogPosts from "./blog-posts";
-import AppApi from "@/service/app.api";
 import { BlogPostResponse } from "@/service/api.interface";
+import { handleResponse } from "@/service/fetchClient";
 
 export default async function Blog() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchInfiniteQuery({
     queryKey: ["blogPosts"],
-    queryFn: ({ pageParam }) => AppApi.getBlogPosts(pageParam),
+    queryFn: ({ pageParam }) => {
+      return fetch(`/blog/api?page=${pageParam}`).then<BlogPostResponse>(
+        handleResponse
+      );
+    },
     initialPageParam: 1,
     getNextPageParam: (lastPage: BlogPostResponse) =>
       lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,

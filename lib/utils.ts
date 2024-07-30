@@ -2,6 +2,7 @@ import { type ClassValue, clsx } from "clsx";
 import {
   differenceInDays,
   differenceInHours,
+  differenceInMinutes,
   differenceInMonths,
   differenceInWeeks,
 } from "date-fns";
@@ -15,12 +16,15 @@ export function timeElapsed(dateString: string): string {
   const date = new Date(dateString);
   const now = new Date();
 
+  const minutesElapsed = differenceInMinutes(now, date);
   const hoursElapsed = differenceInHours(now, date);
   const daysElapsed = differenceInDays(now, date);
   const weeksElapsed = differenceInWeeks(now, date);
   const monthsElapsed = differenceInMonths(now, date);
 
-  if (hoursElapsed < 24) {
+  if (minutesElapsed < 60) {
+    return `${minutesElapsed} minute${minutesElapsed !== 1 ? "s" : ""} ago`;
+  } else if (hoursElapsed < 24) {
     return `${hoursElapsed} hour${hoursElapsed !== 1 ? "s" : ""} ago`;
   } else if (daysElapsed < 7) {
     return `${daysElapsed} day${daysElapsed !== 1 ? "s" : ""} ago`;

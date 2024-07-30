@@ -1,4 +1,4 @@
-const handleResponse = <T>(response: Response) => {
+export const handleResponse = <T>(response: Response) => {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
