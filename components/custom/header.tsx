@@ -30,7 +30,7 @@ export default function NavigationBar() {
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <button>
+          <button aria-label="sidebar menu icon">
             <HamburgerIcon
               color="white"
               className="flex md:hidden hover:cursor-pointer"
