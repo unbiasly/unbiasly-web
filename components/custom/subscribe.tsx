@@ -59,6 +59,7 @@ const SubscribeForm = () => {
             placeholder="Email ID"
             className="flex-grow p-2 pl-4 rounded-l-md outline-none text-white bg-transparent placeholder:text-white"
             {...register("email")}
+            aria-label="Subscriber email"
           />
           <button
             className="text-white bg-transparent rounded-r-md mr-6"

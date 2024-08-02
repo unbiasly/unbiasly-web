@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AppSplashScreen from "@/public/app-images/splash-screen.png";
 
 export default function Home() {
   return (
@@ -26,11 +27,9 @@ export default function Home() {
           </p>
 
           <Image
-            className="lg:hidden mt-7 mx-auto"
-            src="/home-page-banner-iphone.png"
+            src={AppSplashScreen}
             alt="App Screenshot"
-            width={180}
-            height={362}
+            className="lg:hidden mt-7 mx-auto w-[180px]"
             quality={100}
           />
           <p className="mt-7 lg:mt-5">
@@ -54,10 +53,9 @@ export default function Home() {
         </div>
         <div className="hidden lg:block lg:ml-12 min-w-[263px]">
           <Image
-            src="/home-page-banner-iphone.png"
+            src={AppSplashScreen}
             alt="App Screenshot"
-            height={530}
-            width={263}
+            className="w-[263px]"
             quality={100}
           />
         </div>

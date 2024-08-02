@@ -10,7 +10,7 @@ import Image from "next/image";
 import HamburgerIcon from "@/public/hamburger.svg";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import UnbiaslyLogoBlack from "@/public/unbiasly-logo-black.png";
+import UnbiaslyLogoBlack from "@/public/logos/unbiasly-logo-black.png";
 
 export default function NavigationBar() {
   const pathname = usePathname();
@@ -30,12 +30,12 @@ export default function NavigationBar() {
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <div>
+          <button aria-label="sidebar menu icon">
             <HamburgerIcon
               color="white"
               className="flex md:hidden hover:cursor-pointer"
             />
-          </div>
+          </button>
         </SheetTrigger>
         <SheetContent side="right">
           <nav className="grid gap-y-5 pt-5 text-xs">
