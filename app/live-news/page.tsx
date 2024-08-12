@@ -37,6 +37,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
             sizes="(min-width: 768px) w-full, max-w-[188px]"
             className="rounded-xl"
             quality={100}
+            unoptimized
           />
         </div>
       )}
