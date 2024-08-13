@@ -7,6 +7,7 @@ export interface BlogPost {
   _id: string;
   title: string;
   content: string;
+  summary: string;
   thumbnail: string;
   author: string;
   status: string;

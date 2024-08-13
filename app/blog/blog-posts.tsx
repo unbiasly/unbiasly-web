@@ -96,7 +96,7 @@ export default function BlogPosts() {
             key={blogPost._id}
             slug={blogPost._id}
             title={blogPost.title}
-            description={blogPost.content}
+            description={blogPost.summary}
             date={blogPost.createdAt}
             image={blogPost.thumbnail}
           />
