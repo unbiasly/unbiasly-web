@@ -5,13 +5,14 @@ import { Switch } from "@/components/ui/switch";
 import { cn, timeElapsed } from "@/lib/utils";
 import { Language, NewsArticlesResponse } from "@/service/api.interface";
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import PageTitle from "@/components/custom/page-title";
 import { DateFilter, dateFiltersData, useFilter } from "./hooks";
 import MobileFilter from "./mobile-filter";
 import Image from "next/image";
 import { handleResponse } from "@/service/fetchClient";
+import { useAutoScroll } from "./useAutoScroll";
+import { useEffect } from "react";
 
 type NewsCardProps = {
   image: string;
@@ -104,6 +105,40 @@ const useArticles = (language: Language, monthYear?: string) =>
   });
 
 export default function LiveNews() {
+
+    useEffect(() => {
+        // This variable will store our animation frame ID for cleanup
+        let animationFrameId: number;
+        
+        // This function handles the scrolling animation
+        function autoScroll() {
+            // Get our current position on the page
+            const currentPosition = window.pageYOffset;
+            
+            // Calculate how far we can scroll (total page height minus viewport height)
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            
+            // If we haven't reached the bottom, keep scrolling
+            if (currentPosition < maxScroll) {
+                // Move down by 1 pixel for smooth scrolling
+                window.scrollTo(0, currentPosition + 1);
+            }
+            
+            // Request the next animation frame
+            animationFrameId = requestAnimationFrame(autoScroll);
+        }
+
+        // Start the scrolling animation
+        animationFrameId = requestAnimationFrame(autoScroll);
+
+        // Clean up the animation when the component unmounts
+        return () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        };
+    }, []); 
+
   const {
     isHindiSelected,
     selectedMonth,
@@ -181,6 +216,7 @@ export default function LiveNews() {
                 onSelectFilter={(filter) => onChangeSelectedMonth(filter)}
               />
             </div> */}
+
             <div className="flex flex-col gap-y-7">
               {newsArticlesData?.pages.map((page) =>
                 page.articles.map((newsArticle) => (
@@ -197,11 +233,11 @@ export default function LiveNews() {
                 initial="hidden"
                 whileInView="visible"
                 onViewportEnter={handleOnViewportEnter}
-                className="flex justify-center"
-              >
+                className="flex justify-center">
                 {isError ? "Failed to load news" : "Loading..."}
               </motion.div>
             </div>
+
           </div>
         </div>
       </ContentContainer>
