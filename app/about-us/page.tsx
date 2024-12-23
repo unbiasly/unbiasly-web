@@ -33,13 +33,14 @@ const Objective: React.FC<ObjectiveProps> = ({
 }) => {
   return (
     <div className={cn("lg:flex", className)} {...props}>
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={135}
-        height={135}
-        className="max-w-14 lg:min-w-[135px] max-lg:mx-auto"
-      />
+    
+        <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={135}
+            height={135}
+            className="max-w-14 lg:min-w-[135px] max-lg:mx-auto"/>
+
       <div className="mt-4 lg:mt-0 lg:ml-12 text-center lg:text-left">
         <div className="inline-block relative">
           <div className="text-base leading-consistent lg:text-2.5xl lg:leading-consistent font-medium text-black">
@@ -81,13 +82,13 @@ const KeyFeatures: React.FC<KeyFeaturesProps> = ({ features, ...props }) => {
             index !== 0 && "mt-8 lg:-mt-36"
           )}
         >
-          <Image
+        <Image
             src={feature.imageSrc}
             alt={feature.title}
             width={260}
             height={524}
-            className={cn("min-w-[173px]")}
-          />
+            className={cn("min-w-[173px]")}/>
+
           <div className="max-w-[400px] mt-5 lg:my-auto ml-8 max-lg:text-center lg">
             <div className="text-base leading-consistent lg:text-2.5xl lg:leading-consistent font-medium text-black">
               {feature.title}

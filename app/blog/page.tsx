@@ -38,7 +38,7 @@ export default async function Blog() {
       </ContentContainer>
       <HighlightContent>
         <HydrationBoundary state={dehydrate(queryClient)}>
-          <BlogPosts />
+            <BlogPosts />
         </HydrationBoundary>
       </HighlightContent>
       <div className="mt-6 lg:mt-12">

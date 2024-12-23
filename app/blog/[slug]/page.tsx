@@ -31,7 +31,7 @@ export default async function BlogPost({
         <Link href={"/blog"} className="flex">
           <Image
             src={LeftArrowIcon}
-            alt="Go Back to Blog list"
+            alt="Back"
             className="w-5 lg:w-8"
           />
           <div className="ml-3 lg:ml-4 text-sm leading-consistent lg:text-xl lg:leading-consistent font-bold">
