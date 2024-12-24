@@ -110,36 +110,37 @@ const useArticles = (language: Language, monthYear?: string) =>
 export default function LiveNews() {
 
     useEffect(() => {
+        // This variable will store our animation frame ID for cleanup
         let animationFrameId: number;
         
-        let scrollAccumulator = 0;
-        const scrollSpeed = 0.5;  
-        
+        // This function handles the scrolling animation
         function autoScroll() {
+            // Get our current position on the page
             const currentPosition = window.pageYOffset;
+            
+            // Calculate how far we can scroll (total page height minus viewport height)
             const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
             
+            // If we haven't reached the bottom, keep scrolling
             if (currentPosition < maxScroll) {
-                scrollAccumulator += scrollSpeed;
-                
-                if (scrollAccumulator >= 1) {
-                    const pixelsToScroll = Math.floor(scrollAccumulator);
-                    scrollAccumulator -= pixelsToScroll;
-                    
-                    window.scrollTo(0, currentPosition + pixelsToScroll);
-                }
-            }    
+                // Move down by 1 pixel for smooth scrolling
+                window.scrollTo(0, currentPosition + 1);
+            }
+            
+            // Request the next animation frame
             animationFrameId = requestAnimationFrame(autoScroll);
         }
 
+        // Start the scrolling animation
         animationFrameId = requestAnimationFrame(autoScroll);
+
+        // Clean up the animation when the component unmounts
         return () => {
             if (animationFrameId) {
                 cancelAnimationFrame(animationFrameId);
             }
         };
-    }, []);
-
+    }, []); 
 
   const {
     isHindiSelected,
