@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="flex items-center">
             <MailIcon color="bg-white" />
             <Link href="mailto:info@unbiasly.ai" className="ml-3">
-              info@unbiasly.ai
+              contact@unbiasly.ai
             </Link>
           </div>
           <div className="flex items-center mt-3 lg:mt-4">

@@ -80,7 +80,11 @@ export default function BlogPosts() {
       lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,
   });
   if (!data) {
-    return null;
+    return <div className="flex items-center justify-center">
+    <div className="text-2xl font-semibold text-gray-700 animate-pulse">
+      Loading...
+    </div>
+  </div>;
   }
 
   const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {

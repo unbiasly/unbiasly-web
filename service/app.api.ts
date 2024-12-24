@@ -12,6 +12,7 @@ const baseURL = `${process.env.NEXT_PUBLIC_UNBIASLY_BASE_API_URL}`;
 const AppApi = {
   getArticles: (body: NewsArticlesRequest) =>
     fetchClient.post<NewsArticlesResponse>(`${baseURL}/v1/getArticles`, body),
+
   getBlogPosts: (page: number, limit = "10") =>
     fetchClient.get<BlogPostResponse>(
       `${baseURL}/blogs?` +

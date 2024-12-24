@@ -17,21 +17,24 @@ import FilterIcon from "@/public/icons/filter.png";
 
 type MobileFilterProps = {
   isHindiSelectedInitial: boolean;
-  selectedMonthInitial: DateFilter;
-  onApplyFilter: (isHindiSelected: boolean, selectedMonth: DateFilter) => void;
+//   selectedMonthInitial: DateFilter;
+  onApplyFilter: (isHindiSelected: boolean,
+    categoryId: string
+  ) => void;
+//   , selectedMonth: DateFilter
 };
 
 const MobileFilter: React.FC<MobileFilterProps> = ({
   isHindiSelectedInitial,
-  selectedMonthInitial,
+//   selectedMonthInitial,
   onApplyFilter,
 }) => {
   const {
     isHindiSelected,
-    selectedMonth,
+    // selectedMonth,
     onLanguageCheckChanged,
-    onChangeSelectedMonth,
-  } = useFilter(false, dateFiltersData[0]);
+//     onChangeSelectedMonth,
+//   } = useFilter(false, dateFiltersData[0]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenFilter = () => {
@@ -88,8 +91,9 @@ const MobileFilter: React.FC<MobileFilterProps> = ({
         <DrawerFooter>
           <DrawerClose>
             <Button
-                className="bg-gray-29 rounded-[20px] w-[232px] text-xs font-bold"
-                onClick={handleApplyFilter}>
+              className="bg-gray-29 rounded-[20px] w-[232px] text-xs font-bold"
+              onClick={handleApplyFilter}
+            >
               Apply Changes
             </Button>
           </DrawerClose>

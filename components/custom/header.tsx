@@ -99,6 +99,18 @@ export default function NavigationBar() {
                 Live News!
               </Link>
             </SheetClose>
+            <SheetClose asChild>
+              <Link
+                href="/top-news"
+                className={cn(
+                  "flex w-full items-center justify-between font-medium",
+                  pathname === "/top-news" ? "underline" : ""
+                )}
+                prefetch
+              >
+                Top News!
+              </Link>
+            </SheetClose>
           </nav>
         </SheetContent>
       </Sheet>
@@ -156,6 +168,18 @@ export default function NavigationBar() {
               prefetch
             >
               Live News!
+            </Link>
+          </li>
+          <li>
+            <Link
+                href="/top-news"
+                className={cn(
+                "flex w-full items-center justify-between font-medium",
+                pathname === "/top-news" ? "underline" : ""
+                )}
+                prefetch>
+                
+                Top News!
             </Link>
           </li>
         </ul>

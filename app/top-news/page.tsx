@@ -7,7 +7,7 @@ import { Category, Language, NewsArticlesResponse } from "@/service/api.interfac
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import PageTitle from "@/components/custom/page-title";
-import { DateFilter, dateFiltersData, useFilter } from "./hooks";
+import { DateFilter, dateFiltersData, useFilter } from "./hooks";  
 import MobileFilter from "./mobile-filter";
 import Image from "next/image";
 import { handleResponse } from "@/service/fetchClient";
@@ -18,15 +18,19 @@ type NewsCardProps = {
   title: string;
   description: string;
   date: string;
-  
+  category: Category[];
 };
 
 const NewsCard: React.FC<NewsCardProps> = ({
+  image,
   title,
   description,
   date,
-  image,
+  category
 }) => {
+    const categoryIds = category.length > 0 ? category[0].name : 'Unknown Category'; 
+    console.log("Category",category);
+
   return (
     <div className="bg-white p-4 md:p-5 md:flex rounded-2xl">
       {image && image.startsWith("http") && (
@@ -44,70 +48,76 @@ const NewsCard: React.FC<NewsCardProps> = ({
       )}
       <div className="max-md:mt-4 md:ml-6 text-[#8A8A8A] flex flex-col justify-between">
         <div>
-          <div className="text-xs leading-consistent md:text-2xl md:leading-consistent text-gray-29 font-bold">
-            {title}
-          </div>
-          <div className="mt-1 md:mt-2 text-xs leading-consistent lg:text-base lg:leading-consistent break-all">
-            {description}
-          </div>
-        </div>
-        <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {timeElapsed(date)}
-        </div>
-        {/* <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {category}
-        </div>  */}
+            <div className="text-xs leading-consistent md:text-2xl md:leading-consistent text-gray-29 font-bold">
+                {title}
+            </div>
+            <div className="mt-1 md:mt-2 text-xs leading-consistent lg:text-base lg:leading-consistent break-all">
+                {description}
+            </div>
+            </div>
+            <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
+            {timeElapsed(date)}
+            </div>
+            <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
+            Category: {categoryIds}
+            </div> 
       </div>
     </div>
   );
 };
 
-type DateFiltersProps = {
-  filters: Array<DateFilter>;
-  selected: DateFilter;
-  onSelectFilter: (filter: DateFilter) => void;
-};
+// type DateFiltersProps = {
+//   filters: Array<DateFilter>;
+//   selected: DateFilter;
+//   onSelectFilter: (filter: DateFilter) => void;
+// };
 
-const DateFilters: React.FC<DateFiltersProps> = ({
-  filters,
-  selected,
-  onSelectFilter,
-}) => {
-  return (
-    <div className="flex flex-col gap-y-4 text-gray-29 leading-consistent">
-      {filters.map((filter) => (
-        <div
-          key={filter.label}
-          className={cn(
-            "cursor-pointer",
-            selected.label === filter.label
-              ? "text-xl leading-consistent text-black font-bold"
-              : ""
-          )}
-          onClick={() => onSelectFilter(filter)}
-        >
-          {filter.label}
-        </div>
-      ))}
-    </div>
-  );
-};
+// const DateFilters: React.FC<DateFiltersProps> = ({
+//   filters,
+//   selected,
+//   onSelectFilter,
+// }) => {
+//   return (
+//     <div className="flex flex-col gap-y-4 text-gray-29 leading-consistent">
+//       {filters.map((filter) => (
+//         <div
+//           key={filter.label}
+//           className={cn(
+//             "cursor-pointer",
+//             selected.label === filter.label
+//               ? "text-xl leading-consistent text-black font-bold"
+//               : ""
+//           )}
+//           onClick={() => onSelectFilter(filter)}
+//         >
+//           {filter.label}
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-const useArticles = (language: Language, monthYear?: string) =>
-  useInfiniteQuery({
-    queryKey: ["articles", language, monthYear],
-    queryFn: ({ pageParam }) => {
-      return fetch("/live-news/api", {
-        method: "POST",
-        body: JSON.stringify({ language, page: pageParam, monthYear }),
-      }).then<NewsArticlesResponse>(handleResponse);
-    },
-    initialPageParam: 1,
-    getNextPageParam: (lastPage: NewsArticlesResponse, _, lastPageParam) =>
-      lastPage.articles.length > 0 ? lastPageParam + 1 : undefined,
-  });
 
-export default function LiveNews() {
+const useArticles = (language: Language, categoryId: string) =>
+    useInfiniteQuery({
+      queryKey: ["articles", language, categoryId],
+      queryFn: ({ pageParam }) => {
+        
+        return fetch("/live-news/api", {
+          method: "POST",
+          body: JSON.stringify({ language, categoryId, page: pageParam }),
+        }).then<NewsArticlesResponse>(handleResponse);
+
+      },
+      initialPageParam: 1,
+      getNextPageParam: (lastPage: NewsArticlesResponse, _, lastPageParam) =>
+        lastPage.articles.length > 0 ? lastPageParam + 1 : undefined,
+    });
+
+
+export default function TopNews() {
+    const initialcategoryId = "65f85734a080bdc947d1544f";
+    // category[0]._id : 'Unknown Category'
 
     useEffect(() => {
         let animationFrameId: number;
@@ -143,16 +153,21 @@ export default function LiveNews() {
 
   const {
     isHindiSelected,
-    selectedMonth,
+    // selectedMonth,
+    categoryId,
     onLanguageCheckChanged,
-    onChangeSelectedMonth,
-  } = useFilter(false, dateFiltersData[0]);
+    // onChangeSelectedMonth,
+    onCategoryChanged,
+  } = useFilter(false, initialcategoryId);
+// dateFiltersData[0],
 
   const {
     data: newsArticlesData,
     fetchNextPage,
+    hasNextPage,
     isError,
-  } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH);
+  } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH, categoryId);
+
   const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {
     if (!entry?.isIntersecting) return;
     fetchNextPage();
@@ -160,10 +175,12 @@ export default function LiveNews() {
 
   const handleOnApplyFilter = (
     isHindiSelectedFilter: boolean,
-    selectedMonthFilter: DateFilter
+    // selectedMonthFilter: DateFilter,
+    categoryIdFilter: string
   ) => {
     onLanguageCheckChanged(isHindiSelectedFilter);
-    onChangeSelectedMonth(selectedMonthFilter);
+    // onChangeSelectedMonth(selectedMonthFilter);
+    onCategoryChanged(categoryIdFilter);
   };
   return (
     <main className="bg-[#f1f1f1] mt-10 md:mt-[72px] mb-6 lg:mb-12">
@@ -171,12 +188,12 @@ export default function LiveNews() {
 
         <div className="block lg:hidden">
           <div className="flex justify-between">
-            <PageTitle className="mt-5 mb-2">Live News</PageTitle>
-            <MobileFilter
+            <PageTitle className="mt-5 mb-2">Top News</PageTitle>
+            {/* <MobileFilter
               isHindiSelectedInitial={isHindiSelected}
-              selectedMonthInitial={selectedMonth}
+            //   selectedMonthInitial={selectedMonth}
               onApplyFilter={handleOnApplyFilter}
-            />
+            /> */}
           </div>
 
           <div className="flex flex-col gap-y-7">
@@ -188,7 +205,7 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
-                    category={newsArticle.category.toString()}
+                    category={newsArticle.category}
                 />
               ))
             )}
@@ -203,16 +220,18 @@ export default function LiveNews() {
         <div className="hidden lg:block">
           <div className="text-base leading-consistent font-bold text-gray-29 flex gap-x-6 pt-10">
             <div>English</div>
+            
             <Switch
-              checked={isHindiSelected}
-              onCheckedChange={onLanguageCheckChanged}
-            />
+                checked={isHindiSelected}
+                onCheckedChange={onLanguageCheckChanged}/>
+
             <div>Hindi</div>
           </div>
 
-          <div className="h-[1px] bg-[#666666] w-full mt-7 mb-9" />
+          <div className="h-[2px] bg-[#666666] w-full mt-7 mb-9" />
 
           <div className="grid grid-cols-[auto_1fr]">
+
             {/* <div>
               <DateFilters
                 filters={dateFiltersData}
@@ -230,6 +249,7 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
+                    category={newsArticle.category}
                   />
                 ))
               )}
@@ -245,6 +265,7 @@ export default function LiveNews() {
           </div>
         </div>
       </ContentContainer>
+
       <div className="mt-6 lg:mt-12 bg-white pt-6 lg:pt-12">
         <AppStores />
       </div>

@@ -31,12 +31,14 @@ export enum Language {
 
 export interface NewsArticlesRequest {
   language: Language;
+  category: Category[];
   monthYear?: string;
   page: number;
 }
 
 export interface NewsArticlesResponse {
   articles: Article[];
+  
 }
 
 export interface Article {
