@@ -189,7 +189,6 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
-                    category={newsArticle.category.toString()}
                 />
               ))
             )}

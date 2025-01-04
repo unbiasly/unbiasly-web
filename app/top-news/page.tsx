@@ -3,7 +3,7 @@ import AppStores from "@/components/custom/app-stores";
 import ContentContainer from "@/components/custom/content-container";
 import { Switch } from "@/components/ui/switch";
 import { cn, timeElapsed } from "@/lib/utils";
-import { Category, Language, NewsArticlesResponse } from "@/service/api.interface";
+import { Category, Language, NewsArticlesResponse, SingleCategoryNewsArticlesResponse } from "@/service/api.interface";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import PageTitle from "@/components/custom/page-title";
@@ -18,7 +18,7 @@ type NewsCardProps = {
   title: string;
   description: string;
   date: string;
-  category: Category[];
+  category?: Category[];
 };
 
 const NewsCard: React.FC<NewsCardProps> = ({
@@ -26,10 +26,10 @@ const NewsCard: React.FC<NewsCardProps> = ({
   title,
   description,
   date,
-  category
+  category,
 }) => {
-    const categoryIds = category.length > 0 ? category[0].name : 'Unknown Category'; 
-    console.log("Category",category);
+    // const categoryIds = category.length > 0 ? category[0]._id : 'Unknown Category'; 
+    // console.log("Category",category);
 
   return (
     <div className="bg-white p-4 md:p-5 md:flex rounded-2xl">
@@ -58,9 +58,9 @@ const NewsCard: React.FC<NewsCardProps> = ({
             <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
             {timeElapsed(date)}
             </div>
-            <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
+            {/* <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
             Category: {categoryIds}
-            </div> 
+            </div>  */}
       </div>
     </div>
   );
@@ -99,19 +99,19 @@ const NewsCard: React.FC<NewsCardProps> = ({
 
 
 const useArticles = (language: Language, categoryId: string) =>
-    useInfiniteQuery({
+    useInfiniteQuery<SingleCategoryNewsArticlesResponse>({
       queryKey: ["articles", language, categoryId],
       queryFn: ({ pageParam }) => {
-        
-        return fetch("/live-news/api", {
+        return fetch("/top-news/api", {
           method: "POST",
           body: JSON.stringify({ language, categoryId, page: pageParam }),
-        }).then<NewsArticlesResponse>(handleResponse);
-
+        }).then<SingleCategoryNewsArticlesResponse>(handleResponse);
       },
       initialPageParam: 1,
-      getNextPageParam: (lastPage: NewsArticlesResponse, _, lastPageParam) =>
-        lastPage.articles.length > 0 ? lastPageParam + 1 : undefined,
+      getNextPageParam: (lastPage, lastPageParam) =>
+        lastPage && lastPage.articles && lastPage.articles.length > 0
+          ? lastPageParam
+          : undefined,
     });
 
 
@@ -166,7 +166,7 @@ export default function TopNews() {
     fetchNextPage,
     hasNextPage,
     isError,
-  } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH, categoryId);
+  } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH, initialcategoryId);
 
   const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {
     if (!entry?.isIntersecting) return;
@@ -205,7 +205,7 @@ export default function TopNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
-                    category={newsArticle.category}
+                    // category={newsArticle.category}
                 />
               ))
             )}
@@ -241,18 +241,18 @@ export default function TopNews() {
             </div> */}
 
             <div className="flex flex-col gap-y-7">
-              {newsArticlesData?.pages.map((page) =>
-                page.articles.map((newsArticle) => (
-                  <NewsCard
-                    key={newsArticle._id}
-                    image={newsArticle.thumbnail_url}
-                    title={newsArticle.title}
-                    description={newsArticle.body_short}
-                    date={newsArticle.date}
-                    category={newsArticle.category}
-                  />
-                ))
-              )}
+            {newsArticlesData?.pages?.map((page) =>
+  page?.articles?.map((newsArticle) => (
+    <NewsCard
+      key={newsArticle._id}
+      image={newsArticle.thumbnail_url}
+      title={newsArticle.title}
+      description={newsArticle.body_short}
+      date={newsArticle.date}
+    //   category={newsArticle.category}
+    />
+  ))
+)}
               <motion.div
                 initial="hidden"
                 whileInView="visible"

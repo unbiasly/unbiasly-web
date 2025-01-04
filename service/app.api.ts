@@ -13,6 +13,9 @@ const AppApi = {
   getArticles: (body: NewsArticlesRequest) =>
     fetchClient.post<NewsArticlesResponse>(`${baseURL}/v1/getArticles`, body),
 
+//   getTopArticles: (body: NewsArticlesRequest) =>
+//     fetchClient.post<NewsArticlesResponse>(`${baseURL}/v1/getArticles/65f85734a080bdc947d1544f`, body),
+
   getBlogPosts: (page: number, limit = "10") =>
     fetchClient.get<BlogPostResponse>(
       `${baseURL}/blogs?` +
@@ -24,6 +27,8 @@ const AppApi = {
     }),
   getBlogPost: (id: string) =>
     fetchClient.get<BlogPost>(`${baseURL}/blog/${id}`),
+
 };
+console.log(AppApi)
 
 export default AppApi;

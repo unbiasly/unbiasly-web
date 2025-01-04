@@ -170,7 +170,7 @@ export default function NavigationBar() {
               Live News!
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
                 href="/top-news"
                 className={cn(
@@ -181,7 +181,7 @@ export default function NavigationBar() {
                 
                 Top News!
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

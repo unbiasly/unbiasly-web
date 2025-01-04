@@ -32,6 +32,7 @@ export enum Language {
 export interface NewsArticlesRequest {
   language: Language;
   category: Category[];
+  categoryIds: ["65f85734a080bdc947d1544f"]
   monthYear?: string;
   page: number;
 }
@@ -40,6 +41,14 @@ export interface NewsArticlesResponse {
   articles: Article[];
   
 }
+
+export interface SingleCategoryArticle extends Omit<Article, "category"> {
+    category: Category; // Only one category instead of an array
+  }
+  
+  export interface SingleCategoryNewsArticlesResponse {
+    articles: SingleCategoryArticle[];
+  }
 
 export interface Article {
   bookmarks: number;

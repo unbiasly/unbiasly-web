@@ -31,20 +31,21 @@ const MobileFilter: React.FC<MobileFilterProps> = ({
 }) => {
   const {
     isHindiSelected,
+    categoryId,
     // selectedMonth,
     onLanguageCheckChanged,
-//     onChangeSelectedMonth,
-//   } = useFilter(false, dateFiltersData[0]);
+    onCategoryChanged,    // onChangeSelectedMonth,
+  } = useFilter(false, "65f85734a080bdc947d1544f");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenFilter = () => {
     onLanguageCheckChanged(isHindiSelectedInitial);
-    onChangeSelectedMonth(selectedMonthInitial);
+    // onChangeSelectedMonth(selectedMonthInitial);
     setIsOpen(true);
   };
 
   const handleApplyFilter = () => {
-    onApplyFilter(isHindiSelected, selectedMonth);
+    // onApplyFilter(isHindiSelected, selectedMonth);
     setIsOpen(false);
   };
 
