@@ -15,7 +15,7 @@ export default function Home() {
             className="max-w-10 lg:min-w-20"
           />
           <h1 className="text-sm lg:text-4xl text-black mt-2 lg:mt-5 leading-consistent">
-            Unbiasly
+            UnbiaslyAI
           </h1>
           <p className="mt-3 lg:mt-6">
             India&apos;s first AI-powered news aggregator app that features only

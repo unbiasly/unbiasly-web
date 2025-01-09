@@ -73,7 +73,7 @@ export default function Team() {
       <HighlightContent>
         <PageTitle className="mt-5 lg:mt-12">Meet Our Team</PageTitle>
         <p className="mt-4 lg:mt-6 text-xs leading-consistent lg:text-base lg:leading-consistent text-black">
-          Get to know the brilliant minds behind Unbiasly. Our dedicated team
+          Get to know the brilliant minds behind UnbiaslyAI. Our dedicated team
           and expert advisors bring a wealth of experience and insight, driving
           innovation and excellence. Discover the people who are shaping our
           vision and guiding us to success.
@@ -109,7 +109,7 @@ export default function Team() {
         <SubTitle>Join Our Team</SubTitle>
         <p className="mt-2 lg:mt-6 text-xs leading-consistent lg:text-base lg:leading-consistent text-black">
           Are you passionate about innovation and making a difference? At
-          Unbiasly, we&apos;re always on the lookout for talented individuals to
+          UnbiaslyAI, we&apos;re always on the lookout for talented individuals to
           help us shape the future. Discover exciting opportunities and grow
           with us. Come work with us and be a part of something extraordinary!
         </p>

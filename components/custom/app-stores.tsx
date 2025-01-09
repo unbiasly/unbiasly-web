@@ -8,7 +8,7 @@ export default function AppStores() {
   return (
     <div className="px-6 lg:px-41 text-center">
       <p className="text-sm lg:text-base leading-consistent">
-        To enjoy all the benefits of the Unbiasly news app, download it now!
+        To enjoy all the benefits of the UnbiaslyAI news app, download it now!
       </p>
       <div className="flex flex-col lg:flex-row mt-6 lg:mt-8 lg:justify-center items-center gap-5 lg:gap-9">
         <Link

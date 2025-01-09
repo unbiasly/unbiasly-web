@@ -44,7 +44,7 @@ export default function PrivacyPolicy() {
               access our Service or parts of our Service.
             </li>
             <li>
-              &quot;App&quot; means the Unbiasly mobile platform downloadable
+              &quot;App&quot; means the UnbiaslyAI mobile platform downloadable
               from Google Play/AppStore, and owned by Us, including any updates
               thereof.
             </li>

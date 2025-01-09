@@ -112,7 +112,7 @@ export default function Page() {
       <div className="md:px-41 px-6 mt-3 lg:mt-6 flex">
         <div className="mr-1 lg:w-3/4">
           <p>
-            Unbiasly is an AI-powered news aggregator app dedicated to combating
+            UnbiaslyAI is an AI-powered news aggregator app dedicated to combating
             misinformation and fake news. We curate reliable content from
             authentic national and international sources, providing
             easy-to-understand 55-word summaries with source verification. Our
@@ -183,7 +183,7 @@ export default function Page() {
           imageSrc="/mission.png"
           imageAlt="UnbiaslyAI Mission"
           title="Mission"
-          description="Unbiasly is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community."
+          description="UnbiaslyAI is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community."
           className="mt-12"
         />
       </div>
@@ -203,7 +203,7 @@ export default function Page() {
           imageSrc="/community.png"
           imageAlt="Community Driver Campaign"
           title="Community Driver Campaign"
-          description="Beyond being a news app, Unbiasly engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption"
+          description="Beyond being a news app, UnbiaslyAI engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption"
           className="mt-6"
         />
         <Objective
@@ -217,22 +217,22 @@ export default function Page() {
           imageSrc="/information.png"
           imageAlt="Combating Misinformation and Fake News"
           title="Combating Misinformation and Fake News"
-          description='At Unbiasly, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
+          description='At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
           className="mt-12"
         />
         <Objective
           imageSrc="/other-features/sentiment-analysis.png"
           imageAlt="Sentiment Analysis"
           title="Sentiment Analysis"
-          description='At Unbiasly, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
+          description='At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
           className="mt-12"
           tagValue="Upcoming"
         />
       </div>
       <HighlightContent className="font-bold">
-        By choosing Unbiasly, you are not just getting an app, you are joining a
+        By choosing UnbiaslyAI, you are not just getting an app, you are joining a
         movement towards a more informed, aware, and engaged society. Trust
-        Unbiasly to be your reliable source for news and help us build a
+        UnbiaslyAI to be your reliable source for news and help us build a
         stronger, more informed community.
       </HighlightContent>
       <div className="mt-6 lg:mt-12">

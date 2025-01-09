@@ -19,7 +19,7 @@ export default function Footer() {
       </div>
       <div className="flex flex-col-reverse lg:flex-row mt-7 lg:mt-8 leading-consistent">
         <div className="flex-1 mt-9 lg:mt-0">
-          <div>Get the latest Unbiasly news</div>
+          <div>Get the latest UnbiaslyAI news</div>
           <SubscribeForm />
         </div>
         <div className="flex-1">
@@ -42,7 +42,7 @@ export default function Footer() {
           <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
           <Link href="/terms-and-conditions">Terms & Conditions</Link>
           <div className="mt-2 lg:mt-6">
-            @2024, Triverge Insight Private Limited
+            @2025, Triverge Insight Private Limited
           </div>
         </div>
         <div className="flex flex-1 lg:gap-5 box-border max-lg:justify-between">
