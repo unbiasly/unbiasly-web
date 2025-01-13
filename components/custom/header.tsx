@@ -10,7 +10,7 @@ import Image from "next/image";
 import HamburgerIcon from "@/public/hamburger.svg";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import UnbiaslyLogoBlack from "@/public/logos/unbiasly-logo-black.png";
+import UnbiaslyLogoBlack from "@/public/unbiasly-ai-logo.png";
 
 export default function NavigationBar() {
   const pathname = usePathname();

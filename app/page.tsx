@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import AppSplashScreen from "@/public/app-images/splash-screen.png";
+import AppSplashScreen from "@/public/app-images/splash-screen-2.png";
 
 export default function Home() {
   return (
