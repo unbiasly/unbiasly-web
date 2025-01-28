@@ -1,4 +1,4 @@
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import HighlightContent from "@/components/custom/highlight-content";
 import PageTitle from "@/components/custom/page-title";
@@ -453,7 +453,7 @@ export default function PrivacyPolicy() {
         </div>
       </ContentContainer>
       <HighlightContent className="pt-6 lg:pt-12 pb-6 lg:pb-12">
-        <AppStores />
+        <AppStoresV2 />
       </HighlightContent>
     </main>
   );

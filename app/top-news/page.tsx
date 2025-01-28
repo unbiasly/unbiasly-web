@@ -1,5 +1,5 @@
 "use client";
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import { Switch } from "@/components/ui/switch";
 import { cn, timeElapsed } from "@/lib/utils";
@@ -267,7 +267,7 @@ export default function TopNews() {
       </ContentContainer>
 
       <div className="mt-6 lg:mt-12 bg-white pt-6 lg:pt-12">
-        <AppStores />
+        <AppStoresV2 />
       </div>
     </main>
   );

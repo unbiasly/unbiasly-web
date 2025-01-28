@@ -6,7 +6,7 @@ const ContentContainer: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => {
   return (
-    <div className={cn("md:px-41 px-6", className)} {...props}>
+    <div className={cn("md:px-41 px-6 ", className)} {...props}>
       {children}
     </div>
   );

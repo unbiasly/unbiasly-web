@@ -18,6 +18,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     position: relative;
     isolation: isolate;
+    /* padding: var(--_label-padding); */
   }
   
   .switch input[type="checkbox"] {
@@ -34,7 +35,6 @@
   .switch > span {
     display: grid;
     place-content: center;
-    transition: opacity 300ms ease-in-out 150ms;
     padding: var(--_label-padding);
   }
   .switch::before,
@@ -78,14 +78,14 @@
   } */
   
   /* switch hover */
-  .switch:has(input:checked):hover::before {
+  /* .switch:has(input:checked):hover::before {
     inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
       45%;
-  }
-  .switch:has(input:not(:checked)):hover::before {
+  } */
+  /* .switch:has(input:not(:checked)):hover::before {
     inset: var(--_switch-padding) 45% var(--_switch-padding)
       var(--_switch-padding);
-  }
+  } */
   /* checked - move slider to right */
   .switch:has(input:checked)::before {
     background-color: var(--_slider-bg-clr-on);

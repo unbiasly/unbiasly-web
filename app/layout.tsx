@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="overscroll-none" >
         <Providers>
           <Navbar />
-          <main className="relative overflow-hidden">
+          <main className="bg-black relative overflow-hidden">
             {children}
           </main>
           <Footer />

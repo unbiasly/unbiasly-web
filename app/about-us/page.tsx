@@ -1,5 +1,5 @@
 "use client";
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import HighlightContent from "@/components/custom/highlight-content";
 import SubTitle from "@/components/custom/page-subtitle";
 import PageTitle from "@/components/custom/page-title";
@@ -37,13 +37,15 @@ const Objective: React.FC<ObjectiveProps> = ({
 }) => {
   return (
     <div className={cn("lg:flex", className)} {...props}>
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        width={135}
-        height={135}
-        className="max-w-14 lg:min-w-[135px] max-lg:mx-auto"
-      />
+        <div className="rounded-full bg-[#191919] w-[160px] h-[160px] lg:w-[135px] lg:h-[135px] flex items-center justify-center">
+            <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={135}
+                height={135}
+                className="max-w-14 lg:min-w-[135px] max-lg:mx-auto"
+            />
+        </div>
       <div className="mt-4 lg:mt-0 lg:ml-12 text-center lg:text-left">
         <div className="inline-block relative">
           <div className="text-base leading-consistent lg:text-2.5xl lg:leading-consistent font-medium text-white">
@@ -99,7 +101,7 @@ const features: Feature[] = [
 
 export default function Page() {
   return (
-    <main className="text-xs leading-consistent lg:text-base  text-white mt-[58px] md:mt-[120px] mb-6 lg:mb-12">
+    <main className="padding-container max-container bg-black text-xs leading-consistent lg:text-base  text-white mt-[58px] md:mt-[120px] mb-6 lg:mb-12">
     
         <div className="flex flex-col">
         <div className="md:px-41 px-6">
@@ -107,7 +109,7 @@ export default function Page() {
         </div>
         
 
-        <div className="md:px-41 px-6 mt-3 lg:mt-6 flex flex-col lg:flex-row">
+        <div className=" md:px-41 px-6 mt-3 lg:mt-6 flex flex-col lg:flex-row">
             <div className="w-full lg:w-1/2">
                 <p className="lg:text-lg text-sm text-gray-400 ">{ABOUT_US_CONSTANTS.ABOUT_US}</p>
             </div>
@@ -186,7 +188,7 @@ export default function Page() {
         stronger, more informed community.
       </HighlightContent>
       <div className="mt-6 lg:mt-12">
-        <AppStores />
+        <AppStoresV2 />
       </div>
     </main>
   );

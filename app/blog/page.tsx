@@ -1,4 +1,4 @@
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import HighlightContent from "@/components/custom/highlight-content";
 import PageTitle from "@/components/custom/page-title";
@@ -48,7 +48,7 @@ export default async function Blog() {
         </HydrationBoundary>
       </HighlightContent>
       <div className="mt-6 lg:mt-12">
-        <AppStores />
+        <AppStoresV2 />
       </div>
     </main>
   );

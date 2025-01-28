@@ -1,5 +1,5 @@
 "use client";
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import { cn, timeElapsed } from "@/lib/utils";
 import { Category, Language, NewsArticlesResponse } from "@/service/api.interface";
@@ -28,36 +28,34 @@ const NewsCard: React.FC<NewsCardProps> = ({
   image,
 }) => {
   return (
-    <div className="bg-white p-4 md:p-5 md:flex rounded-2xl">
+    <div className="w-full bg-[#1e1e1e] md:flex flex-row justify-between rounded-2xl">
+      
+      <div className="max-md:mt-4  md:ml-6 text-gray-400  flex flex-col justify-center">
+        <div>
+          <div className="text-xs leading-consistent md:text-3xl md:leading-consistent text-white font-bold">
+            {title}
+          </div>
+          {/* <div className="mt-1 md:mt-2 text-xs leading-consistent lg:text-base lg:leading-consistent break-all">
+            {description}
+          </div> */}
+        </div>
+        <div className="max-md:mt-3 mt-4 text-md leading-consistent lg:text-md lg:leading-consistent">
+          {timeElapsed(date)}
+        </div>
+      </div>
       {image && image.startsWith("http") && (
-        <div className="w-full md:max-w-[188px] h-[180px] md:h-[125px] bg-[#D9D9D9] rounded-xl relative">
+        <div className="w-full md:max-w-[188px]  h-[180px] md:h-[125px] bg-[#1e1e1e] rounded-xl relative">
           <Image
             alt={`News article thumbnail for ${title}`}
             src={image}
             fill
-            sizes="(min-width: 768px) w-full, max-w-[188px]"
+            sizes="(min-width: 768px) w-full, h-full max-w-[188px]"
             className="rounded-xl"
             quality={100}
             unoptimized
           />
         </div>
       )}
-      <div className="max-md:mt-4 md:ml-6 text-[#8A8A8A] flex flex-col justify-between">
-        <div>
-          <div className="text-xs leading-consistent md:text-2xl md:leading-consistent text-gray-29 font-bold">
-            {title}
-          </div>
-          <div className="mt-1 md:mt-2 text-xs leading-consistent lg:text-base lg:leading-consistent break-all">
-            {description}
-          </div>
-        </div>
-        <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {timeElapsed(date)}
-        </div>
-        {/* <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {category}
-        </div>  */}
-      </div>
     </div>
   );
 };
@@ -167,11 +165,11 @@ export default function LiveNews() {
     onChangeSelectedMonth(selectedMonthFilter);
   };
   return (
-    <main className=" mt-10 md:mt-[72px] mb-6 lg:mb-12">
-      <ContentContainer>
+    <main className="w-full padding-container max-container mt-10 md:mt-[72px] mb-6 lg:mb-12">
+      <ContentContainer className="w-full">
 
-        <div className="block lg:hidden">
-          <div className="flex justify-between">
+        <div className="block lg:hidden w-full">
+          <div className="flex justify-between w-full">
             <PageTitle className="mt-5 mb-2">Live News</PageTitle>
             <MobileFilter
               isHindiSelectedInitial={isHindiSelected}
@@ -180,7 +178,7 @@ export default function LiveNews() {
             />
           </div>
 
-          <div className="flex flex-col gap-y-7">
+          <div className="flex flex-col gap-y-7 w-full">
             {newsArticlesData?.pages.map((page) =>
               page.articles.map((newsArticle) => (
                 <NewsCard
@@ -196,55 +194,48 @@ export default function LiveNews() {
               initial="hidden"
               whileInView="visible"
               onViewportEnter={handleOnViewportEnter}
+              className="w-full"
             />
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <div className="text-base leading-consistent font-bold text-gray-29 flex gap-x-6 pt-10">
+        <div className="hidden lg:block w-full">
+          <div className="text-base leading-consistent font-bold text-white flex gap-x-6 pt-10 w-full">
             <LanguageToggle 
                 checked={isHindiSelected} 
                 onCheckedChange={onLanguageCheckChanged} 
             />
           </div>
 
-          <div className="h-[1px] bg-[#666666] w-full mt-7 mb-9" />
+          <div className="h-[1px] w-full mt-7 mb-9" />
 
-          <div className="grid grid-cols-[auto_1fr]">
-            {/* <div>
-              <DateFilters
-                filters={dateFiltersData}
-                selected={selectedMonth}
-                onSelectFilter={(filter) => onChangeSelectedMonth(filter)}
-              />
-            </div> */}
-
-            <div className="flex flex-col gap-y-7">
-              {newsArticlesData?.pages.map((page) =>
-                page.articles.map((newsArticle) => (
-                  <NewsCard
-                    key={newsArticle._id}
-                    image={newsArticle.thumbnail_url}
-                    title={newsArticle.title}
-                    description={newsArticle.body_short}
-                    date={newsArticle.date}
-                  />
-                ))
-              )}
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                onViewportEnter={handleOnViewportEnter}
-                className="flex justify-center">
-                {isError ? "Failed to load news" : "Loading..."}
-              </motion.div>
+          <div className=" w-full">
+            <div className="flex flex-col gap-y-7 w-full">
+                {newsArticlesData?.pages.map((page) =>
+                    page.articles.map((newsArticle) => (
+                    <NewsCard
+                        key={newsArticle._id}
+                        image={newsArticle.thumbnail_url}
+                        title={newsArticle.title}
+                        description={newsArticle.body_short}
+                        date={newsArticle.date}
+                    />
+                    ))
+                )}
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    onViewportEnter={handleOnViewportEnter}
+                    className="flex text-white justify-center w-full">
+                    {isError ? "Failed to load news" : "Loading..."}
+                </motion.div>
             </div>
 
           </div>
         </div>
       </ContentContainer>
-      <div className="mt-6 lg:mt-12 bg-white pt-6 lg:pt-12">
-        <AppStores />
+      <div className="mt-6 lg:mt-12 bg-black pt-6 lg:pt-12 w-full">
+        <AppStoresV2 />
       </div>
     </main>
   );

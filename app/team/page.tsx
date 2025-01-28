@@ -1,5 +1,5 @@
 import AdvisorCard from "@/components/custom/advisor-card";
-import AppStores from "@/components/custom/app-stores";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import HighlightContent from "@/components/custom/highlight-content";
 import SubTitle from "@/components/custom/page-subtitle";
@@ -124,7 +124,7 @@ export default function Team() {
         </div>
       </HighlightContent>
       <div className="mt-6 lg:mt-12">
-        <AppStores />
+        <AppStoresV2 />
       </div>
     </main>
   );

@@ -13,7 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import { DateFilter, dateFiltersData, useFilter } from "./hooks";
 import { useState } from "react";
 import Image from "next/image";
-import FilterIcon from "@/public/icons/filter.png";
+import { SlidersHorizontal } from "lucide-react";
 
 type MobileFilterProps = {
   isHindiSelectedInitial: boolean;
@@ -52,11 +52,7 @@ const MobileFilter: React.FC<MobileFilterProps> = ({
   return (
     <Drawer open={isOpen}>
       <DrawerTrigger onClick={handleOpenFilter}>
-        <Image
-          src={FilterIcon}
-          alt="Copy blog link"
-          className="w-6 h-6 cursor-pointer"
-        />
+        <SlidersHorizontal color="#fff" className="w-6 h-6 bg cursor-pointer" />
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

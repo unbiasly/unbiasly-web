@@ -28,7 +28,7 @@ export default function Home() {
         <ParticlesBackground />
       </div>
 
-      <div className="max-w-full mx-auto padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16 gap-10 relative  z-10 ">
+      <div className="max-w-full mx-auto max-container padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16 gap-10 relative  z-10 ">
         {/* <div className="flex items-center justify-center text-center md:text-wrap px-6 py-12 w-full md:w-1/2 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:from-10% hover:via-sky-500 hover:via-30% hover:to-emerald-500 hover:to-90% cursor-default "> */}
         <div className="flex items-center justify-center text-center md:text-left px-6 py-12 w-full md:w-1/2 cursor-default ">
           {HOME_PAGE?.HEADLINE}
