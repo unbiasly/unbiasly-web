@@ -23,18 +23,18 @@ export default function Home() {
   }
   return (
 
-    <div className="flex flex-col bg-transparent">
+    <div className="flex flex-col bg-transparent max-container">
       <div className="absolute inset-0 -z-10">
         <ParticlesBackground />
       </div>
 
-      <div className="max-w-full mx-auto padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16 gap-10 relative  z-10 ">
+      <div className="max-w-full mx-auto padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16  relative  z-10 ">
         {/* <div className="flex items-center justify-center text-center md:text-wrap px-6 py-12 w-full md:w-1/2 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:from-10% hover:via-sky-500 hover:via-30% hover:to-emerald-500 hover:to-90% cursor-default "> */}
-        <div className="flex items-center justify-center text-center md:text-left px-6 py-12 w-full md:w-1/2 cursor-default ">
+        <div className="flex items-center justify-center text-center md:text-center px-12 py-12 w-full md:w-4/6 cursor-default ">
           {HOME_PAGE?.HEADLINE}
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full md:w-1/2">
+        <div className="flex flex-col items-center justify-center w-full md:w-2/6">
           <Image
             src={AppSplashScreenV2}
             alt="App Screenshot"
@@ -52,15 +52,15 @@ export default function Home() {
           <p className="text-3xl font-semibold mb-4">
             {HOME_PAGE?.TAG_LINE}
           </p>
-          <p className="text-sm font-light leading-relaxed md:pl-8">
+          <p className="text-md font-light leading-relaxed md:pl-8">
            {HOME_PAGE?.SUB_TAG_LINE}
           </p>
         </div>
       </div>
-      <div className="padding-container max-w-full flex relative  pb-16">
+      <div className="padding-container   flex relative  pb-16">
         <div className="w-full border-t border-white rounded-lg "></div>
         <button
-          className="max-w-xs rounded-xl text-black bg-[#D9D9D9] px-6 w-2/6 text-md py-2 absolute ml-10 -top-5 "
+          className="max-w-xs rounded-xl text-black bg-[#D9D9D9] px-6 w-2/6 text-sm md:text-md py-2 absolute ml-10 -top-5 "
         >
           <Link
             href="https://www.linkedin.com/company/unbiasly-ai/jobs/"

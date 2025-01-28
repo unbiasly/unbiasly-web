@@ -35,7 +35,8 @@ export const FOOTER = {
 
 //HOME PAGE
 export const HOME_PAGE = {
-    HEADLINE: "India's first AI-powered, hyperlocal news aggregator app",
+    HEADLINE: `India's first hyperlocal, AI-powered news aggregator app`,
+    // HEADLINE: "India's first AI-powered, hyperlocal news aggregator app",
     TAG_LINE:"We are a small team based out of New Delhi",
     SUB_TAG_LINE:"Our personalized news delivery, supported by advanced AI technology, ensures you stay informed about what matters most to you. With multilingual support, we aim to break language barriers and bring trustworthy news to everyone.",
     COME_WORK_WITH_US:"Come work with us"
