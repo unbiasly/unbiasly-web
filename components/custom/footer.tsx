@@ -1,119 +1,73 @@
-import Image from "next/image";
-import Link from "next/link";
-import SubscribeForm from "./subscribe";
-import MailIcon from "@/public/mail.svg";
-import LocationIcon from "@/public/location.svg";
-import ScrollToTop from "./scroll-to-top";
 
-export default function Footer() {
+import { FOOTER } from '@/lib/constants'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import SubscribeForm from "./subscribe";
+
+const Footer = () => {
   return (
-    <footer className="bg-[#242424] text-white md:px-41 px-6 py-18 text-xs lg:text-base mt-auto relative">
-      <ScrollToTop />
-      <div className="relative w-32 h-8 md:w-[136px] md:h-[34px]">
-        <Image
-          src="/unbiasly-ai-logo.png"
-          alt="UnbiaslyAI logo"
-          fill
-          sizes="(min-width: 768px) w-32, w-[136px]"
-        />
-      </div>
-      <div className="flex flex-col-reverse lg:flex-row mt-7 lg:mt-8 leading-consistent">
-        <div className="flex-1 mt-9 lg:mt-0">
-          <div>Get the latest UnbiaslyAI news</div>
-          <SubscribeForm />
-        </div>
-        <div className="flex-1">
-          <div className="flex items-center">
-            <MailIcon color="bg-white" />
-            <Link href="mailto:info@unbiasly.ai" className="ml-3">
-              contact@unbiasly.ai
+    <footer className="bg-[#1E1E1E] py-9 ">
+      <div className="padding-container max-container w-full flex flex-col  gap-6 ">
+        <div className="flex flex-col sm:flex-row justify-evenly items-start text-center md:text-start  w-full gap-10 ">
+          {/* Left Section */}
+          <div className="flex flex-col gap-6 md:items-start items-center w-full md:w-1/2">
+            <Link href="/">
+              <Image src="/unbiasly-ai-logo.png" alt="UnbiaslyAI logo" width={140} height={29} />
             </Link>
+            <p className="text-white text-base md:text-xl">
+              {FOOTER?.SUBSCRIBE}
+            </p>
+            <SubscribeForm />
+            <div className="text-white text-sm">
+              <Link href="/privacy-policy" className="hover:underline">
+                {FOOTER?.PRIVACY_POLICY}
+              </Link>{" "}
+              |{" "}
+              <Link href="/terms-and-conditions" className="hover:underline">
+                {FOOTER?.TERMS_CONDITION}
+              </Link>
+              <p className="pt-2">
+                © {new Date().getFullYear()}{FOOTER?.COMPANY_NAME}
+              </p>
+            </div>
           </div>
-          <div className="flex items-center mt-3 lg:mt-4">
-            <LocationIcon color="bg-white" />
-            <div className="ml-3">
-              Basement C11, Green Park Extension, New Delhi-110016
+
+          <div className="flex flex-col gap-6 md:items-start items-center w-full md:w-1/2">
+            <div>
+              <p className="text-xl text-white font-bold">{FOOTER?.CHAT_WITH_US}</p>
+              <Link
+                href={`mailto:${FOOTER?.CONTACT_US_EMAIL}`}
+                className="text-white text-sm underline hover:no-underline"
+              >
+                {FOOTER?.CONTACT_US_EMAIL}
+              </Link>
+            </div>
+
+            <div className=''>
+              <p className="text-xl text-white font-bold "></p>
+              <p className="text-white text-sm">
+                {FOOTER?.ADDRESS}
+              </p>
+            </div>
+
+            <div className="flex gap-4">
+              {FOOTER?.SOCIALS?.links.map((link, index) => (
+                <Link
+                  href={link.href}
+                  key={index}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Image src={link.src} alt={link.href} width={24} height={24} />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      <div className="mt-9 lg:mt-7 flex flex-col-reverse lg:flex-row leading-consistent">
-        <div className="flex-1 max-lg:mt-9 text-center lg:text-left">
-          <Link href="/privacy-policy">Privacy Policy</Link> |{" "}
-          <Link href="/terms-and-conditions">Terms & Conditions</Link>
-          <div className="mt-2 lg:mt-6">
-            @2025, Triverge Insight Private Limited
-          </div>
-        </div>
-        <div className="flex flex-1 lg:gap-5 box-border max-lg:justify-between">
-          <Link
-            href="https://www.linkedin.com/company/unbiasly-ai"
-            target="_blank"
-          >
-            <Image
-              src="/linkedin.svg"
-              alt="UnbiaslyAI LinkedIn page"
-              width={32}
-              height={32}
-              className="lg:ml-11 min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://www.instagram.com/unbiasly.ai" target="_blank">
-            <Image
-              src="/instagram.svg"
-              alt="UnbiaslyAI Instagram page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://medium.com/@unbiaslyAI" target="_blank">
-            <Image
-              src="/medium.svg"
-              alt="UnbiaslyAI Medium page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://www.youtube.com/@unbiaslyai" target="_blank">
-            <Image
-              src="/youtube.svg"
-              alt="UnbiaslyAI Youtube page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://www.facebook.com/UnbiaslyAI" target="_blank">
-            <Image
-              src="/facebook.svg"
-              alt="UnbiaslyAI Facebook page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://x.com/unbiaslyai" target="_blank">
-            <Image
-              src="/twitter.svg"
-              alt="UnbiaslyAI Twitter page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-          <Link href="https://www.quora.com/profile/UnbiaslyAI" target="_blank">
-            <Image
-              src="/quora.svg"
-              alt="UnbiaslyAI Quora page"
-              width={32}
-              height={32}
-              className="min-w-6 lg:min-w-8"
-            />
-          </Link>
-        </div>
-      </div>
     </footer>
   );
-}
+};
+
+export default Footer;
