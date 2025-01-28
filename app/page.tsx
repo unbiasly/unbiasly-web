@@ -1,65 +1,77 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import AppSplashScreen from "@/public/app-images/splash-screen-2.png";
-
+import ParticlesBackground from "../components/custom/Particle";
+import AppStoresV2 from "@/components/custom/AppStoreV2";
+import { useEffect, useState } from "react";
+import Loader from "@/components/ui/Loader";
+import {HOME_PAGE } from "@/lib/constants";
+import AppSplashScreenV2 from "@/public/app-images/AppSplashScreenV2.png"
 export default function Home() {
-  return (
-    <main className="md:px-41 px-6 text-xs lg:text-base mt-[58px] md:mt-[120px] mb-6 lg:mb-12">
-      <div className="flex">
-        <div className="text-xs leading-consistent lg:text-xl lg:leading-consistent flex-1">
-          <Image
-            src="/unbiasly-ai-icon.svg"
-            alt="Unbiasly AI icon"
-            height={80}
-            width={80}
-            className="max-w-10 lg:min-w-20"
-          />
-          <h1 className="text-sm lg:text-4xl text-black mt-2 lg:mt-5 leading-consistent">
-            UnbiaslyAI
-          </h1>
-          <p className="mt-3 lg:mt-6">
-            India&apos;s first AI-powered news aggregator app that features only
-            reliable content from authentic national and international sources.
-            <Link href="/about-us" className="text-hyperlink underline">
-              {" "}
-              Learn more about us
-            </Link>
-          </p>
+  const [isLoading, setIsLoading] = useState(true);
 
-          <Image
-            src={AppSplashScreen}
-            alt="App Screenshot"
-            className="lg:hidden mt-7 mx-auto w-[180px]"
-            quality={100}
-          />
-          <p className="mt-7 lg:mt-5">
-            We engage in community-driven campaigns to raise awareness about the
-            harmful impact of misinformation and fake news.
-          </p>
-          <p className="mt-4 lg:mt-5">
-            We are not just an app but a committed community service, promoting
-            a culture of accurate information consumption for everyone.
-          </p>
-          <p className="mt-4 lg:mt-[6.63rem]">
-            We are a small team based in New Delhi.{" "}
-            <Link
-              href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
-              target="_blank"
-              className="text-hyperlink underline"
-            >
-              Come work with us
-            </Link>
-          </p>
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsLoading(false), 300); 
+    return () => clearTimeout(timeout); 
+  }, []);
+
+  if (isLoading) {
+    return (
+        <Loader  color='black'/>
+    );
+  }
+  return (
+
+    <div className="flex flex-col bg-transparent">
+      <div className="absolute inset-0 -z-10">
+        <ParticlesBackground />
+      </div>
+
+      <div className="max-w-full mx-auto padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16 gap-10 relative  z-10 ">
+        {/* <div className="flex items-center justify-center text-center md:text-wrap px-6 py-12 w-full md:w-1/2 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:from-10% hover:via-sky-500 hover:via-30% hover:to-emerald-500 hover:to-90% cursor-default "> */}
+        <div className="flex items-center justify-center text-center md:text-left px-6 py-12 w-full md:w-1/2 cursor-default ">
+          {HOME_PAGE?.HEADLINE}
         </div>
-        <div className="hidden lg:block lg:ml-12 min-w-[263px]">
+
+        <div className="flex flex-col items-center justify-center w-full md:w-1/2">
           <Image
-            src={AppSplashScreen}
+            src={AppSplashScreenV2}
             alt="App Screenshot"
-            className="w-[263px]"
+            className="w-[200px] md:w-[263px] lg:w-[263px]"
             quality={100}
           />
+          <AppStoresV2 />
+
         </div>
       </div>
-    </main>
+
+      <div className="w-full flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 md:px-12 pb-8  text-white">
+        <div className="w-full md:w-2/6"></div>
+        <div className="w-full md:w-4/6 text-center  md:text-left px-4">
+          <p className="text-3xl font-semibold mb-4">
+            {HOME_PAGE?.TAG_LINE}
+          </p>
+          <p className="text-sm font-light leading-relaxed md:pl-8">
+           {HOME_PAGE?.SUB_TAG_LINE}
+          </p>
+        </div>
+      </div>
+      <div className="padding-container max-w-full flex relative  pb-16">
+        <div className="w-full border-t border-white rounded-lg "></div>
+        <button
+          className="max-w-xs rounded-xl text-black bg-[#D9D9D9] px-6 w-2/6 text-md py-2 absolute ml-10 -top-5 "
+        >
+          <Link
+            href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
+            target="_blank"
+            className=""
+          >
+            {HOME_PAGE?.COME_WORK_WITH_US}
+          </Link>
+        </button>
+      </div>
+    </div>
+
   );
 }

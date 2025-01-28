@@ -51,27 +51,24 @@ const SubscribeForm = () => {
     );
   });
   return (
-    <div>
-      <form onSubmit={onSubmit} className="space-y-8">
-        <div className="flex justify-center items-center bg-transparent rounded-md lg:w-[462px] h-10 mt-4 border-white border-2">
-          <input
-            type="email"
-            placeholder="Email ID"
-            className="flex-grow p-2 pl-4 rounded-l-md outline-none text-white bg-transparent placeholder:text-white"
-            {...register("email")}
-            aria-label="Subscriber email"
-          />
-          <button
-            className="text-white bg-transparent rounded-r-md mr-6"
-            type="submit"
-            disabled={useSubscribe.isPending}
-          >
-            Subscribe
-          </button>
-        </div>
-      </form>
-      <Toaster position="bottom-center" />
-    </div>
+
+<div className="flex items-center bg-transparent rounded-md lg:w-[462px] h-10 border-white border-2 overflow-hidden ">
+  <input
+    type="email"
+    placeholder="Enter your email..."
+    className="h-full text-white px-4 bg-[#1E1E1E] w-4/6 placeholder:text-white focus:outline-none"
+    {...register("email")}
+    aria-label="Subscriber email"
+  />
+  <button
+    className="h-full text-black bg-[#D9D9D9] px-6 w-2/6 text-sm"
+    type="submit"
+    disabled={useSubscribe.isPending}
+  >
+    Join Us
+  </button>
+</div>
+
   );
 };
 
