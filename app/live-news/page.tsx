@@ -1,7 +1,6 @@
 "use client";
 import AppStores from "@/components/custom/app-stores";
 import ContentContainer from "@/components/custom/content-container";
-import { Switch } from "@/components/ui/switch";
 import { cn, timeElapsed } from "@/lib/utils";
 import { Category, Language, NewsArticlesResponse } from "@/service/api.interface";
 import { useInfiniteQuery } from "@tanstack/react-query";
@@ -12,6 +11,7 @@ import MobileFilter from "./mobile-filter";
 import Image from "next/image";
 import { handleResponse } from "@/service/fetchClient";
 import { useEffect } from "react";
+import LanguageToggle from "@/components/custom/language-toggle/LanguageToggle";
 
 type NewsCardProps = {
   image: string;
@@ -167,7 +167,7 @@ export default function LiveNews() {
     onChangeSelectedMonth(selectedMonthFilter);
   };
   return (
-    <main className="bg-[#f1f1f1] mt-10 md:mt-[72px] mb-6 lg:mb-12">
+    <main className=" mt-10 md:mt-[72px] mb-6 lg:mb-12">
       <ContentContainer>
 
         <div className="block lg:hidden">
@@ -202,12 +202,10 @@ export default function LiveNews() {
 
         <div className="hidden lg:block">
           <div className="text-base leading-consistent font-bold text-gray-29 flex gap-x-6 pt-10">
-            <div>English</div>
-            <Switch
-              checked={isHindiSelected}
-              onCheckedChange={onLanguageCheckChanged}
+            <LanguageToggle 
+                checked={isHindiSelected} 
+                onCheckedChange={onLanguageCheckChanged} 
             />
-            <div>Hindi</div>
           </div>
 
           <div className="h-[1px] bg-[#666666] w-full mt-7 mb-9" />

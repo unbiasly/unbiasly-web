@@ -1,6 +1,9 @@
 export const APP_CONSTANTS = {
     LOGO: "UnbiaslyAI logo",
 
+    ENGLISH: "English",
+    HINDI: "हिन्दी",
+
     NAVIGATION: {
         HOME: "Home",
         ABOUT_US: "About Us",
