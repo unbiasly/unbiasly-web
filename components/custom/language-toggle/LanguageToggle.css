@@ -5,7 +5,7 @@
     --_slider-bg-clr-on: #1e1e1e; /* slider color checked */
     --_slider-txt-clr: #000000;
     --_slider-txt-clr-on: #ffffff;
-    --_label-padding: 1rem 2rem;
+    --_label-padding: 1rem 1.5rem;
     --_switch-easing: cubic-bezier(0.47, 1.64, 0.41, 0.8);
     color: var(--_slider-txt-clr);
     width: fit-content;
@@ -18,7 +18,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     position: relative;
     isolation: isolate;
-    /* padding: var(--_label-padding); */
   }
   
   .switch input[type="checkbox"] {
@@ -26,7 +25,6 @@
     width: 1px;
     height: 1px;
     padding: var(--_switch-padding);
-    /* margin: -1px; */
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -44,26 +42,19 @@
     border-radius: inherit;
     transition: inset 150ms ease-in-out;
   }
-  /* switch slider */
   .switch::before {
     background-color: var(--_slider-bg-clr);
-    inset: var(--_switch-padding) 50% var(--_switch-padding)
-      var(--_switch-padding);
-    transition: inset 500ms var(--_switch-easing),
-      background-color 500ms ease-in-out;
+    inset: var(--_switch-padding) 50% var(--_switch-padding) var(--_switch-padding);
+    transition: inset 500ms var(--_switch-easing), background-color 500ms ease-in-out;
     z-index: -1;
-    /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.3); */
   }
-  /* switch bg color */
   .switch::after {
     background-color: var(--_switch-bg-clr);
-    /* color: white; */
     inset: 0;
     z-index: -2;
   }
-  /* switch hover & focus */
   .switch:focus-within::after {
-    inset: -0.25rem;
+    inset: 0; /* Removed extra padding on focus */
   }
   .switch:has(input:checked):hover > span:first-of-type,
   .switch:has(input:not(:checked)):hover > span:last-of-type {
@@ -71,28 +62,10 @@
     transition-delay: 0ms;
     transition-duration: 100ms;
   }
-  /* 
-  .switch:has(input:checked):after > span:first-of-type,
-  .switch:has(input:not(:checked)):after > span:last-of-type {
-    color: #ffffff;
-  } */
-  
-  /* switch hover */
-  /* .switch:has(input:checked):hover::before {
-    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
-      45%;
-  } */
-  /* .switch:has(input:not(:checked)):hover::before {
-    inset: var(--_switch-padding) 45% var(--_switch-padding)
-      var(--_switch-padding);
-  } */
-  /* checked - move slider to right */
   .switch:has(input:checked)::before {
     background-color: var(--_slider-bg-clr-on);
-    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding)
-      50%;
+    inset: var(--_switch-padding) var(--_switch-padding) var(--_switch-padding) 50%;
   }
-  /* checked - set opacity */
   .switch > span:last-of-type,
   .switch > input:checked + span:first-of-type {
     opacity: 0.75;
@@ -102,7 +75,6 @@
     opacity: 1;
     color: #fff;
   }
-  
   .switch > span:last-of-type,
   .switch > input:not(:checked) + span:first-of-type {
     opacity: 0.75;
@@ -111,4 +83,10 @@
   .switch > input:not(:checked) ~ span:last-of-type {
     opacity: 1;
     color: #000;
+  }
+
+  @media (max-width: 600px) {
+    .switch > span {
+      padding: 0.5rem 1rem;
     }
+  }

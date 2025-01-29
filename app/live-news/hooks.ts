@@ -18,25 +18,23 @@ export const dateFiltersData: Array<DateFilter> = [
 
 export const useFilter = (
   isHindiSelectedInitial: boolean,
-  selectedMonthInitial: DateFilter
+//   selectedMonthInitial: DateFilter
 ) => {
-  const [isHindiSelected, setIsHindiSelected] = useState(
-    isHindiSelectedInitial
-  );
-  const [selectedMonth, setSelectedMonth] = useState(selectedMonthInitial);
+  const [isHindiSelected, setIsHindiSelected] = useState(isHindiSelectedInitial);
+//   const [selectedMonth, setSelectedMonth] = useState(selectedMonthInitial);
 
   const onLanguageCheckChanged = (checked: boolean) => {
     setIsHindiSelected(checked);
   };
 
-  const onChangeSelectedMonth = (month: DateFilter) => {
-    setSelectedMonth(month);
-  };
+//   const onChangeSelectedMonth = (month: DateFilter) => {
+//     setSelectedMonth(month);
+//   };
 
   return {
     isHindiSelected,
-    selectedMonth,
+    // selectedMonth,
     onLanguageCheckChanged,
-    onChangeSelectedMonth,
+    // onChangeSelectedMonth,
   };
 };

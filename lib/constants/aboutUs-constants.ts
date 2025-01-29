@@ -9,54 +9,84 @@ export const ABOUT_US_CONSTANTS = {
 
     DIVIDER_1: `We are not just an app but a committed community service, promoting a culture of accurate information consumption for everyone.`,
 
+    DIVIDER_2: `By choosing UnbiaslyAI, you are not just getting an app, you are joining a movement towards a more informed, aware, and engaged society. Trust UnbiaslyAI to be your reliable source for news and help us build a stronger, more informed community.`,
+
+    FEATURES_TITLE: "Key Features",
     
-    FEATURES: {
-        TITLE: "Key Features include",
-        EASY_TO_UNDERSTAND: {
-            TITLE: "Easy-to-understand",
-            DESCRIPTION: "Get concise 55-word news summaries that are quick to read and easy to understand. Stay informed without the clutter.",
-        },
-        SOURCE_VERIFICATION: {
-            TITLE: "Source of verification",
-            DESCRIPTION: "Every article is thoroughly verified to ensure it comes from reliable and authentic sources. Trust the news you read.",
-        },
-        PERSONALIZED_NEWS: {
-            TITLE: "Personalized news",
-            DESCRIPTION: "Receive news tailored to your interests with our advanced AI and machine learning technology. Stay updated on what matters most to you.",
-        },
-        MULTILINGUAL_SUPPORT: {
-            TITLE: "Multilingual support",
-            DESCRIPTION: "Access news in your preferred language, including Hindi and English. Breaking barriers with multilingual support.",
-        },
-    },
+    FEATURES: [
+        
+        {
+            title: "Easy-to-understand",
+            description:
+                "Get concise 55-word news summaries that are quick to read and easy to understand. Stay informed without the clutter.",
+            imageSrc: "/key-features/key-feature-1.png",
+            },
+            {
+            title: "Source of verification",
+            description:
+                "Every article is thoroughly verified to ensure it comes from reliable and authentic sources. Trust the news you read.",
+            imageSrc: "/key-features/key-feature-2.png",
+            },
+            {
+            title: "Personalized news",
+            description:
+                "Receive news tailored to your interests with our advanced AI and machine learning technology. Stay updated on what matters most to you.",
+            imageSrc: "/key-features/key-feature-3.png",
+            },
+            {
+            title: "Multilingual support",
+            description:
+                "Access news in your preferred language, including Hindi and English. Breaking barriers with multilingual support.",
+            imageSrc: "/key-features/key-feature-4.png",
+            },
+        ],
 
     VISION: "To empower individuals with reliable and accurate news, fostering an informed society and rebuilding trust in the media.",
 
     MISSION: `UnbiaslyAI is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community.`,
 
-    OTHER_FEATURES: {
-        COMMUNITY_CAMPAIGNS: {
-        TITLE: "Community Driver Campaign",
-        DESCRIPTION: "Beyond being a news app, UnbiaslyAI engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption.",
-        },
-        MEDIA_LITERACY: {
-        TITLE: "Promoting Media Literacy",
-        DESCRIPTION: "We are committed to promoting media literacy, helping users develop the skills to critically evaluate the information they encounter and make informed decisions.",
-        },
-        COMBATING_MISINFORMATION: {
-        TITLE: "Combating Misinformation and Fake News",
-        DESCRIPTION: `At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.`,
-        },
-        SENTIMENT_ANALYSIS: {
-        TITLE: "Sentiment Analysis",
-        STATUS: "Upcoming",
-        DESCRIPTION: `At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.`,
-        },
-    },
-
     
 
+    OBJECTIVES: [
+        {
+            imageSrc: "/vision.svg",
+            imageAlt: "UnbiaslyAI Vision",
+            title: "Vision",
+            description: "To empower individuals with reliable and accurate news, fostering an informed society and rebuilding trust in the media."
+        },
+        {
+            imageSrc: "/mission.svg",
+            imageAlt: "UnbiaslyAI Mission",
+            title: "Mission",
+            description: "UnbiaslyAI is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community."
+        },
+    ],
 
-    
-    };
-    
+    OTHER_FEATURES: [
+        {
+            imageSrc: "/other-features/community.svg",
+            imageAlt: "Community Driver Campaign",
+            title: "Community Driver Campaign",
+            description: "Beyond being a news app, UnbiaslyAI engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption."
+        },
+        {
+            imageSrc: "/other-features/literacy.svg",
+            imageAlt: "Promoting Media Literacy",
+            title: "Promoting Media Literacy",
+            description: "We are committed to promoting media literacy, helping users develop the skills to critically evaluate the information they encounter and make informed decisions."
+        },
+        {
+            imageSrc: "/other-features/information.svg",
+            imageAlt: "Combating Misinformation and Fake News",
+            title: "Combating Misinformation and Fake News",
+            description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
+        },
+        {
+            imageSrc: "/other-features/sentiment-analysis.svg",
+            imageAlt: "Sentiment Analysis",
+            title: "Sentiment Analysis",
+            description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.',
+            tagValue: "Upcoming"
+        },
+    ]
+};

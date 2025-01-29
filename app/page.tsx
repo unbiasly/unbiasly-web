@@ -5,7 +5,7 @@ import AppSplashScreen from "@/public/app-images/splash-screen-2.png";
 import ParticlesBackground from "../components/custom/Particle";
 import AppStoresV2 from "@/components/custom/AppStoreV2";
 import { useEffect, useState } from "react";
-import Loader from "@/components/ui/Loader";
+import Loader from "@/components/custom/Loader";
 import {HOME_PAGE } from "@/lib/constants";
 import AppSplashScreenV2 from "@/public/app-images/AppSplashScreenV2.png"
 export default function Home() {
