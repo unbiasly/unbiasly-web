@@ -30,7 +30,16 @@ export default function Home() {
 
       <div className="max-w-full mx-auto padding-container flex flex-col md:flex-row items-center justify-center text-white text-7xl py-16  relative  z-10 ">
         {/* <div className="flex items-center justify-center text-center md:text-wrap px-6 py-12 w-full md:w-1/2 hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-indigo-500 hover:from-10% hover:via-sky-500 hover:via-30% hover:to-emerald-500 hover:to-90% cursor-default "> */}
-        <div className="flex items-center justify-center text-center md:text-center px-12 py-12 w-full md:w-4/6 cursor-default ">
+        <div className="flex flex-col items-center justify-center text-center px-12 py-12 w-full md:w-4/6 cursor-default ">
+        {/* <div className="w-full py-2 flex items-center ">
+          <Image
+                  src="/unbiasly-ai-logo-new.svg"
+                  alt="menu"
+                  width={32}
+                  height={32}
+                class="w-[49px] h-[42px]"
+                />
+        </div> */}
           {HOME_PAGE?.HEADLINE}
         </div>
 

@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#1E1E1E] py-9 ">
       <div className="padding-container max-container w-full flex flex-col  gap-6 ">
-        <div className="flex flex-col sm:flex-row justify-evenly items-start text-center md:text-start  w-full gap-10 ">
+        <div className="flex flex-col md:flex-row justify-center items-start text-center md:text-start  w-full gap-10 ">
           {/* Left Section */}
           <div className="flex flex-col gap-6 md:items-start items-center w-full md:w-1/2">
             <Link href="/">
@@ -33,7 +33,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 md:items-start items-center w-full md:w-1/2">
+          <div className="flex flex-col gap-6 md:items-start  items-center w-full md:w-1/2">
             <div>
               <p className="text-xl text-white font-bold">{FOOTER?.CHAT_WITH_US}</p>
               <Link
@@ -58,6 +58,7 @@ const Footer = () => {
                   key={index}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className='border border-white p-1'
                 >
                   <Image src={link.src} alt={link.href} width={24} height={24} />
                 </Link>
