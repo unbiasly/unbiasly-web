@@ -43,7 +43,7 @@ type NewsCardProps = {
             {/* Text Content */}
             <div className="flex flex-col justify-center pr-5 flex-grow">
                 <div>
-                    <div className="text-2xl leading-consistent text-white ">{title}</div>
+                    <div className="lg:text-3xl text-2xl leading-consistent text-white ">{title}</div>
                 </div>
                 <div className="mt-4 text-gray-400 text-md leading-consistent">{timeElapsed(date)}</div>
             </div>

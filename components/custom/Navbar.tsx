@@ -28,7 +28,7 @@ const Navbar = () => {
             <Link
               href={link.href}
               key={link.key}
-              className={`regular-16 text-white flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold ${pathname === link.href ? "font-bold underline underline-offset-8" : ""
+              className={`text-lg text-white  flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold ${pathname === link.href ? "font-bold underline underline-offset-8" : ""
                 }`}
             >
               {link.label}

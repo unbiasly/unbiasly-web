@@ -1,131 +1,69 @@
-import AdvisorCard from "@/components/custom/advisor-card";
-import AppStoresV2 from "@/components/custom/AppStoreV2";
-import ContentContainer from "@/components/custom/content-container";
-import HighlightContent from "@/components/custom/highlight-content";
-import SubTitle from "@/components/custom/page-subtitle";
-import PageTitle from "@/components/custom/page-title";
-import ProfileCard from "@/components/custom/profile-card";
-import Link from "next/link";
 
-const userProfiles = [
-  {
-    photo: "/people/robin-singh.png",
-    name: "Robin Singh",
-    contactUrl: "https://x.com/robinjpsingh",
-    designation: "Founder and Chief Executive Officer",
-    workplace: "University of Delhi",
-  },
-  {
-    photo: "/people/rajveer-kaur.png",
-    name: "Rajveer Kaur",
-    contactUrl: "https://www.linkedin.com/in/rajveer-kaur-b493b1265",
-    designation: "Co-founder & Chief Content Officer",
-    workplace: "University of Delhi",
-  },
-  {
-    photo: "/people/kriti-agarwal.png",
-    name: "Kriti Agarwal",
-    contactUrl: "https://x.com/KritiAgarwal29",
-    designation: "Co-founder and Chief Strategy Officer",
-    workplace: "LSE-University of London, UK",
-  },
-];
+import TeamMemberCarousel from "@/components/custom/TeamMemberCarousel"
+import { FOOTER } from "@/lib/constants"
+import { TEAM_PAGE } from "@/lib/constants/team"
+import Image from "next/image"
+import Link from "next/link"
+import React from 'react'
 
-const advisors = [
-  {
-    photo: "/people/riyanka-roy.png",
-    name: "Riyanka Roy Choudhury",
-    contactUrl: "https://www.linkedin.com/in/riyanka-roy-choudhury/",
-    description: (
-      <>
-        <p className="mt-2">(AI Governance, MIT, IBM, Meta & Responsible AI)</p>
-        <p className="mt-2">Ex-Lead, Policy & Teach Program, PathCheck, MIT</p>
-        <p className="mt-2">
-          Fellow - CodeX, The Stanford Center for Legal Informatics,
-          LLM-University of California Berkeley, USA
-        </p>
-      </>
-    ),
-  },
-  {
-    photo: "/people/ashwani-jp-singh.png",
-    name: "Ashwani JP Singh",
-    contactUrl: "https://x.com/ashwanijpsingh",
-    description: (
-      <>
-        <p className="mt-2">
-          (Additional PS to Minister for Culture and Tourism, Government of
-          India)
-        </p>
-        <p className="mt-2">
-          16 Years of Experience in Political & Government Affairs, Founder
-          Green Governance India, Founding Member GCTC, Founder - People’s
-          Parliament School
-        </p>
-      </>
-    ),
-  },
-];
-
-export default function Team() {
+const page = () => {
   return (
-    <main className="text-[#4A4A4A] mb-6 lg:mb-12">
-      <HighlightContent>
-        <PageTitle className="mt-5 lg:mt-12">Meet Our Team</PageTitle>
-        <p className="mt-4 lg:mt-6 text-xs leading-consistent lg:text-base lg:leading-consistent text-black">
-          Get to know the brilliant minds behind UnbiaslyAI. Our dedicated team
-          and expert advisors bring a wealth of experience and insight, driving
-          innovation and excellence. Discover the people who are shaping our
-          vision and guiding us to success.
-        </p>
-        <div className="grid grid-cols-1 lg:flex lg:justify-between lg:flex-wrap gap-5 lg:gap-11 mt-5 lg:mt-10 mb-4">
-          {userProfiles.map((profile) => (
-            <ProfileCard
-              key={profile.name}
-              photo={profile.photo}
-              name={profile.name}
-              contactUrl={profile.contactUrl}
-              designation={profile.designation}
-              workplace={profile.workplace}
-            />
-          ))}
+    <div className='bg-black w-full h-full py-8 '>
+      <div className="padding-container max-container w-full flex flex-col justify-center ">
+        <div className="flex flex-col items-center text-white py-10">
+          <h1 className="text-5xl font-bold text-center mb-8 py-2 md:w-3/4">{TEAM_PAGE?.HEADLINE }</h1>
+          <p className="md:w-3/4 text-center text-lg">{TEAM_PAGE?.SUB_HEADLINE }</p>
         </div>
-      </HighlightContent>
-      <ContentContainer className="mt-12">
-        <SubTitle>Our Honorary Advisors</SubTitle>
-        <div className="grid grid-cols-1 lg:flex lg:justify-around lg:flex-wrap gap-5 lg:gap-11 mt-5 lg:mt-10">
-          {advisors.map((profile) => (
-            <AdvisorCard
-              key={profile.name}
-              photo={profile.photo}
-              contactUrl={profile.contactUrl}
-              name={profile.name}
-              description={profile.description}
-            />
-          ))}
+        <TeamMemberCarousel></TeamMemberCarousel>
+        <div className="mt-16 relative">
+          <div className="flex flex-col md:flex-row  w-full ">
+            <div className="md:w-3/4 py-4 md:py flex flex-col  items-center md:items-start ">
+              <p className="text-2xl md:text-3xl text-white md:w-3/4 text-center md:text-left">
+               {TEAM_PAGE?.JOIN_TEAM_HEADLINE}
+              </p>
+              <button
+                className="max-w-lg rounded-xl text-black bg-[#D9D9D9] px-6 w-full text-sm md:text-md mt-5 py-2 "
+              >
+                <Link
+                  href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
+                  target="_blank"
+                  className=""
+                >
+                  {TEAM_PAGE?.JOIN_TEAM_BUTTON}
+                </Link>
+              </button>
+            </div>
+            <div className="md:w-1/4 flex flex-col items-center  md:items-start md:border-l-2 border-white rounded-lg px-4  ">
+              {/* <div className="h-full  -rotate-90 bg-white border border-white"></div> */}
+              {/* <div className="w-full border-t -rotate-90 border-white rounded-lg "></div> */}
+              <p className="text-2xl md:text-3xl text-white md:w-1/2  ">
+                Stay Connected
+              </p>
+              <p className="text-white text-md py-2">Get the latest news and updates on your feeds.</p>
+              <div className="flex gap-4 py-2">
+                {TEAM_PAGE?.SOCIALS?.LINKS.map((link, index) => (
+                  <Link
+                    href={link.href}
+                    key={index}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className=''
+                  >
+                    <Image src={link.src} alt={link.href} width={24} height={24} />
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="w-full border-t border-white rounded-lg absolute"></div>
         </div>
-      </ContentContainer>
-      <HighlightContent className="mt-12">
-        <SubTitle>Join Our Team</SubTitle>
-        <p className="mt-2 lg:mt-6 text-xs leading-consistent lg:text-base lg:leading-consistent text-black">
-          Are you passionate about innovation and making a difference? At
-          UnbiaslyAI, we&apos;re always on the lookout for talented individuals to
-          help us shape the future. Discover exciting opportunities and grow
-          with us. Come work with us and be a part of something extraordinary!
-        </p>
-        <div className="mt-6 lg:mt-8">
-          <Link
-            href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
-            className="text-sm leading-consistent lg:text-xl lg:leading-consistent text-hyperlink hover:underline"
-            target="_blank"
-          >
-            Check out the openings here!
-          </Link>
-        </div>
-      </HighlightContent>
-      <div className="mt-6 lg:mt-12">
-        <AppStoresV2 />
       </div>
-    </main>
-  );
+
+      {/* <div className="mt-6 lg:mt-12">
+        <AppStores />
+      </div> */}
+    </div>
+  )
 }
+
+export default page

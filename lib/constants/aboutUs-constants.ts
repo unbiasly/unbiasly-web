@@ -1,13 +1,13 @@
 export const ABOUT_US_CONSTANTS = {
     PAGE_TITLE: "About UnbiaslyAI",
 
-    ABOUT_US: `UnbiaslyAI is an AI-powered news aggregator app dedicated to combating misinformation and fake news. We curate reliable content from authentic national and international sources, providing easy-to-understand 55-word summaries with source verification. Our personalized news delivery, supported by advanced AI technology, ensures you stay informed about what matters most to you. With multilingual support, we aim to break language barriers and bring trustworthy news to everyone. 
+    ABOUT_US: `UnbiaslyAI is an <strong className="font-bold"> AI-powered news aggregator</strong> app dedicated to combating misinformation and fake news. We curate reliable content from authentic national and international sources, providing <strong className="font-bold"> easy-to-understand 55-word summaries </strong> with <strong className="font-bold"> source verification</strong>. Our personalized news delivery, supported by advanced AI technology, ensures you stay informed about what matters most to you. With <strong className="font-bold"> multilingual support</strong>, we aim to break language barriers and bring <strong className="font-bold"> trustworthy news </strong> to everyone. 
     Join us in promoting a culture of accurate information consumption and rebuilding trust in the media.`,
 
     SECOND_LINE: `We will engage in community-driven campaigns to raise awareness
                 about the harmful impact of misinformation and fake news.`,
 
-    DIVIDER_1: `We are not just an app but a committed community service, promoting a culture of accurate information consumption for everyone.`,
+    DIVIDER_1: `We are not just an app but a COMMITTED COMMUNITY SERVICE, promoting a culture of ACCURATE INFORMATION CONSUMPTION for everyone.`,
 
     DIVIDER_2: `By choosing UnbiaslyAI, you are not just getting an app, you are joining a movement towards a more informed, aware, and engaged society. Trust UnbiaslyAI to be your reliable source for news and help us build a stronger, more informed community.`,
 
