@@ -4,7 +4,7 @@ import SubTitle from "@/components/custom/page-subtitle";
 import PageTitle from "@/components/custom/page-title";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import UnbiaslyLogo from "@/public/key-features/key-feature-1.png";
+import Screen from "@/public/about-us-Image.png";
 import { ABOUT_US_CONSTANTS } from "@/lib/constants/aboutUs-constants";
 import { KeyFeatures } from "@/components/custom/KeyFeatures";
 import { Objective } from "@/components/custom/Objective";
@@ -13,31 +13,26 @@ import { Objective } from "@/components/custom/Objective";
 
 export default function Page() {
   return (
-    <main className="padding-container max-container bg-black text-xs leading-consistent lg:text-base  text-white pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
+    <div className="w-full bg-black">
+    <main className="padding-container max-container text-xs leading-consistent lg:text-base  text-white pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
     
-        <div className="flex flex-row ">
-            <div className="md:px-41 md:px-41 bg-gray-600 mt-3 lg:mt-6 flex flex-col lg:text-start text-center px-6">
+        <div className="flex flex-row">
+            <div className="md:px-41 md:px-41 mt-3 lg:mt-6 flex flex-col lg:text-start text-center gap-y-5 lg:gap-y-10 px-6">
                 <PageTitle>{ABOUT_US_CONSTANTS.PAGE_TITLE}</PageTitle>
-                <div className="w-full lg:w-1/2">
-                    <p className="lg:text-xl lg:text-start text-center text-sm text-white ">{ABOUT_US_CONSTANTS.ABOUT_US}</p>
+                <div className="w-full ">
+                    <p className="lg:text-xl lg:text-start lg:w-4/5 text-center text-sm text-white ">{ABOUT_US_CONSTANTS.ABOUT_US}</p>
                 </div>
             </div>
-            
-
-        <div className=" ">
-            
-            
-        </div>
-        <div className="hidden lg:block ml-auto">
-            <Image
-                src={UnbiaslyLogo}
-                alt="UnbiaslyAI logo"
-                width={200}
-                className="min-w-[104px]"
-            />
+            <div className="hidden w-full lg:block ml-auto">
+                <Image
+                    src={Screen}
+                    alt="UnbiaslyAI News"
+                    width={600}
+                    className="min-w-[104px]"
+                />
             </div>
         </div>
-        <HighlightContent className="font-bold">{ABOUT_US_CONSTANTS.DIVIDER_1}</HighlightContent>
+        <HighlightContent className="">{ABOUT_US_CONSTANTS.DIVIDER_1}</HighlightContent>
         
         <div className="md:px-41 px-6 mt-6 lg:mt-12 mx-auto">
             <SubTitle>{ABOUT_US_CONSTANTS.FEATURES_TITLE}</SubTitle>
@@ -71,9 +66,10 @@ export default function Page() {
           />
         ))}
       </div>
-      <HighlightContent className="font-bold">
+      <HighlightContent className="">
         {ABOUT_US_CONSTANTS.DIVIDER_2}
       </HighlightContent>
     </main>
+    </div>
   );
 }

@@ -197,7 +197,7 @@ export default function LiveNews() {
                     initial="hidden"
                     whileInView="visible"
                     onViewportEnter={handleOnViewportEnter}
-                    className="flex text-white justify-center w-full">
+                    className="flex text-white pb-5 justify-center w-full">
                     {isError ? "Failed to load news" : <NewsLoader />}
                 </motion.div>
             </div>

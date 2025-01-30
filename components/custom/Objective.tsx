@@ -34,7 +34,7 @@ type ObjectiveProps = {
           </div>
           <div className="mt-4 lg:mt-0 lg:ml-12 text-center lg:text-left">
               <div className="inline-block relative">
-                  <div className="text-base font-bold leading-consistent lg:text-4xl lg:leading-consistent text-white">
+                  <div className="text-xl font-bold lg:text-4xl text-white">
                       {title}
                   </div>
                   {tagValue && (
@@ -43,7 +43,7 @@ type ObjectiveProps = {
                       </div>
                   )}
               </div>
-              <div className="w-full text-xs leading-consistent lg:text-xl lg:leading-consistent mt-1 lg:mt-2 text-white">
+              <div className="w-full text-base md:text-lg lg:text-xl mt-1 lg:mt-2 text-white">
                   {description}
               </div>
           </div>

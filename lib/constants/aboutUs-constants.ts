@@ -11,7 +11,7 @@ export const ABOUT_US_CONSTANTS = {
 
     DIVIDER_2: `By choosing UnbiaslyAI, you are not just getting an app, you are joining a movement towards a more informed, aware, and engaged society. Trust UnbiaslyAI to be your reliable source for news and help us build a stronger, more informed community.`,
 
-    FEATURES_TITLE: "Key Features",
+    FEATURES_TITLE: "Key Features include",
     
     FEATURES: [
         

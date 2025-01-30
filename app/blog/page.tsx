@@ -2,7 +2,6 @@ import AppStoresV2 from "@/components/custom/AppStoreV2";
 import ContentContainer from "@/components/custom/content-container";
 import HighlightContent from "@/components/custom/highlight-content";
 import PageTitle from "@/components/custom/page-title";
-import { motion } from "framer-motion";
 import {
   dehydrate,
   HydrationBoundary,
@@ -11,6 +10,8 @@ import {
 import BlogPosts from "./blog-posts";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
+import { APP_CONSTANTS } from "@/lib/constants/constants";
+import AppStores from "@/components/custom/app-stores";
 
 
 
@@ -31,25 +32,24 @@ export default async function Blog() {
 
   
   return (
-    <main className="mt-[58px] md:mt-[120px] mb-6 lg:mb-12">
-      <ContentContainer>
-        <PageTitle>Blog</PageTitle>
-        <p className="mt-6 text-black leading-consistent">
-          Dive into a wealth of knowledge and insights with our curated blogs.
-          From industry trends to expert opinions, our articles cover a wide
-          range of topics to keep you informed and inspired. Join the
-          conversation and stay updated with our latest posts.
-        </p>
-      </ContentContainer>
-      <HighlightContent>
-        <HydrationBoundary state={dehydrate(queryClient)}>
-           <BlogPosts />
-           
-        </HydrationBoundary>
-      </HighlightContent>
-      <div className="mt-6 lg:mt-12">
-        <AppStoresV2 />
-      </div>
-    </main>
+    <div className="w-full h-screen bg-black">
+        <main className="padding-container max-container pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
+            <ContentContainer>
+                <PageTitle>Blog</PageTitle>
+                <p className="mt-6 text-white leading-consistent">
+                    {APP_CONSTANTS.BLOG_DESCRIPTION}
+                </p>
+            </ContentContainer>
+            <HighlightContent>
+                <HydrationBoundary state={dehydrate(queryClient)}>
+                    <BlogPosts />
+                    
+                </HydrationBoundary>
+            </HighlightContent>
+            <div className="p-40 ">
+                <AppStores />
+            </div>
+        </main>
+    </div>
   );
 }

@@ -12,6 +12,8 @@ export const APP_CONSTANTS = {
         LIVE_NEWS: "Live News!",
     },
 
+    BLOG_DESCRIPTION: "Dive into a wealth of knowledge and insights with our curated blogs. From industry trends to expert opinions, our articles cover a wide range of topics to keep you informed and inspired. Join the conversation and stay updated with our latest posts.",
+
     FOOTER: {
         CONTACT_EMAIL: "contact@unbiasly.ai",
         ADDRESS: "Basement C11, Green Park Extension, New Delhi-110016",
@@ -33,4 +35,6 @@ export const APP_CONSTANTS = {
         PRIVACY_POLICY: "Privacy Policy",
         TERMS_CONDITIONS: "Terms & Conditions",
     },
+
+    APP_STORE_HEADLINE: 'To enjoy all the benefits of the UnbiaslyAI news app, download it now!',
 };
