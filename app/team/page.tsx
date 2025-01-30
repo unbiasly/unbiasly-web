@@ -33,7 +33,7 @@ const userProfiles = [
     photo: "/people/umesh-sharma.png",
     name: "Umesh Sharma",
     contactUrl: "https://www.linkedin.com/in/r-umeshsharma/",
-    designation: "Cheif Technology Officer",
+    designation: "Chief Technology Officer",
     workplace: "Carnegie Mellon University, USA",
   },
 ];
