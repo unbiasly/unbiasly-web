@@ -1,19 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import AppSplashScreen from "@/public/app-images/splash-screen-2.png";
-
 export default function Home() {
   return (
     <main className="md:px-41 px-6 text-xs lg:text-base mt-[58px] md:mt-[120px] mb-6 lg:mb-12">
       <div className="flex">
         <div className="text-xs leading-consistent lg:text-xl lg:leading-consistent flex-1">
-          <Image
+          {/* <Image
             src="/unbiasly-ai-icon.svg"
             alt="Unbiasly AI icon"
             height={80}
             width={80}
             className="max-w-10 lg:min-w-20"
-          />
+          /> */}
           <h1 className="text-sm lg:text-4xl text-black mt-2 lg:mt-5 leading-consistent">
             UnbiaslyAI
           </h1>

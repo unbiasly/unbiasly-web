@@ -16,7 +16,7 @@ const AdvisorCard: React.FC<AdvisorCardProps> = ({
 }) => {
   return (
     <Link href={contactUrl} target="_blank">
-      <div className="bg-white shadow-lg rounded-2xl py-5 lg:py-8 w-full lg:w-[316px]">
+      <div className="bg-white shadow-lg rounded-2xl py-5 lg:py-8 w-full h-full">
         <div className="lg:flex lg:flex-col lg:items-center text-black px-5 lg:px-0">
           <div className="box-border relative min-w-18 max-lg:w-18 lg:w-[172px] h-18 lg:h-[172px] border-2 border-[#999999] rounded-full max-lg:ml-auto max-lg:mr-auto">
             <Image

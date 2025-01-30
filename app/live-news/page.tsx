@@ -12,13 +12,15 @@ import MobileFilter from "./mobile-filter";
 import Image from "next/image";
 import { handleResponse } from "@/service/fetchClient";
 import { useEffect } from "react";
+import Link from "next/link";
 
 type NewsCardProps = {
   image: string;
   title: string;
   description: string;
   date: string;
-  
+  publisher:string,
+  publisherUrl:string  
 };
 
 const NewsCard: React.FC<NewsCardProps> = ({
@@ -26,6 +28,8 @@ const NewsCard: React.FC<NewsCardProps> = ({
   description,
   date,
   image,
+  publisher,
+  publisherUrl
 }) => {
   return (
     <div className="bg-white p-4 md:p-5 md:flex rounded-2xl">
@@ -42,20 +46,29 @@ const NewsCard: React.FC<NewsCardProps> = ({
           />
         </div>
       )}
-      <div className="max-md:mt-4 md:ml-6 text-[#8A8A8A] flex flex-col justify-between">
+      <div className="max-md:mt-4 md:ml-6 text-black flex flex-col justify-between">
         <div>
-          <div className="text-xs leading-consistent md:text-2xl md:leading-consistent text-gray-29 font-bold">
+          <div className="text-xs leading-consistent md:text-2xl md:leading-consistent text-black font-bold">
             {title}
           </div>
           <div className="mt-1 md:mt-2 text-xs leading-consistent lg:text-base lg:leading-consistent break-all">
             {description}
           </div>
         </div>
-        <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {timeElapsed(date)}
+        <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent flex ">
+         <div className="mr-1"> {timeElapsed(date)}  </div>
+          <Link
+            href={publisherUrl}
+            target="_blank"
+            className=""
+          >
+            • Click to read full article <span className="">{
+             publisher.charAt(0).toUpperCase()
+             + publisher.slice(1)}</span>
+          </Link>
         </div>
         {/* <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-base lg:leading-consistent">
-          {category}
+       
         </div>  */}
       </div>
     </div>
@@ -189,6 +202,8 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
+                    publisher={newsArticle?.source?.source_id}
+                    publisherUrl={newsArticle?.link}
                 />
               ))
             )}
@@ -230,6 +245,8 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
+                    publisher={newsArticle?.source?.source_id}
+                    publisherUrl={newsArticle?.link}
                   />
                 ))
               )}
