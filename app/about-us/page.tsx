@@ -5,6 +5,8 @@ import PageTitle from "@/components/custom/page-title";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import UnbiaslyLogo from "@/public/unbiasly-logo.png";
+import { KeyFeatures } from "@/components/custom/KeyFeature";
+import GroupScreen from "@/public/app-images/group-screen4.png"
 
 type ObjectiveProps = {
   imageSrc: string;
@@ -69,38 +71,38 @@ type KeyFeaturesProps = {
   features: Array<KeyFeatureItem>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-const KeyFeatures: React.FC<KeyFeaturesProps> = ({ features, ...props }) => {
-  return (
-    <div {...props}>
-      {features.map((feature, index) => (
-        <div
-          key={feature.title}
-          className={cn(
-            "flex flex-col min-h-[524px] relative items-center lg:items-start",
-            index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row",
-            index !== 0 && "mt-8 lg:-mt-36"
-          )}
-        >
-          <Image
-            src={feature.imageSrc}
-            alt={feature.title}
-            width={260}
-            height={524}
-            className={cn("min-w-[173px]")}
-          />
-          <div className="max-w-[400px] mt-5 lg:my-auto ml-8 max-lg:text-center lg">
-            <div className="text-base leading-consistent lg:text-2.5xl lg:leading-consistent font-medium text-black">
-              {feature.title}
-            </div>
-            <p className="text-xs leading-consistent lg:text-base lg:leading-consistent mt-1 lg:mt-3 text-black">
-              {feature.description}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+// const KeyFeatures: React.FC<KeyFeaturesProps> = ({ features, ...props }) => {
+//   return (
+//     <div {...props}>
+//       {features.map((feature, index) => (
+//         <div
+//           key={feature.title}
+//           className={cn(
+//             "flex flex-col min-h-[524px] relative items-center lg:items-start",
+//             index % 2 === 1 ? "lg:flex-row-reverse" : "lg:flex-row",
+//             index !== 0 && "mt-8 lg:-mt-36"
+//           )}
+//         >
+//           <Image
+//             src={feature.imageSrc}
+//             alt={feature.title}
+//             width={260}
+//             height={524}
+//             className={cn("min-w-[173px]")}
+//           />
+//           <div className="max-w-[400px] mt-5 lg:my-auto ml-8 max-lg:text-center lg">
+//             <div className="text-base leading-consistent lg:text-2.5xl lg:leading-consistent font-medium text-black">
+//               {feature.title}
+//             </div>
+//             <p className="text-xs leading-consistent lg:text-base lg:leading-consistent mt-1 lg:mt-3 text-black">
+//               {feature.description}
+//             </p>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
 export default function Page() {
   return (
@@ -110,8 +112,8 @@ export default function Page() {
       </div>
 
       <div className="md:px-41 px-6 mt-3 lg:mt-6 flex">
-        <div className="mr-1 lg:w-3/4">
-          <p>
+        <div className="mr-1 ">
+          <p className=" text-xs leading-consistent lg:text-xl lg:leading-consistent">
             UnbiaslyAI is an AI-powered news aggregator app dedicated to combating
             misinformation and fake news. We curate reliable content from
             authentic national and international sources, providing
@@ -127,20 +129,67 @@ export default function Page() {
             about the harmful impact of misinformation and fake news.
           </p> */}
         </div>
-        <div className="hidden lg:block ml-auto">
+        {/* <div className="hidden lg:block ml-auto">
           <Image
-            src={UnbiaslyLogo}
+            src={GroupScreen}
             alt="UnbiaslyAI logo"
-            width={200}
+            width={312}
+            height={200}
             className="min-w-[104px]"
           />
-        </div>
+        </div> */}
       </div>
       <HighlightContent className="font-bold">
         We are not just an app but a committed community service, promoting a
         culture of accurate information consumption for everyone.
       </HighlightContent>
       <div className="md:px-41 px-6 mt-6 lg:mt-12 mx-auto">
+        <SubTitle>Features </SubTitle>
+        <div className=" flex flex-col items-center justify-center lg:flex-row mt-5 lg:mt-6 ">
+          <div className="lg:w-1/2  lg:block ml-auto">
+            <div className="pb-4">
+              <div className="text-base leading-consistent lg:text-[21px] lg:leading-consistent font-bold text-black">
+                Easy-to-understand 55 word summaries
+              </div>
+              <p className="text-xs leading-consistent lg:text-base lg:leading-consistent mt-1 lg:mt-2 text-black">
+                Get concise 55-word news summaries that are quick to read and easy to understand. Stay informed without the clutter.
+              </p>
+            </div>
+            <div className="py-4">
+              <div className="text-base leading-consistent lg:text-[21px] lg:leading-consistent font-bold text-black">
+                Multilingual support in Hindi and English          </div>
+              <p className="text-xs leading-consistent lg:text-base lg:leading-consistent mt-1 lg:mt-2 text-black">
+                Access news in your preferred language, including Hindi and English. Breaking barriers with multilingual support        </p>
+            </div>
+            <div>
+              <div className="py-4">
+                <div className="text-base leading-consistent lg:text-[21px] lg:leading-consistent font-bold text-black">
+                  Verification of Source
+                </div>
+                <p className="text-xs leading-consistent lg:text-base lg:leading-consistent mt-1 lg:mt-2 text-black">
+                  Every article is thoroughly verified to ensure it comes from reliable and authentic sources. Trust the news you read.        </p>
+              </div>
+            </div>
+          </div>
+          <div className="lg:w-1/2">
+          <Image
+            src={GroupScreen}
+            alt="UnbiaslyAI Group Screen"
+            width={312}
+            height={200}
+            className="w-full px-4"
+          />
+          </div>
+        </div>
+      </div>
+
+      {/* //carousel */}
+      {/* <div className="md:px-41 px-6 mt-6 lg:mt-12 mx-auto">
+            <SubTitle>Features </SubTitle>
+            <KeyFeatures/>
+            
+        </div> */}
+      {/* <div className="md:px-41 px-6 mt-6 lg:mt-12 mx-auto">
         <SubTitle>Our key features include</SubTitle>
         <KeyFeatures
           className="mt-5 lg:mt-6"
@@ -171,7 +220,7 @@ export default function Page() {
             },
           ]}
         />
-      </div>
+      </div> */}
       <div className="md:px-41 px-6 py-12 w-full bg-[#F1F1F1] mt-8 lg:mt-14">
         <Objective
           imageSrc="/vision.png"
