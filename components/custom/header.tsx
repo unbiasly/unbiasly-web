@@ -99,7 +99,7 @@ export default function NavigationBar() {
                 Live News!
               </Link>
             </SheetClose>
-            <SheetClose asChild>
+            {/* <SheetClose asChild>
               <Link
                 href="/top-news"
                 className={cn(
@@ -110,7 +110,7 @@ export default function NavigationBar() {
               >
                 Top News!
               </Link>
-            </SheetClose>
+            </SheetClose> */}
           </nav>
         </SheetContent>
       </Sheet>
