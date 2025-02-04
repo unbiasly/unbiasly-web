@@ -156,6 +156,8 @@ export default function LiveNews() {
                     title={newsArticle.title}
                     description={newsArticle.body_short}
                     date={newsArticle.date}
+                    articleUrl={newsArticle?.link}
+                    publisher={newsArticle?.source?.source_id}
                 />
               ))
             )}
@@ -190,6 +192,8 @@ export default function LiveNews() {
                         title={newsArticle.title}
                         description={newsArticle.body_short}
                         date={newsArticle.date}
+                        articleUrl={newsArticle?.link}
+                        publisher={newsArticle?.source?.source_id}
                     />
                     ))
                 )}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { timeElapsed } from "@/lib/utils";
+import Link from "next/link";
 
 
 type NewsCardProps = {
@@ -7,7 +8,9 @@ type NewsCardProps = {
     title: string;
     description: string;
     date: string;
-    
+    articleUrl:string,
+    publisher:string
+
   };
   
   export const NewsCard: React.FC<NewsCardProps> = ({
@@ -15,7 +18,10 @@ type NewsCardProps = {
     description,
     date,
     image,
+    articleUrl,
+    publisher
   }) => {
+    console.log(publisher)
     return (
     <div className="w-full bg-[#1e1e1e] rounded-2xl overflow-hidden">
       {/* Mobile and Tablet View */}
@@ -33,21 +39,23 @@ type NewsCardProps = {
         </div>
         <div className="flex flex-col flex-grow">
             <h3 className="text-white text-md  ">{title}</h3>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex flex-col  text-left gap-2 text-sm text-gray-400 py-2">
             <span>{timeElapsed(date)}</span>
+            <Link
+            href={articleUrl}
+            target="_blank"
+            className=""
+          >
+            Click to read full article <span className="">{
+             publisher.charAt(0).toUpperCase()
+             + publisher.slice(1)}</span>
+          </Link>
             </div>
         </div>
       </div>
       {/* Desktop VIEW */}
-        <div className="hidden md:flex flex-row justify-between pl-5 ">
-            {/* Text Content */}
-            <div className="flex flex-col justify-center pr-5 flex-grow">
-                <div>
-                    <div className="lg:text-3xl text-2xl leading-consistent text-white ">{title}</div>
-                </div>
-                <div className="mt-4 text-gray-400 text-md leading-consistent">{timeElapsed(date)}</div>
-            </div>
-            {/* Image */}
+        <div className="hidden md:flex flex-row justify-between  ">
+                 {/* Image */}
             {image && image.startsWith("http") && (
                 <div className="w-full md:max-w-[200px] h-[180px] md:h-[125px] bg-[#1e1e1e] rounded-xl relative">
                     <Image
@@ -61,6 +69,25 @@ type NewsCardProps = {
                     />
                 </div>
             )}
+            {/* Text Content */}
+            <div className="flex flex-col justify-center px-5 flex-grow ">
+                <div>
+                    <div className="lg:text-2xl text-2xl leading-consistent text-white ">{title}</div>
+                </div>
+             <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-sm lg:leading-consistent flex tex text-gray-400 py-2">
+         <div className="mr-1"> {timeElapsed(date)}  </div>
+          <Link
+            href={articleUrl}
+            target="_blank"
+            className=""
+          >
+            • Click to read full article <span className="">{
+             publisher.charAt(0).toUpperCase()
+             + publisher.slice(1)}</span>
+          </Link>
+        </div>
+            </div>
+       
         </div>
     </div>
     );
