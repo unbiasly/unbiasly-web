@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // Correct import
 import { CAREER_CONSTANTS } from "@/lib/constants/career-constants";
 import CareerContact from "../../components/custom/careers/CareerContact";
-import FormInput from "@/components/custom/FormInput";
+import CareersIntroInput from "@/components/custom/CareersIntroInput";
 import { CareerDropdown } from "@/components/custom/CareerDropdown";
 import AppApi from "@/service/app.api";
 import { useDispatch } from 'react-redux';

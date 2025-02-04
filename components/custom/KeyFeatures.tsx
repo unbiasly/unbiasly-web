@@ -41,7 +41,7 @@ export const KeyFeatures = ({ ...props }) => {
                                 <div className="text-zinc-500 mb-2 text-2xl lg:text-6xl">
                                     {String(index + 1).padStart(2, "0")}
                                 </div>
-                                <h3 className="text-base leading-tight lg:text-5xl lg:leading-tight font-medium mb-3">
+                                <h3 className="text-base leading-tight lg:text-4xl lg:leading-tight font-medium mb-3">
                                     {feature.title}
                                 </h3>
                                 <p className="max-w-[800px] text-xs leading-relaxed lg:text-xl lg:leading-relaxed mt-1 lg:mt-3 text-gray-300">
