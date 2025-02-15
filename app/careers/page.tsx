@@ -1,163 +1,144 @@
-"use client"
+"use client";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation"; // Correct import
+import { CAREER_CONSTANTS } from "@/lib/constants/career-constants";
+import CareerContact from "../../components/custom/careers/CareerContact";
+import FormInput from "@/components/custom/FormInput";
+import { CareerDropdown } from "@/components/custom/CareerDropdown";
+import AppApi from "@/service/app.api";
+import { useDispatch } from 'react-redux';
+import { setSelectedJob } from '@/lib/redux/features/careerSlice';
+import { Job } from '@/service/api.interface';
 
-import { useState } from "react"
-import Link from "next/link"
-import { Upload } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Input } from "@/components/ui/input"
+export default function CareerIntro() {
+  const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
+  const [selectedPosition, setSelectedPosition] = useState<string | null>(null);
+  const [departments, setDepartments] = useState<Array<{ value: string; label: string }>>([]);
+  const [positions, setPositions] = useState<Array<{ value: string; label: string }>>([]);
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-export default function CareersPage() {
-  const [activeTab, setActiveTab] = useState<"overview" | "application">("overview")
+  // Add state to store the full job data
+  const [jobsData, setJobsData] = useState<Job[]>([]);
+
+  useEffect(() => {
+    const fetchDepartments = async () => {
+      try {
+        const response = await AppApi.getDepartment();
+        const departmentOptions = response.data.map(dept => ({
+          value: dept.name,
+          label: dept.name
+        }));
+        setDepartments(departmentOptions);
+      } catch (error) {
+        console.error("Error fetching departments:", error);
+      }
+    };
+
+    fetchDepartments();
+  }, []);
+
+  useEffect(() => {
+    const fetchPositions = async () => {
+      if (!selectedDepartment) return;
+      
+      try {
+        const response = await AppApi.getJobByDepartment(selectedDepartment);
+        
+        // Store full job data
+        setJobsData(response);
+
+
+        const positionOptions = response.map(job => ({
+          value: job.job_name,
+          label: job.job_name
+        })).filter(option => option.value !== '');
+
+        setPositions(positionOptions);
+      } catch (error) {
+        console.error("Error fetching positions:", error);
+        setPositions([]);
+        setJobsData([]);
+      }
+    };
+
+    fetchPositions();
+  }, [selectedDepartment]);
+
+  const handleDepartmentChange = (value: string) => {
+    setSelectedDepartment(value);
+    setSelectedPosition(null); // Reset position when department changes
+    setPositions([]); // Clear positions when department changes
+  };
+
+  const handlePositionChange = (value: string) => {
+    setSelectedPosition(value);
+  };
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    
+    if (selectedPosition && selectedDepartment) {
+      // Find the selected job from jobsData
+      const selectedJobData = jobsData.find(
+        job => job.job_name === selectedPosition && job.department === selectedDepartment
+      );
+
+    if (selectedJobData) {
+        // Dispatch selected job to Redux store
+        dispatch(setSelectedJob(selectedJobData));
+        // Navigate using job_id
+        router.push(`/careers/${selectedJobData.job_id}`);
+    } else {
+        console.log('No matching job found:', { selectedPosition, selectedDepartment })
+    }
+    }
+  };
 
   return (
-    <div className="w-full bg-black">
-    <div className="padding-container max-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="flex flex-col md:flex-row gap-8 lg:gap-16">
-        {/* Left Column - Job Details */}
-        <div className="w-full md:w-1/3">
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-lg text-white font-semibold mb-2">Location</h2>
-              <p className="text-gray-400">Green Park, New Delhi</p>
-            </div>
-            <div>
-              <h2 className="text-lg text-white font-semibold mb-2">Type</h2>
-              <p className="text-gray-400">Full-Time</p>
-            </div>
-            <div>
-              <h2 className="text-lg text-white font-semibold mb-2">Department</h2>
-              <p className="text-gray-400">IT</p>
-            </div>
-          </div>
-        </div>
+    <div className="lg:my-20 padding-container max-container p-4 md:p-8 flex items-center  justify-center">
+      <div className="w-full  lg:p-6 border border-white bg-[#0C0C0C] rounded-[32px] overflow-hidden md:flex">
+        {/* Left Section - Hidden on Mobile */}
+        <CareerContact />
 
-        {/* Right Column - Content */}
-        <div className="w-full md:w-2/3">
-          <div className="mb-8">
-            <div className="border-b border-gray-800">
-              <nav className="flex gap-8">
-                <button
-                  onClick={() => setActiveTab("overview")}
-                  className={`py-4 relative ${
-                    activeTab === "overview" ? "text-white" : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  Overview
-                  {activeTab === "overview" && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white" />}
-                </button>
-                <button
-                  onClick={() => setActiveTab("application")}
-                  className={`py-4 relative ${
-                    activeTab === "application" ? "text-white" : "text-gray-400 hover:text-white"
-                  }`}
-                >
-                  Application
-                  {activeTab === "application" && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white" />}
-                </button>
-              </nav>
+        {/* Right Section - Form */}
+        <div className="md:w-1/2 bg-[#D9D9D9] p-8 md:pb-5 md:px-12 rounded-[32px] "> 
+
+          <h1 className="text-2xl md:text-3xl w-3/5 font-bold mb-2">
+            Got some ideas? we've got them team for it!
+          </h1>
+          <p className="text-black mb-5">
+            Tell us more about yourself and what you got in your mind.
+          </p>
+
+          <form className="space-y-8">
+            <div className="space-y-6">
+              <CareerDropdown 
+                options={departments} 
+                placeholder="Select Department" 
+                onChange={handleDepartmentChange} 
+                value={selectedDepartment || undefined} 
+              />
+              {selectedDepartment && (
+                <CareerDropdown 
+                  options={positions} 
+                  placeholder="Select Position" 
+                  onChange={handlePositionChange} 
+                  value={selectedPosition || undefined} 
+                />
+              )}
             </div>
 
-            {activeTab === "overview" ? (
-              <div className="py-8 space-y-6">
-                <h1 className="text-2xl font-bold mb-6">
-                  We are an applied AI lab building end-to-end software agents.
-                </h1>
-                <p className="text-gray-300">
-                  We're building collaborative AI teammates that enable engineers to focus on more interesting problems
-                  and empower engineering teams to strive for more ambitious goals.
-                </p>
-                <p className="text-gray-300">
-                  Our team is small and talent-dense. Among our founding team, we have world-class competitive
-                  programmers, former founders, and leaders from companies at the cutting edge of AI including Cursor,
-                  Scale AI, Lunchclub, Modal, Google DeepMind, Waymo, and Nuro.
-                </p>
-                <p className="text-gray-300">
-                  At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in
-                  "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered
-                  technology, ensuring source verification and personalized content. Our goal is to combat
-                  misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of
-                  democracy.
-                </p>
-                <div className="pt-4">
-                  <Button onClick={() => setActiveTab("application")} size="lg" className="w-full md:w-auto">
-                    Apply for this role
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <div className="py-8">
-                <div className="mb-8 p-6 border border-gray-800 rounded-lg">
-                  <div className="flex items-center gap-4 mb-4">
-                    <Upload className="h-6 w-6" />
-                    <div>
-                      <h3 className="font-semibold">Autofill from resume</h3>
-                      <p className="text-sm text-gray-400">
-                        Upload your resume here to autofill key application fields.
-                      </p>
-                    </div>
-                  </div>
-                  <Button variant="outline" className="w-full">
-                    Upload File
-                  </Button>
-                </div>
-
-                <form className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Name
-                    </label>
-                    <Input id="name" type="text" required className="bg-transparent" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email
-                    </label>
-                    <Input id="email" type="email" required className="bg-transparent" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="resume" className="block text-sm font-medium mb-2">
-                      Resume
-                    </label>
-                    <Textarea id="resume" required className="min-h-[100px] bg-transparent" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="linkedin" className="block text-sm font-medium mb-2">
-                      Link to LinkedIn Profile
-                    </label>
-                    <Input id="linkedin" type="url" className="bg-transparent" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="additional" className="block text-sm font-medium mb-2">
-                      Is there anything else you'd like to add in support of your application?
-                    </label>
-                    <Textarea id="additional" className="min-h-[100px] bg-transparent" />
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full">
-                    Apply for this role
-                  </Button>
-
-                  <div className="text-center">
-                    <span className="text-gray-400">OR</span>
-                    <div className="mt-2">
-                      <Link href="/positions" className="text-white hover:underline">
-                        Browse open positions
-                      </Link>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            )}
-          </div>
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition-colors text-lg"
+            >
+              Let's get started!
+            </button>
+          </form>
         </div>
       </div>
     </div>
-    </div>
-  )
+  );
 }
-
