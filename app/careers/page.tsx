@@ -51,7 +51,7 @@ export default function CareerIntro() {
 
         const positionOptions = response.map(job => ({
           value: job.job_name,
-          label: job.job_name
+          label: `${job.job_name}${job.description?.title ? ` - ${job.description.title}` : ''}`
         })).filter(option => option.value !== '');
 
         setPositions(positionOptions);

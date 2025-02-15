@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground lg:hover:scale-105 transform",
+        default: "bg-primary text-primary-foreground lg:hover:scale-105 cursor-pointer",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
