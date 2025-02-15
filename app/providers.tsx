@@ -8,6 +8,9 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 
+import { Provider } from 'react-redux';
+import { store } from '@/lib/redux/store';
+
 function makeQueryClient() {
   return new QueryClient({
     defaultOptions: {
@@ -38,11 +41,7 @@ function getQueryClient() {
   }
 }
 
-export default function Providers({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export function Providers({ children }: { children: React.ReactNode }) {
   // NOTE: Avoid useState when initializing the query client if you don't
   //       have a suspense boundary between this and the code that may
   //       suspend because React will throw away the client on the initial
@@ -50,6 +49,12 @@ export default function Providers({
   const queryClient = getQueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
+    </Provider>
   );
 }
+
+export default Providers;
