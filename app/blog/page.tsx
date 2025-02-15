@@ -1,17 +1,12 @@
-import AppStoresV2 from "@/components/custom/AppStoreV2";
-import ContentContainer from "@/components/custom/content-container";
-import HighlightContent from "@/components/custom/highlight-content";
-import PageTitle from "@/components/custom/page-title";
+
 import {
-  dehydrate,
-  HydrationBoundary,
-  QueryClient,
+    dehydrate,
+    HydrationBoundary,
+    QueryClient,
 } from "@tanstack/react-query";
 import BlogPosts from "./blog-posts";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
-import { APP_CONSTANTS } from "@/lib/constants/constants";
-import AppStores from "@/components/custom/app-stores";
 
 
 
@@ -31,25 +26,12 @@ export default async function Blog() {
   });
 
   
-  return (
-    <div className="w-full h-screen bg-black">
-        <main className="padding-container max-container pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
-            <ContentContainer>
-                <PageTitle>Blog</PageTitle>
-                <p className="mt-6 text-white leading-consistent">
-                    {APP_CONSTANTS.BLOG_DESCRIPTION}
-                </p>
-            </ContentContainer>
-            <HighlightContent>
-                <HydrationBoundary state={dehydrate(queryClient)}>
-                    <BlogPosts />
-                    
-                </HydrationBoundary>
-            </HighlightContent>
-            <div className="p-40 ">
-                <AppStores />
-            </div>
+
+    return (
+        <main className="padding-container p-10 max-container ">
+            <HydrationBoundary state={dehydrate(queryClient)}>
+                <BlogPosts />
+            </HydrationBoundary>
         </main>
-    </div>
-  );
+    );
 }

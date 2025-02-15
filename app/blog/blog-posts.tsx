@@ -2,115 +2,162 @@
 import Link from "next/link";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { format, parseISO } from "date-fns";
-import AppApi from "@/service/app.api";
+// import AppApi from "@/service/app.api";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
+import { cn } from "@/lib/utils";
+import Loader from "@/components/custom/Loader";
 
 type BlogCardProps = {
-  title: string;
-  description: string;
-  date: string;
-  slug: string;
-  image: string;
+    title: string;
+    date: string;
+    image: string;
+    slug: string;
+    _id: string;
+    description: string;
+    isFeatured?: boolean;
+    className?: string;
 };
 
 const BlogCard: React.FC<BlogCardProps> = ({
-  title,
-  description,
-  date,
-  slug,
-  image,
+    title,
+    description,
+    date,
+    slug,
+    _id,
+    image,
+    isFeatured = false,
+    className,
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const parsedDateString = parseISO(date);
-  const formattedDate = format(parsedDateString, "do MMMM yyyy");
+    const ref = useRef<HTMLDivElement>(null);
+    const parsedDateString = parseISO(date);
+    const formattedDate = format(parsedDateString, "do MMMM yyyy");
+    
+    useEffect(() => {
+        if (ref.current) {
+            ref.current.innerHTML = description;
+        }
+    }, [description]);
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.innerHTML = description;
-    }
-  }, [description]);
-  return (
-    <Link
-      href={`/blog/${slug}`}
-      className="bg-white p-4 md:p-7 md:flex rounded-2xl cursor-pointer"
-      prefetch
-    >
-      <div className="w-full md:max-w-[432px] h-[200px] bg-[#D9D9D9] rounded-xl relative">
-        <Image
-          alt={`Blog post thumbnail for ${title}`}
-          src={image}
-          fill
-          sizes="(min-width: 768px) w-full, max-w-[432px]"
-          className="rounded-xl"
-          quality={100}
-        />
-      </div>
-      <div className="max-md:mt-4 md:ml-7 text-[#8A8A8A]  flex flex-col justify-between">
-        <div>
-          <div className="text-xs leading-consistent md:text-xl md:leading-consistent text-black font-bold">
-            {title}
-          </div>
-          <div
-            ref={ref}
-            className="mt-1 md:mt-3 text-xs leading-consistent lg:text-base lg:leading-consistent break-all text-black"
-          />
-        </div>
-        <div className="max-md:mt-3 text-xs leading-consistent lg:text-base lg:leading-consistent italic">
-          5 min read . {formattedDate}
-        </div>
-      </div>
-    </Link>
-  );
+    return (
+        <Link
+            href={`/blog/${slug}?id=${_id}`}
+            className={cn(
+                "bg-[#1E1E1E] flex flex-col rounded-3xl cursor-pointer",
+                isFeatured ? "md:flex-row md:h-[300px] w-full" : "md:max-w-[400px]",
+                className
+            )}
+            prefetch
+        >
+            <div className={cn(
+                "relative",
+                isFeatured ? " md:w-1/3 h-[200px] md:h-auto" : "w-full h-[230px] max-h-[400px]"
+            )}>
+                <Image
+                    alt={`Blog post thumbnail for ${title}`}
+                    src={image}
+                    fill
+                    className="rounded-3xl object-cover"
+                    quality={100}
+                    priority={isFeatured}
+                />
+            </div>
+            <div className={cn(
+                "p-6 text-[#FFF]",
+                isFeatured ? "md:flex-1 md:p-8 md:flex md:flex-col md:justify-center" : ""
+            )}>
+                <div>
+                    <div className="max-md:mt-3 text-xs leading-consistent lg:leading-consistent text-gray-300">
+                        {formattedDate}
+                    </div>
+                    <div className={cn(
+                        "font-bold text-white",
+                        isFeatured ? "md:text-3xl lg:text-4xl mb-2" : "text-base  md:text-lg leading-consistent"
+                    )}>
+                        {title}
+                    </div>
+                    {isFeatured && <p className="text-sm text-gray-300">By UnbiaslyAI</p>}
+                </div>
+            </div>
+        </Link>
+    );
 };
 
-export default function BlogPosts() {
-  const { data, fetchNextPage } = useInfiniteQuery({
-    queryKey: ["blogPosts"],
-    queryFn: ({ pageParam }) => {
-      return fetch(`/blog/api?page=${pageParam}`).then<BlogPostResponse>(
-        handleResponse
-      );
-    },
-    initialPageParam: 1,
-    getNextPageParam: (lastPage: BlogPostResponse) =>
-      lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,
-  });
-  if (!data) {
-    return <div className="flex items-center justify-center">
-    <div className="text-2xl font-semibold text-gray-700 animate-pulse">
-      Loading...
-    </div>
-  </div>;
-  }
 
-  const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {
-    if (!entry?.isIntersecting) return;
-    fetchNextPage();
-  };
+export function BlogPosts() {
+    const generateSlug = (title: string): string => {
+        return title
+            .toLowerCase()
+            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+            .trim()
+            .replace(/\s+/g, '-'); // Replace spaces with hyphens
+    };
+    
+    const { data, fetchNextPage } = useInfiniteQuery({
+        queryKey: ["blogPosts"],
+        queryFn: ({ pageParam }) => {
+            const limit = pageParam === 1 ? 4 : 3;
+            return fetch(`/blog/api?page=${pageParam}&limit=${limit}`).then<BlogPostResponse>(
+                handleResponse
+            );
+        },
+        initialPageParam: 1,
+        getNextPageParam: (lastPage: BlogPostResponse) =>
+            lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,
+    });
 
-  return (
-    <div className="flex flex-col gap-y-9">
-      {data.pages.map((pageData) =>
-        pageData.data.map((blogPost) => (
-          <BlogCard
-            key={blogPost._id}
-            slug={blogPost._id}
-            title={blogPost.title}
-            description={blogPost.summary}
-            date={blogPost.createdAt}
-            image={blogPost.thumbnail}
-          />
-        ))
-      )}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        onViewportEnter={handleOnViewportEnter}
-      />
-    </div>
-  );
-}
+
+      const onLoadMore = () => {
+        fetchNextPage();
+      };
+
+      
+      if (!data) {
+        return <Loader color="black"/>;
+      }
+
+    return (
+        <div className="flex flex-col items-center">
+            <div className={cn(
+                "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+                "w-full max-w-6xl mx-auto px-4"
+            )}>
+                {data.pages.map((pageData, pageIndex) =>
+                    pageData.data.map((blogPost, postIndex) => (
+                        <BlogCard
+                            key={blogPost._id}
+                            _id={blogPost._id}
+                            title={blogPost.title}
+                            description={blogPost.summary}
+                            date={blogPost.createdAt}
+                            image={blogPost.thumbnail}
+                            slug={generateSlug(blogPost.title)}
+                            isFeatured={pageIndex === 0 && postIndex === 0}
+                            className={cn(
+                                pageIndex === 0 && postIndex === 0 ? "md:col-span-2 lg:col-span-3" : "",
+                                "mx-auto w-full"
+                            )}
+                        />
+                    ))
+                )}
+            </div>
+
+            {/* Load More Button */}
+            <div className="flex justify-center pt-4">
+                <button
+                    aria-label="Load More"
+                    onClick={onLoadMore}
+                    className="w-12 h-12 rounded-full bg-gray-700/50 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                >
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    );
+};
+
+export default BlogPosts;
