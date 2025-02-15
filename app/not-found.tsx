@@ -1,4 +1,4 @@
-import AppStoresV2 from "@/components/custom/AppStoreV2";
+import AppStores from "@/components/custom/app-stores";
 import HighlightContent from "@/components/custom/highlight-content";
 import NotFoundIcon from "@/public/not-found.png";
 import Image from "next/image";
@@ -20,7 +20,7 @@ export default function NotFound() {
         </p>
       </div>
       <HighlightContent className="pt-6 lg:pt-12 pb-6 lg:pb-12">
-        <AppStoresV2 />
+        <AppStores />
       </HighlightContent>
     </main>
   );

@@ -15,8 +15,8 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ checked, onCheckedChang
                 checked={checked} 
                 onChange={(e) => onCheckedChange(e.target.checked)} 
             />
-            <span>{APP_CONSTANTS.ENGLISH}</span>
-            <span>{APP_CONSTANTS.HINDI}</span>
+            <span>{APP_CONSTANTS?.ENGLISH}</span>
+            <span>{APP_CONSTANTS?.HINDI}</span>
         </label>
     )
 }

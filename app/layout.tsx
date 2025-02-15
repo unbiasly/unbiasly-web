@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import Footer from "@/components/custom/footer";
-import Providers from "./providers";
+import './globals.css'
+import { Providers } from "./providers";
 import Navbar from "@/components/custom/Navbar";
-
-// const inter = Merriweather({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Unbiasly AI",
@@ -18,16 +16,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="overscroll-none" >
-        <Providers>
-          <Navbar />
-          <main className=" relative overflow-hidden">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
-      </body>
-
+        <body className="min-h-screen flex flex-col bg-black">
+            <Providers>
+                <Navbar /> 
+                <main className="flex-1 relative overflow-hidden">
+                    {children}
+                </main>
+                <Footer />
+            </Providers>
+        </body>
     </html>
   )
 }

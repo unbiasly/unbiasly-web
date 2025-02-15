@@ -8,7 +8,7 @@ import { ABOUT_US_CONSTANTS } from "@/lib/constants/aboutUs-constants";
 
 export const KeyFeatures = ({ ...props }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
-    const features = ABOUT_US_CONSTANTS.FEATURES;
+    const features = ABOUT_US_CONSTANTS?.FEATURES;
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % features.length)
@@ -30,7 +30,7 @@ export const KeyFeatures = ({ ...props }) => {
             <div className="mx-15 overflow-hidden">
                 <div style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                     className="transition-transform duration-500 ease-in-out flex">
-                    {ABOUT_US_CONSTANTS.FEATURES.map((feature, index) => (
+                    {ABOUT_US_CONSTANTS?.FEATURES.map((feature, index) => (
                         <div
                             key={feature.title}
                             className={cn(
