@@ -1,6 +1,6 @@
 import { RelevantCertifications, PersonalInput } from '@/components/custom/careers/ApplicationInput'
 import { Button } from '@/components/ui/button'
-import Autofill from "@/public/ai-beautify.svg"
+import Autofill from "@/public/career-icons/ai-beautify.svg"
 import { CAREER_CONSTANTS } from '@/lib/constants/career-constants'
 import React, { useState, useEffect, createContext, useContext } from 'react'
 import Link from 'next/link'
