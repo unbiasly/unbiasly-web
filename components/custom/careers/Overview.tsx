@@ -5,6 +5,7 @@ import { CAREER_CONSTANTS } from "@/lib/constants/career-constants"
 import Link from "next/link"
 import React from "react"
 import { useSelector } from 'react-redux';
+import { Remark } from "react-remark"
 import { RootState } from '@/lib/redux/store';
 import { Tag } from "@/components/custom/Tag"
 
@@ -28,7 +29,7 @@ const Overview: React.FC<TabProps> = ({ setActiveTab }) => {
         {selectedJob?.job_name}: {selectedJob.description?.title || CAREER_CONSTANTS.NOT_AVAILABLE.title}
       </h1>
       <p className="lg:font-normal lg:mb-4 lg:text-lg font-medium text-white">
-        {selectedJob.description?.description || CAREER_CONSTANTS.NOT_AVAILABLE.description}
+        <Remark>{selectedJob.description?.description || CAREER_CONSTANTS.NOT_AVAILABLE.description}</Remark>
       </p>
       <p className="lg:mb-4 lg:text-lg font-semibold text-white">
         Experience Level: {selectedJob.description?.experience_level || CAREER_CONSTANTS.NOT_AVAILABLE.experience}
