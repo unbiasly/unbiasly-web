@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; 
 import CareerContact from "@/components/custom/careers/CareerContact";
+import { CAREER_CONSTANTS } from '@/lib/constants/career-constants'
 import { CareerDropdown } from "@/components/custom/careers/CareerDropdown";
 import AppApi from "@/service/app.api";
 import { useDispatch } from 'react-redux';
@@ -103,10 +104,10 @@ export default function CareerIntro() {
         <div className="md:w-1/2 bg-[#D9D9D9] p-8 md:pb-5 md:px-12 rounded-[32px] "> 
 
           <h1 className="text-2xl md:text-3xl w-3/5 font-bold mb-2">
-            Got some ideas? we've got them team for it!
+            {CAREER_CONSTANTS?.INTRO_HEADLINE}
           </h1>
           <p className="text-black mb-5">
-            Tell us more about yourself and what you got in your mind.
+            {CAREER_CONSTANTS?.INTRO_SUB_HEADLINE}
           </p>
 
           <form className="space-y-8">

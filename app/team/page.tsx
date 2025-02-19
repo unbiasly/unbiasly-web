@@ -34,9 +34,11 @@ const page = () => {
             </div>
             <div className="md:w-1/4 flex flex-col items-center  md:items-start md:border-l-2 border-white rounded-lg px-4  ">
               <p className="text-2xl md:text-3xl text-white md:w-1/2  ">
-                Stay Connected
+                {TEAM_PAGE?.STAY_CONNECTED_HEADLINE}
               </p>
-              <p className="text-white text-md py-2">Get the latest news and updates on your feeds.</p>
+              <p className="text-white text-md py-2">
+                {TEAM_PAGE?.STAY_CONNECTED_SUB_HEADLINE}
+              </p>
               <div className="flex gap-4 py-2">
                 {TEAM_PAGE?.SOCIALS?.LINKS.map((link, index) => (
                   <Link

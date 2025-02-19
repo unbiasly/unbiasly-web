@@ -3,6 +3,9 @@ export const TEAM_PAGE = {
    SUB_HEADLINE:"Get to know the brilliant minds behind UnbiaslyAI. Our dedicated team and expert advisors bring a wealth of experience and insight, driving innovation and excellence. Discover the people who are shaping our vision and guiding us to success.",
    JOIN_TEAM_HEADLINE:"Got some ideas? We've got the team for it!",
    JOIN_TEAM_BUTTON:"Join the team",
+   STAY_CONNECTED_HEADLINE:"Stay Connected",
+   STAY_CONNECTED_SUB_HEADLINE:"Get the latest news and updates on your feeds.",
+
     SOCIALS: {
         TITLE: 'Social',
         LINKS: [

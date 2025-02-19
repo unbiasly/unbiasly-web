@@ -5,14 +5,9 @@ export const CAREER_CONSTANTS = {
         { name: "Department", value: "IT" },
       ],
 
-    JOB_DESCRIPTION: {
-        TITLE: "We are an applied AI lab building end-to-end software agents.",
-        PARAGRAPHS: [
-            "We're building collaborative AI teammates that enable engineers to focus on more interesting problems and empower engineering teams to strive for more ambitious goals.",
-            "Our team is small and talent-dense. Among our founding team, we have world-class competitive programmers, former founders, and leaders from companies at the cutting edge of AI including Cursor, Scale AI, Lunchclub, Modal, Google DeepMind, Waymo, and Nuro.",
-            "At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in 'The Fourth Pillar of Democracy.' We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy."
-        ]
-    },
+      INTRO_HEADLINE: "Got some ideas? we've got them team for it!",
+      INTRO_SUB_HEADLINE: "Tell us more about yourself and what you got in your mind.",
+
 
     OVERVIEW: "Overview",
     APPLICATION: "Application",
@@ -21,16 +16,6 @@ export const CAREER_CONSTANTS = {
     UPLOAD: "Upload resume here to autofill key application fields",
     UPLOAD_FILE: "Upload File",
 
-    // APPLICANT: [
-    //     { id:"name", label: "Name", type: "text" },
-    //     { id:"email", label: "Email", type: "email" },
-    //     { id:"address", label: "Address", type: "textarea" },
-    //     // date
-    //     { id:"date", label: "Earliest Possible Start Date", type: "date" },
-        
-    //     { id:"additional", label: "Is there anything else you'd like to add in support of your application?", type: "textarea" }
-
-    //    ],
     APPLY: "Apply for this role",
     OPEN_POSTIONS : "Browse Open Positions",
 

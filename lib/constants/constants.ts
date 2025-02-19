@@ -40,9 +40,6 @@ export const APP_CONSTANTS = {
 };
 
 
-
-
-
 export const DUMMY_POSTS = [
     {
       image:
