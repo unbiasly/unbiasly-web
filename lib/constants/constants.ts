@@ -38,3 +38,46 @@ export const APP_CONSTANTS = {
 
     APP_STORE_HEADLINE: 'To enjoy all the benefits of the UnbiaslyAI news app, download it now!',
 };
+
+
+
+
+
+export const DUMMY_POSTS = [
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+    {
+      image:
+        "https://cdn.pixabay.com/photo/2015/04/23/22/00/new-year-background-736885_1280.jpg",
+      date: "15 March 2024",
+      title: "Our personalized news delivery, supported by advanced AI technology, ensures you stay informed",
+    },
+]

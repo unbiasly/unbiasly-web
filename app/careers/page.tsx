@@ -1,10 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Correct import
-import { CAREER_CONSTANTS } from "@/lib/constants/career-constants";
-import CareerContact from "../../components/custom/careers/CareerContact";
-import CareersIntroInput from "@/components/custom/CareersIntroInput";
-import { CareerDropdown } from "@/components/custom/CareerDropdown";
+import { useRouter } from "next/navigation"; 
+import CareerContact from "@/components/custom/careers/CareerContact";
+import { CareerDropdown } from "@/components/custom/careers/CareerDropdown";
 import AppApi from "@/service/app.api";
 import { useDispatch } from 'react-redux';
 import { setSelectedJob } from '@/lib/redux/features/careerSlice';

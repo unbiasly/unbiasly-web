@@ -4,17 +4,19 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { format, parseISO } from "date-fns";
-// import AppApi from "@/service/app.api";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
 import { cn } from "@/lib/utils";
 import Loader from "@/components/custom/Loader";
+import { generateSlug } from "@/lib/utils/generateSlug";
+import LoadMore from "./LoadMore";
 
 type BlogCardProps = {
     title: string;
     date: string;
     image: string;
     slug: string;
+    author: string;
     _id: string;
     description: string;
     isFeatured?: boolean;
@@ -28,6 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
     slug,
     _id,
     image,
+    author,
     isFeatured = false,
     className,
 }) => {
@@ -78,7 +81,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
                     )}>
                         {title}
                     </div>
-                    {isFeatured && <p className="text-sm text-gray-300">By UnbiaslyAI</p>}
+                    {isFeatured && <p className="text-sm hidden lg:block text-gray-300">By {author}</p> }
                 </div>
             </div>
         </Link>
@@ -87,13 +90,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
 
 export function BlogPosts() {
-    const generateSlug = (title: string): string => {
-        return title
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
-            .trim()
-            .replace(/\s+/g, '-'); // Replace spaces with hyphens
-    };
+    
     
     const { data, fetchNextPage } = useInfiniteQuery({
         queryKey: ["blogPosts"],
@@ -133,6 +130,7 @@ export function BlogPosts() {
                             description={blogPost.summary}
                             date={blogPost.createdAt}
                             image={blogPost.thumbnail}
+                            author={blogPost.author}
                             slug={generateSlug(blogPost.title)}
                             isFeatured={pageIndex === 0 && postIndex === 0}
                             className={cn(
@@ -145,17 +143,7 @@ export function BlogPosts() {
             </div>
 
             {/* Load More Button */}
-            <div className="flex justify-center pt-4">
-                <button
-                    aria-label="Load More"
-                    onClick={onLoadMore}
-                    className="w-12 h-12 rounded-full bg-gray-700/50 hover:bg-gray-700 flex items-center justify-center transition-colors"
-                >
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-            </div>
+            <LoadMore onLoadMore={onLoadMore} />
         </div>
     );
 };

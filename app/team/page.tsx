@@ -1,6 +1,5 @@
 
 import TeamMemberCarousel from "@/components/custom/TeamMemberCarousel"
-import { FOOTER } from "@/lib/constants"
 import { TEAM_PAGE } from "@/lib/constants/team"
 import Image from "next/image"
 import Link from "next/link"
@@ -34,8 +33,6 @@ const page = () => {
               </button>
             </div>
             <div className="md:w-1/4 flex flex-col items-center  md:items-start md:border-l-2 border-white rounded-lg px-4  ">
-              {/* <div className="h-full  -rotate-90 bg-white border border-white"></div> */}
-              {/* <div className="w-full border-t -rotate-90 border-white rounded-lg "></div> */}
               <p className="text-2xl md:text-3xl text-white md:w-1/2  ">
                 Stay Connected
               </p>

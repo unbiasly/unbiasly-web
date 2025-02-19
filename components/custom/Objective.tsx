@@ -33,12 +33,12 @@ type ObjectiveProps = {
               />
           </div>
           <div className="mt-4 lg:mt-0 lg:ml-12 text-center lg:text-left">
-              <div className="inline-block relative">
+              <div className="lg:flex lg:flex-row flex-col items-center">
                   <div className="text-xl font-bold lg:text-3xl text-white">
                       {title}
                   </div>
                   {tagValue && (
-                      <div className="absolute left-full -top-1 lg:top-1 ml-2 lg:ml-6">
+                      <div className=" ml-2 lg:ml-6">
                           <Tag>{tagValue}</Tag>
                       </div>
                   )}

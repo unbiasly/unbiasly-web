@@ -1,10 +1,10 @@
 import Image from "next/image"
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { EllipsisVertical, Heart, Share } from "lucide-react"
+import { EllipsisVertical, Heart } from "lucide-react"
 import { notFound } from "next/navigation";
 import AppApi from "@/service/app.api";
-import ShareBlogPostIcon from "../../../components/custom/blogs/share-icon";
+import ShareBlogPost from "@/components/custom/blogs/ShareButton";
+import { formatDate } from "@/lib/utils/formatDate";
 
 const getBlogPost = async (id: string) => {
     try {
@@ -22,31 +22,6 @@ interface PageProps {
     };
     searchParams: {
         id: string
-    }
-}
-
-function formatDate(dateString: string): string {
-    const date = new Date(dateString);
-    
-    // Options for formatting the date
-    const options: Intl.DateTimeFormatOptions = {
-        weekday: 'long', // e.g., "Monday"
-        year: 'numeric', // e.g., "2025"
-        month: 'long', // e.g., "January"
-        day: 'numeric', // e.g., "28"
-    };
-
-    const time: Intl.DateTimeFormatOptions = {
-        hour: 'numeric', // e.g., "7"
-        minute: 'numeric', // e.g., "07"
-        second: 'numeric', // e.g., "48"
-    };
-    
-    // Use toLocaleString to format the date
-    if (dateString) {
-        return date.toLocaleString('en-US', options);
-    } else {
-        return date.toLocaleString('en-US', time);
     }
 }
 
@@ -103,7 +78,7 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
                             <Heart className="h-5 w-5" />
                         </Button>
                         <span className="text-sm text-muted-foreground">95</span>
-                        <ShareBlogPostIcon />
+                        <ShareBlogPost />
                     </div>
                     <div>
                         <Button variant="ghost" size="icon">

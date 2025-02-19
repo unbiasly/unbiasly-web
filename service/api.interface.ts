@@ -33,7 +33,6 @@ export enum Language {
 export interface NewsArticlesRequest {
   language: Language;
   category: Category[];
-  categoryIds: ["65f85734a080bdc947d1544f"]
   monthYear?: string;
   page: number;
 }
@@ -125,7 +124,6 @@ export interface JobAppplicationRequest {
         date: string;
     }>;
     relevant_certifications: string[];
-    // [key: string]: any;
 }
 
 

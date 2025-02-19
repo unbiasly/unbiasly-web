@@ -4,12 +4,9 @@ import {
     HydrationBoundary,
     QueryClient,
 } from "@tanstack/react-query";
-import BlogPosts from "./blog-posts";
+import BlogPosts from "@/components/custom/blogs/BlogPosts";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
-
-
-
 
 
 export default async function Blog() {

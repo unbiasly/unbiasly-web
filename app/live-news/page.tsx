@@ -1,47 +1,15 @@
 "use client";
-import ContentContainer from "@/components/custom/content-container";
 import { Language, NewsArticlesResponse } from "@/service/api.interface";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useFilter } from "./hooks";
+import { useFilter } from "./hooks/useFilter";
 import { handleResponse } from "@/service/fetchClient";
 import LanguageToggle from "@/components/custom/language-toggle/LanguageToggle";
 import Loader from "@/components/custom/Loader";
-import NewsLoader from "@/components/custom/NewsLoader";
-import { NewsCard } from "@/components/custom/NewsCard";
+import NewsLoader from "@/components/custom/news/NewsLoader";
+import { NewsCard } from "@/components/custom/news/NewsCard";
 import { useEffect, useState } from "react";
 
-
-// type DateFiltersProps = {
-//   filters: Array<DateFilter>;
-//   selected: DateFilter;
-//   onSelectFilter: (filter: DateFilter) => void;
-// };
-
-// const DateFilters: React.FC<DateFiltersProps> = ({
-//   filters,
-//   selected,
-//   onSelectFilter,
-// }) => {
-//   return (
-//     <div className="flex flex-col gap-y-4 text-gray-29 leading-consistent">
-//       {filters.map((filter) => (
-//         <div
-//           key={filter.label}
-//           className={cn(
-//             "cursor-pointer",
-//             selected.label === filter.label
-//               ? "text-xl leading-consistent text-black font-bold"
-//               : ""
-//           )}
-//           onClick={() => onSelectFilter(filter)}
-//         >
-//           {filter.label}
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
 
 const useArticles = (language: Language, monthYear?: string) =>
   useInfiniteQuery({
@@ -73,12 +41,8 @@ export default function LiveNews() {
         fetchNextPage,
         isError,
         isFetching,
-        isFetchingNextPage,
     } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH);
     
-
-    // const observerRef = useRef<IntersectionObserver | null>(null);
-    // const sentinelRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         if (!isFetching) {
@@ -101,11 +65,9 @@ export default function LiveNews() {
   return (
     <div className="w-full bg-black">
     <main className="w-full bg-black padding-container max-container  ">
-      <ContentContainer className="w-full">
 
         <div className="block lg:hidden w-full">
           <div className="flex  w-full">
-            {/* <PageTitle className="mt-5 mb-2">Live News</PageTitle> */}
             
           </div>
             <div className="pt-10">
@@ -139,7 +101,6 @@ export default function LiveNews() {
 
         <div className="hidden lg:block w-full">
           <div className="text-base leading-consistent font-bold text-white flex-col pt-10 w-full">
-            {/* <PageTitle className="mt-5 mb-5">Live News</PageTitle> */}
 
             <LanguageToggle 
                 checked={isHindiSelected} 
@@ -175,10 +136,6 @@ export default function LiveNews() {
 
           </div>
         </div>
-      </ContentContainer>
-      {/* <div className="mt-6 lg:mt-12 bg-black pt-6 lg:p-12 w-full">
-        <AppStoresV2 />
-      </div> */}
     </main>
     </div>
   );

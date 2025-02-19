@@ -1,7 +1,10 @@
 "use client"
 
 import { CAREER_CONSTANTS } from '@/lib/constants/career-constants'
+import { RootState } from '@/lib/redux/store';
+import { validateJobApplication } from '@/lib/utils/jobApplicationValidation';
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 export type PageNavProps = {
     activeTab: "overview" | "application" | "preview";
@@ -9,9 +12,20 @@ export type PageNavProps = {
   };
 
 const PageNav: React.FC<PageNavProps> = ({ activeTab, setActiveTab }) => {
-  const handleTabClick = (tab: "overview" | "application" | "preview") => {
-    setActiveTab(tab);
-  };
+    const formData = useSelector((state: RootState) => state.application.formData);
+    const handleTabClick = (tab: "overview" | "application" | "preview") => {
+        if (tab === "preview") {
+            const errors = validateJobApplication(formData);
+            if (errors.length === 0) {
+                setActiveTab(tab);
+            } else {
+                // Show error toast or alert
+                alert("Please fill in all required fields:\n\n" + errors.join("\n"));
+            }
+        } else {
+            setActiveTab(tab);
+        }
+    };
 
   return (
     <nav className="flex gap-8 lg:gap-16">

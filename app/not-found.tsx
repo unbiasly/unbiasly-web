@@ -1,4 +1,4 @@
-import AppStores from "@/components/custom/app-stores";
+import AppStores from "@/components/custom/AppStore";
 import HighlightContent from "@/components/custom/highlight-content";
 import NotFoundIcon from "@/public/not-found.png";
 import Image from "next/image";

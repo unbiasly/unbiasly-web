@@ -1,18 +1,18 @@
 "use client"
 
-import PageNav from "./PageNav"
-import Overview from "../../../components/custom/careers/Overview"
-import JobApplication, { ResumeFileProvider } from "../../../components/custom/careers/Application"
+import PageNav from "@/components/custom/careers/PageNav"
+import Overview from "@/components/custom/careers/Overview"
+import JobApplication, { ResumeFileProvider } from "@/components/custom/careers/Application"
 import React, { useEffect } from "react"
 import { useState } from "react"
-import { JobDetails } from "@/components/custom/JobDetails"
+import { JobDetails } from "@/components/custom/careers/JobDetails"
 import { useParams } from "next/navigation"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "@/lib/redux/store"
 import { setSelectedJob } from "@/lib/redux/features/careerSlice"
 import AppApi from "@/service/app.api"
 import Loader from "@/components/custom/Loader"
-import Preview from "../../../components/custom/careers/Preview"
+import Preview from "@/components/custom/careers/Preview"
 
 type TabType = "overview" | "application" | "preview"
 

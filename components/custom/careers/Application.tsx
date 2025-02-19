@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateFormData } from '@/lib/redux/features/applicationSlice';
 import { RootState } from '@/lib/redux/store';
 import { TabProps } from './Overview'
+import { validateJobApplication } from '@/lib/utils/jobApplicationValidation'
 
 export interface FormData {
     full_name: string;
@@ -73,12 +74,13 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
     }, [formData, dispatch]);
 
     const handlePreview = () => {
-        if (validateForm()) {
+        const errors = validateJobApplication(formData);
+        if (errors.length === 0) {
             dispatch(updateFormData(formData));
             setActiveTab("preview");
         } else {
             // Show error toast or alert
-            alert("Please fill in all required fields:\n\n" + formErrors.join("\n"));
+            alert("Problems Found:\n\n" + errors.join("\n"));
         }
     };
 
@@ -92,44 +94,44 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                 const fileFormData = new FormData();
                 fileFormData.append('file', file);
                 
-                // const response = await AppApi.postAutofillResume(fileFormData);
-                // if (response.data) {
-                //     interface EducationData {
-                //         degree?: string;
-                //         institution?: string;
-                //         dates?: string;
-                //     }
+                const response = await AppApi.postAutofillResume(fileFormData);
+                if (response.data) {
+                    interface EducationData {
+                        degree?: string;
+                        institution?: string;
+                        dates?: string;
+                    }
 
-                //     interface EmploymentData {
-                //         position?: string;
-                //         company_name?: string;
-                //         date?: string;
-                //     }
+                    interface EmploymentData {
+                        position?: string;
+                        company_name?: string;
+                        date?: string;
+                    }
 
-                //     const transformedData = {
-                //         ...response.data,
-                //         education: (response.data.education || []).map((edu: EducationData) => ({
-                //             degree: edu.degree || '',
-                //             institution: edu.institution || '',
-                //             dates: edu.dates || ''
-                //         })),
-                //         employment: (response.data.employment || []).map((emp: EmploymentData) => ({
-                //             position: emp.position || '',
-                //             company_name: emp.company_name || '',
-                //             date: emp.date || ''
-                //         }))
-                //     };
+                    const transformedData = {
+                        ...response.data,
+                        education: (response.data.education || []).map((edu: EducationData) => ({
+                            degree: edu.degree || '',
+                            institution: edu.institution || '',
+                            dates: edu.dates || ''
+                        })),
+                        employment: (response.data.employment || []).map((emp: EmploymentData) => ({
+                            position: emp.position || '',
+                            company_name: emp.company_name || '',
+                            date: emp.date || ''
+                        }))
+                    };
 
-                //     console.log('Transformed Data:', transformedData);
-                //     setFormData({
-                //         ...transformedData,
-                //         education: transformedData.education,
-                //         employment: transformedData.employment,
-                //         relevant_certifications: transformedData.relevant_certifications || [],
-                //         possible_join_date: '',
-                //         additional_information: ''
-                //     });
-                // }
+                    console.log('Transformed Data:', transformedData);
+                    setFormData({
+                        ...transformedData,
+                        education: transformedData.education,
+                        employment: transformedData.employment,
+                        relevant_certifications: transformedData.relevant_certifications || [],
+                        possible_join_date: '',
+                        additional_information: ''
+                    });
+                }
             } catch (error) {
                 console.error('Error uploading file:', error);
             } finally {
@@ -202,76 +204,6 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
         }
     };  
 
-    const validateForm = (): boolean => {
-        const errors: string[] = [];
-
-        // Validate personal information
-        if (!formData.full_name?.trim()) {
-            errors.push("Name is required");
-        }
-
-        // Validate contact information
-        if (!formData.contact_information.email?.trim()) {
-            errors.push("Email is required");
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contact_information.email)) {
-            errors.push("Invalid email format");
-        }
-
-        if (!formData.contact_information.phone?.trim()) {
-            errors.push("Phone number is required");
-        }
-
-        if (!formData.contact_information.address?.trim()) {
-            errors.push("Address is required");
-        }
-
-        // Validate education
-        if (!formData.education.length) {
-            errors.push("At least one education entry is required");
-        } else {
-            formData.education.forEach((edu, index) => {
-                if (!edu.degree?.trim()) {
-                    errors.push(`Degree is required for education entry ${index + 1}`);
-                }
-                if (!edu.institution?.trim()) {
-                    errors.push(`Institution is required for education entry ${index + 1}`);
-                }
-                if (!edu.dates?.trim()) {
-                    errors.push(`Dates are required for education entry ${index + 1}`);
-                }
-            });
-        }
-
-        // Validate employment
-        if (!formData.employment.length) {
-            errors.push("At least one employment entry is required");
-        } else {
-            formData.employment.forEach((emp, index) => {
-                if (!emp.position?.trim()) {
-                    errors.push(`Position is required for employment entry ${index + 1}`);
-                }
-                if (!emp.company_name?.trim()) {
-                    errors.push(`Company name is required for employment entry ${index + 1}`);
-                }
-                if (!emp.date?.trim()) {
-                    errors.push(`Date is required for employment entry ${index + 1}`);
-                }
-            });
-        }
-
-        // Validate skills
-        if (!formData.key_skills?.length) {
-            errors.push("At least one skill is required");
-        }
-
-        // Validate possible join date
-        // if (!formData.possible_join_date?.trim()) {
-        //     errors.push("Earliest possible start date is required");
-        // }
-
-        setFormErrors(errors);
-        return errors.length === 0;
-    };
 
   return (
     <div className="py-6 ">

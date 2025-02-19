@@ -10,7 +10,6 @@ const PageTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
       <div className="text-2xl leading-consistent lg:text-4xl lg:leading-consistent font-bold text-white">
         {children}
       </div>
-      {/* <div className="h-1 lg:h-2 bg-[#D9D9D9] rounded-lg w-full mt-0.5 lg:mt-2" /> */}
     </div>
   );
 };

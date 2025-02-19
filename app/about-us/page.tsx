@@ -1,4 +1,4 @@
-"use client";
+
 import HighlightContent from "@/components/custom/highlight-content";
 import SubTitle from "@/components/custom/page-subtitle";
 import PageTitle from "@/components/custom/page-title";
@@ -12,17 +12,16 @@ import { Objective } from "@/components/custom/Objective";
 
 export default function Page() {
   return (
-    <div className="w-full bg-black">
     <main className="padding-container max-container text-xs leading-consistent lg:text-base  text-white pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
     
         <div className="flex flex-row">
-            <div className="md:px-41 md:px-41 mt-3 lg:mt-6 flex flex-col lg:text-start text-center gap-y-5 lg:gap-y-10 px-6">
+            <div className=" md:px-30 lg:w-4/5  mt-3 lg:mt-6 flex flex-col lg:text-start text-center gap-y-5 lg:gap-y-10 px-6">
                 <PageTitle>{ABOUT_US_CONSTANTS?.PAGE_TITLE}</PageTitle>
                 <div className="w-full ">
-                    <p className="lg:text-xl lg:text-start lg:w-4/5 text-center  text-sm text-white" dangerouslySetInnerHTML={{ __html: ABOUT_US_CONSTANTS?.ABOUT_US }} />
+                    <p className="lg:text-xl lg:text-start  text-center  text-base text-white" dangerouslySetInnerHTML={{ __html: ABOUT_US_CONSTANTS?.ABOUT_US }} />
                 </div>
             </div>
-            <div className="hidden w-full lg:block ml-auto">
+            <div className="hidden lg:w-2/5 lg:block ml-auto">
                 <Image
                     src={Screen}
                     alt="UnbiaslyAI News"
@@ -69,6 +68,5 @@ export default function Page() {
         {ABOUT_US_CONSTANTS?.DIVIDER_2}
       </HighlightContent>
     </main>
-    </div>
   );
 }

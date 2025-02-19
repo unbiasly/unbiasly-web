@@ -21,7 +21,7 @@ type NewsCardProps = {
     articleUrl,
     publisher
   }) => {
-    console.log(publisher)
+    // console.log(publisher)
     return (
     <div className="w-full bg-[#1e1e1e] rounded-2xl overflow-hidden">
       {/* Mobile and Tablet View */}

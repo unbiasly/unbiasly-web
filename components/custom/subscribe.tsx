@@ -5,7 +5,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import AppApi from "@/service/app.api";
 import { NewsletterSubscribeResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
 

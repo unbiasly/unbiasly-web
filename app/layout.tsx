@@ -18,7 +18,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <body className="overscroll-none" > */}
       <body className={`${inter.className} overscroll-none min-h-screen flex flex-col bg-black`}
  >
 
