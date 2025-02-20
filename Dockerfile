@@ -27,5 +27,5 @@ COPY --from=builder /app ./
 # Expose port 3000
 EXPOSE 3000
 
-# Run Next.js in production mode
+# Run Next.js in production mode 
 CMD ["npm", "start"]
