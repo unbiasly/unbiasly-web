@@ -33,6 +33,7 @@ type NewsCardProps = {
                     alt={`Thumbnail for ${title}`}
                     layout="fill"
                     objectFit="cover"
+                    priority
                     className="rounded-xl"
                 />
             )}

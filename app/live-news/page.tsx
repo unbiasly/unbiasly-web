@@ -11,13 +11,13 @@ import { NewsCard } from "@/components/custom/news/NewsCard";
 import { useEffect, useState } from "react";
 
 
-const useArticles = (language: Language, monthYear?: string) =>
+const useArticles = (language: Language) =>
   useInfiniteQuery({
-    queryKey: ["articles", language, monthYear],
+    queryKey: ["articles", language],
     queryFn: ({ pageParam }) => {
       return fetch("/live-news/api", {
         method: "POST",
-        body: JSON.stringify({ language, page: pageParam, monthYear }),
+        body: JSON.stringify({ language, page: pageParam }),
       }).then<NewsArticlesResponse>(handleResponse);
     },
     initialPageParam: 1,
@@ -29,12 +29,10 @@ export default function LiveNews() {
 
     const [isLoading, setIsLoading] = useState(true);
 
-    
-
-  const {
-    isHindiSelected,
-    onLanguageCheckChanged,
-  } = useFilter(false);
+    const {
+        isHindiSelected,
+        onLanguageCheckChanged,
+    } = useFilter(false);
 
     const {
         data: newsArticlesData,
@@ -51,20 +49,23 @@ export default function LiveNews() {
     }, [isFetching]);
     
 
-  const handleOnViewportEnter = (entry: IntersectionObserverEntry | null) => {
-    if (!entry?.isIntersecting) return <NewsLoader />;
-    fetchNextPage();
-  };
+    const handleOnViewportEnter = (index: number, entry?: IntersectionObserverEntry | null) => {
+        if (index === 18 || !entry?.isIntersecting) {
+            console.log("fetching next page");
+            fetchNextPage();
+        }
+    };
 
-  if (isLoading) {
-    return (
-        <Loader  color='black'/>
-    );
-  }
+
+
+    if (isLoading) {
+        return (
+            <Loader  color='black'/>
+        );
+    }
 
   return (
-    <div className="w-full bg-black">
-    <main className="w-full bg-black padding-container max-container  ">
+    <main className=" padding-container max-container  ">
 
         <div className="block lg:hidden w-full">
           <div className="flex  w-full">
@@ -78,8 +79,14 @@ export default function LiveNews() {
           <div className="h-[1px] w-full my-4" />
           <div className="flex flex-col gap-y-3 w-full">
             {newsArticlesData?.pages.map((page) =>
-              page.articles.map((newsArticle) => (
-                <NewsCard
+              page.articles.map((newsArticle, articleIndex) => (
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    onViewportEnter={() => handleOnViewportEnter(articleIndex)}
+                    className="w-full"
+                  >
+                    <NewsCard
                     key={newsArticle._id}
                     image={newsArticle.thumbnail_url}
                     title={newsArticle.title}
@@ -88,14 +95,9 @@ export default function LiveNews() {
                     articleUrl={newsArticle?.link}
                     publisher={newsArticle?.source?.source_id}
                 />
+                    </motion.div>
               ))
             )}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              onViewportEnter={handleOnViewportEnter}
-              className="w-full"
-            />
           </div>
         </div>
 
@@ -113,22 +115,28 @@ export default function LiveNews() {
           <div className=" w-full">
             <div className="flex flex-col gap-y-7">
                 {newsArticlesData?.pages.map((page) =>
-                    page.articles.map((newsArticle) => (
-                    <NewsCard
-                        key={newsArticle._id}
-                        image={newsArticle.thumbnail_url}
-                        title={newsArticle.title}
-                        description={newsArticle.body_short}
-                        date={newsArticle.date}
+                    page.articles.map((newsArticle, articleIndex) => (
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            onViewportEnter={() => handleOnViewportEnter(articleIndex)}
+                            className="w-full"
+                        >
+                            <NewsCard
+                                key={newsArticle._id}
+                                image={newsArticle.thumbnail_url}
+                                title={newsArticle.title}
+                                description={newsArticle.body_short}
+                                date={newsArticle.date}
                         articleUrl={newsArticle?.link}
-                        publisher={newsArticle?.source?.source_id}
-                    />
+                                publisher={newsArticle?.source?.source_id}
+                            />
+                        </motion.div>
                     ))
                 )}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    onViewportEnter={handleOnViewportEnter}
                     className="flex text-white pb-5 justify-center w-full">
                     {isError ? "Failed to load news" : <NewsLoader />}
                 </motion.div>
@@ -137,7 +145,6 @@ export default function LiveNews() {
           </div>
         </div>
     </main>
-    </div>
   );
 }
 

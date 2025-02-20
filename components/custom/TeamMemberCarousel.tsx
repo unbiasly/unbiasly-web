@@ -1,9 +1,8 @@
 "use client"
-import React, { useState, useEffect, useCallback, useMemo, memo } from "react";
+import React, { useState, memo } from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
-import sr from "@/public/people/sr.jpg"
 import { TEAM_PAGE } from "@/lib/constants/team";
 import Link from "next/link";
 
@@ -34,8 +33,8 @@ const TeamSection = () => {
         }}
       />
       <h3 className="text-xl font-bold text-white mb-2">{member?.name}</h3>
-      <p className="text-gray-300 mb-2">{member?.role}</p>
-      <p className="text-gray-400 mb-4 line-clamp-1">{member?.bio}</p>
+      <p className="text-gray-300 mb-2 w-[20ch] truncate">{member?.role}</p>
+      <p className="text-gray-400 mb-4 w-[20ch] truncate">{member?.bio}</p>
       <div className="flex space-x-4">
       {member?.social.linkedin && (
                 <FaLinkedin className="text-white text-2xl hover:scale-125 transition-all" />
@@ -106,18 +105,17 @@ const TeamSection = () => {
           </button>
         ))}
       </div>
-
-      <div
-        className="flex overflow-x-auto justify-between  space-x-16 pb-8 px-4 hide-scrollbar"
-      >
-        {teamData[activeTab].map((member: any) => (
-          <TeamCard
-            key={member?.id}
-            member={member}
-            onClick={(member: any) => setModalData(member)}
-          />
-        ))}
-      </div>
+        <div className="flex overflow-x-auto gap-8 pb-8 px-4 min-w-full">
+            <div className="flex gap-8 px-4">
+                {teamData[activeTab].map((member: any) => (
+                    <TeamCard
+                        key={member?.id}
+                        member={member}
+                        onClick={(member: any) => setModalData(member)}
+                    />
+                ))}
+            </div>
+        </div>
 
       {modalData && <Modal member={modalData} onClose={() => setModalData(null)} />}
     </div>
