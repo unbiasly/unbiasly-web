@@ -1,4 +1,3 @@
-
 "use client";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { useEffect, useState, useMemo } from "react";
@@ -18,11 +17,14 @@ const ParticlesBackground = (props: any) => {
   }, []);
 
   // Callback for when particles are loaded
-  const particlesLoaded = () => {
-    setLoading(false); // Set loading to false when particles are loaded
+  const particlesLoaded = (): Promise<void> => {
+    return new Promise((resolve) => {
+      setLoading(false); // Set loading to false when particles are loaded
+      resolve(); // Resolve the promise
+    });
   };
 
-  const options:any = useMemo(
+  const options: any = useMemo(
     () => ({
       fpsLimit: 120,
       interactivity: {
@@ -101,7 +103,7 @@ const ParticlesBackground = (props: any) => {
       {init && (
         <Particles
           id={props.id}
-          init={particlesLoaded}
+          particlesLoaded={particlesLoaded} // Corrected to return a Promise
           options={options}
         />
       )}
