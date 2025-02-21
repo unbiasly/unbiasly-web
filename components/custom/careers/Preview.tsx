@@ -71,7 +71,7 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
             job_id: documentJobId || ''
         });
 
-        // console.log('Application submitted successfully:', response);
+        alert('Application submitted successfully');
     } catch (error) {
         console.error('Error submitting application:', error);
     }

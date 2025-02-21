@@ -14,6 +14,7 @@ import { updateFormData } from '@/lib/redux/features/applicationSlice';
 import { RootState } from '@/lib/redux/store';
 import { TabProps } from './Overview'
 import { validateJobApplication } from '@/lib/utils/jobApplicationValidation'
+import { toDate } from 'date-fns'
 
 export interface FormData {
     full_name: string;
@@ -64,7 +65,6 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
     const dispatch = useDispatch();
     const savedFormData = useSelector((state: RootState) => state.application.formData);
     const [formData, setFormData] = useState<FormData>(savedFormData);
-    const [formErrors, setFormErrors] = useState<string[]>([]);
     const { setResumeFile } = useContext(ResumeFileContext);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -110,16 +110,26 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
 
                     const transformedData = {
                         ...response.data,
-                        education: (response.data.education || []).map((edu: EducationData) => ({
-                            degree: edu.degree || '',
-                            institution: edu.institution || '',
-                            dates: edu.dates || ''
-                        })),
-                        employment: (response.data.employment || []).map((emp: EmploymentData) => ({
-                            position: emp.position || '',
-                            company_name: emp.company_name || '',
-                            date: emp.date || ''
-                        }))
+                        education: (response.data.education || []).map((edu: EducationData) => {
+                            const [fromDate, toDate] = (edu.dates || '').split(' - ');
+                            return {
+                                degree: edu.degree || '',
+                                institution: edu.institution || '',
+                                dates: edu.dates || '',
+                                fromDate: fromDate || '',
+                                toDate: toDate || ''
+                            };
+                        }),
+                        employment: (response.data.employment || []).map((emp: EmploymentData) => {
+                            const [fromDate, toDate] = (emp.date || '').split(' - ');
+                            return {
+                                position: emp.position || '',
+                                company_name: emp.company_name || '',
+                                date: emp.date || '',
+                                fromDate: fromDate || '',
+                                toDate: toDate || ''
+                            };
+                        })
                     };
 
                     console.log('Transformed Data:', transformedData);
@@ -178,29 +188,6 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
         if (!form.checkValidity()) {
             // Let the browser handle showing the validation messages
             return;
-        }
-        
-        const submissionData = {
-            ...formData,
-            education: formData.education.map(edu => ({
-                ...edu
-            })),
-            employment: formData.employment.map(emp => ({
-                ...emp
-            })),
-            job_titles: formData.job_titles,
-            company_names: formData.company_names,
-            key_skills: formData.key_skills,
-            relevant_certifications: formData.relevant_certifications,
-            possible_join_date: formData.possible_join_date,
-            additional_information: formData.additional_information
-        };
-
-        try {
-            // Your submission logic here
-            // console.log('Submission data:', submissionData);
-        } catch (error) {
-            console.error('Error submitting form:', error);
         }
     };  
 

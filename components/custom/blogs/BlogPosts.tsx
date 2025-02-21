@@ -117,7 +117,7 @@ export function BlogPosts() {
     }, [isFetching]);
 
       
-      if (isLoading || !data) {
+      if (!data) {
         return <Loader color="black"/>;
       }
 
