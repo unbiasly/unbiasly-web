@@ -20,17 +20,19 @@ const page = () => {
               <p className="text-2xl md:text-3xl text-white md:w-3/4 text-center md:text-left">
                {TEAM_PAGE?.JOIN_TEAM_HEADLINE}
               </p>
-              <button
-                className="max-w-lg rounded-xl text-black bg-[#D9D9D9] px-6 w-full text-sm md:text-md mt-5 py-2 "
+              <Link
+                href="/careers"
+                target="_blank"
+                className="max-w-lg rounded-xl text-center text-black bg-[#D9D9D9] px-6 w-full text-sm md:text-md mt-5 py-2 "
               >
-                <Link
-                  href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
-                  target="_blank"
-                  className=""
-                >
+              <button
+                aria-label={TEAM_PAGE?.JOIN_TEAM_BUTTON}
+                type="button"
+                className=""
+              >
                   {TEAM_PAGE?.JOIN_TEAM_BUTTON}
-                </Link>
               </button>
+                </Link>
             </div>
             <div className="md:w-1/4 flex flex-col items-center  md:items-start md:border-l-2 border-white rounded-lg px-4  ">
               <p className="text-2xl md:text-3xl text-white md:w-1/2  ">

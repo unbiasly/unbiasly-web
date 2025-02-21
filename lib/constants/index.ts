@@ -17,6 +17,7 @@ export const FOOTER = {
     COMPANY_NAME: ", Triverge Insight Private Limited",
     CHAT_WITH_US: "Chat with Us",
     CONTACT_US_EMAIL: "contact@unbiasly.ai",
+    CAREERS: "Careers",
     VISIT_US: "Visit Us",
     ADDRESS: "Basement C11, Green Park Extension, New Delhi-110016",
     SOCIALS: {

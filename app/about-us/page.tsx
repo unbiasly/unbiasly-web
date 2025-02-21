@@ -3,7 +3,7 @@ import HighlightContent from "@/components/custom/highlight-content";
 import SubTitle from "@/components/custom/page-subtitle";
 import PageTitle from "@/components/custom/page-title";
 import Image from "next/image";
-import Screen from "@/public/about-us-Image.png";
+import Screen from "@/public/app-images/group-screen4.png";
 import { ABOUT_US_CONSTANTS } from "@/lib/constants/aboutUs-constants";
 import { KeyFeatures } from "@/components/custom/KeyFeatures";
 import { Objective } from "@/components/custom/Objective";
@@ -14,14 +14,14 @@ export default function Page() {
   return (
     <main className="padding-container max-container text-xs leading-consistent lg:text-base  text-white pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
     
-        <div className="flex flex-row">
+        <div className="flex lg:flex-row flex-col space-y-5">
             <div className=" md:px-30 lg:w-4/5  mt-3 lg:mt-6 flex flex-col lg:text-start text-center gap-y-5 lg:gap-y-10 px-6">
                 <PageTitle>{ABOUT_US_CONSTANTS?.PAGE_TITLE}</PageTitle>
                 <div className="w-full ">
                     <p className="lg:text-xl lg:text-start  text-center  text-base text-white" dangerouslySetInnerHTML={{ __html: ABOUT_US_CONSTANTS?.ABOUT_US }} />
                 </div>
             </div>
-            <div className="hidden lg:w-2/5 lg:block ml-auto">
+            <div className="w-full flex justify-center lg:w-2/5 lg:block ml-auto">
                 <Image
                     src={Screen}
                     alt="UnbiaslyAI News"

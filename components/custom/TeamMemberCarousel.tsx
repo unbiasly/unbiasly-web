@@ -39,14 +39,14 @@ const TeamSection = () => {
       <h3 className="text-xl font-bold text-white mb-2">{member?.name}</h3>
       <p className="text-gray-300 mb-2 w-[20ch] truncate">{member?.role}</p>
       <p className="text-gray-400 mb-4 w-[20ch] truncate">{member?.bio}</p>
-      <div className="flex space-x-4">
+      {/* <div className="flex space-x-4">
       {member?.social.linkedin && (
                 <FaLinkedin className="text-white text-2xl hover:scale-125 transition-all" />
               )}
               {member?.social.twitter && (
                 <BsTwitterX className="text-white text-2xl hover:scale-125 transition-all" />
               )}
-      </div>
+      </div> */}
     </div>
   ));
 
@@ -68,7 +68,7 @@ const TeamSection = () => {
               src={member?.image}
               alt={member?.name}
               fill
-              className="object-cover rounded-lg"
+              className="object-contain  rounded-lg"
               onError={(e: any) => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde";
               }}
