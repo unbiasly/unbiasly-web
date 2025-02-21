@@ -380,7 +380,7 @@ export const RelevantCertifications: React.FC<CertificationInputs> = ({ certific
         <div className="py-1">
             <TitleAddButton title="Relevant Certifications" onClick={addCertification} />
             {certificationList.map((certification: string, index: number) => (
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3" key={index}>
                 <Input 
                     key={index}
                     id={`certification-${index}`}
