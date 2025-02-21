@@ -7,7 +7,6 @@
   html, 
   .hide-scrollbar {
     overflow: scroll;
-    overflow-x: hidden;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
@@ -16,8 +15,9 @@
   html::-webkit-scrollbar {
     width: 0;
     background: transparent;
-    display: none;
+    height: 0;
   }
+
 
   * {
     margin: 0;

@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { format, parseISO } from "date-fns";
 import { BlogPostResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
@@ -90,9 +90,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
 
 
 export function BlogPosts() {
+    const [isLoading, setIsLoading] = useState(true);
     
-    
-    const { data, fetchNextPage } = useInfiniteQuery({
+    const { data, fetchNextPage, isFetching } = useInfiniteQuery({
         queryKey: ["blogPosts"],
         queryFn: ({ pageParam }) => {
             const limit = pageParam === 1 ? 4 : 3;
@@ -110,8 +110,14 @@ export function BlogPosts() {
         fetchNextPage();
       };
 
+      useEffect(() => {
+        if (!isFetching) {
+            setIsLoading(false);
+        }
+    }, [isFetching]);
+
       
-      if (!data) {
+      if (isLoading || !data) {
         return <Loader color="black"/>;
       }
 
