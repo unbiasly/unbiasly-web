@@ -56,17 +56,8 @@ export default function Home() {
         </div>
       </div>
       <div className="padding-container   flex relative  pb-16">
-        <div className="w-full border-t border-white rounded-lg "></div>
-        <button
-          aria-label={HOME_PAGE?.COME_WORK_WITH_US}
-          type="button"
-          className="max-w-xs rounded-xl text-black bg-[#D9D9D9] px-6 w-2/6 text-sm md:text-md py-2 absolute ml-10 -top-5 "
-        >
-          <Link
-            href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
-            target="_blank"
-            className=""
-          >
+        <div className="w-full border-t border-white rounded-lg ">
+        
         <Link
           href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
           target="_blank"
@@ -74,6 +65,7 @@ export default function Home() {
         >
             {HOME_PAGE?.COME_WORK_WITH_US}
         </Link>
+        </div>
       </div>
     </div>
 
