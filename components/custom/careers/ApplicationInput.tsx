@@ -1,5 +1,5 @@
 import { Input } from "../../ui/input";
-import { Plus, PlusCircle, X } from 'lucide-react'
+import { Plus, X } from 'lucide-react'
 import { Textarea } from "../../ui/textarea";
 import React, { useState, useEffect } from "react";
 import { CAREER_CONSTANTS } from "@/lib/constants/career-constants";
@@ -362,6 +362,12 @@ export const RelevantCertifications: React.FC<CertificationInputs> = ({ certific
         onChange?.(newList);
     };
 
+    const handleRemoveCertification = (index: number) => {
+        const newList = certificationList.filter((_, i) => i !== index);
+        setCertificationList(newList);
+        onChange?.(newList);
+    };
+
     const handleCertificationChange = (index: number, value: string) => {
         const newList = certificationList.map((item, i) => 
             i === index ? value : item
@@ -371,9 +377,10 @@ export const RelevantCertifications: React.FC<CertificationInputs> = ({ certific
     };
 
     return(
-        <div className="py-2">
+        <div className="py-1">
             <TitleAddButton title="Relevant Certifications" onClick={addCertification} />
             {certificationList.map((certification: string, index: number) => (
+                <div className="flex items-center gap-3">
                 <Input 
                     key={index}
                     id={`certification-${index}`}
@@ -384,7 +391,12 @@ export const RelevantCertifications: React.FC<CertificationInputs> = ({ certific
                     value={certification}
                     onChange={(e) => handleCertificationChange(index, e.target.value)}
                 />
+                <button aria-label="Remove Certification" onClick={() => handleRemoveCertification(index)} className="flex items-center text-gray-400">
+                        <X color="white" className="h-5 w-5" />
+                    </button>
+                </div>
             ))}
+
         </div>
     );
 };

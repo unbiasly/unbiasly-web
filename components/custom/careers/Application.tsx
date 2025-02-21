@@ -132,7 +132,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                         })
                     };
 
-                    console.log('Transformed Data:', transformedData);
+                    // console.log('Transformed Data:', transformedData);
                     setFormData({
                         ...transformedData,
                         education: transformedData.education,
