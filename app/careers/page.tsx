@@ -133,7 +133,7 @@ export default function CareerIntro() {
               onClick={handleSubmit}
               className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition-colors text-lg"
             >
-              Let's get started!
+                Let&apos;s get started!
             </button>
           </form>
         </div>

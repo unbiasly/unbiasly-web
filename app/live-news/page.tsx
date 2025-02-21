@@ -78,9 +78,10 @@ export default function LiveNews() {
             </div>
           <div className="h-[1px] w-full my-4" />
           <div className="flex flex-col gap-y-3 w-full">
-            {newsArticlesData?.pages.map((page) =>
+            {newsArticlesData?.pages.map((page, pageIndex) =>
               page.articles.map((newsArticle, articleIndex) => (
                   <motion.div
+                    key={`${pageIndex}-${articleIndex}`}
                     initial="hidden"
                     whileInView="visible"
                     onViewportEnter={() => handleOnViewportEnter(articleIndex)}
@@ -114,9 +115,10 @@ export default function LiveNews() {
 
           <div className=" w-full">
             <div className="flex flex-col gap-y-7">
-                {newsArticlesData?.pages.map((page) =>
+                {newsArticlesData?.pages.map((page, pageIndex) =>
                     page.articles.map((newsArticle, articleIndex) => (
                         <motion.div
+                            key={`${pageIndex}-${articleIndex}`}
                             initial="hidden"
                             whileInView="visible"
                             onViewportEnter={() => handleOnViewportEnter(articleIndex)}

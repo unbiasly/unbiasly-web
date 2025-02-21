@@ -5,6 +5,7 @@ import { BsTwitterX } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import { TEAM_PAGE } from "@/lib/constants/team";
 import Link from "next/link";
+import Image from 'next/image';
 
 
 
@@ -23,15 +24,18 @@ const TeamSection = () => {
       role="button"
       aria-label={`View details for ${member?.name}`}
     >
-      <img
-        src={member?.image}
-        alt={member?.name}
-        className="w-full h-64 object-cover rounded-lg mb-4"
-        loading="lazy"
-        onError={(e: any) => {
-          e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde";
-        }}
-      />
+      <div className="relative w-full h-64 mb-4">
+        <Image
+          src={member?.image}
+          alt={member?.name}
+          fill
+          className="object-cover rounded-lg"
+          loading="lazy"
+          onError={(e: any) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde";
+          }}
+        />
+      </div>
       <h3 className="text-xl font-bold text-white mb-2">{member?.name}</h3>
       <p className="text-gray-300 mb-2 w-[20ch] truncate">{member?.role}</p>
       <p className="text-gray-400 mb-4 w-[20ch] truncate">{member?.bio}</p>
@@ -46,6 +50,8 @@ const TeamSection = () => {
     </div>
   ));
 
+  TeamCard.displayName = 'TeamCard';
+
   const Modal = ({ member, onClose }: any) => (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-black p-8  rounded-lg max-w-2xl w-full mx-4 relative border border-gray-800">
@@ -57,15 +63,17 @@ const TeamSection = () => {
           <MdClose size={24} />
         </button>
         <div className="flex flex-col md:flex-row gap-8">
-
-            <img
-                src={member?.image}
-                alt={member?.name}
-                className="w-full md:w-1/2 h-70 object-cover rounded-lg"
-                onError={(e: any) => {
-                    e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde";
-                }}
-                />
+          <div className="relative w-full md:w-1/2 h-[300px]">
+            <Image
+              src={member?.image}
+              alt={member?.name}
+              fill
+              className="object-cover rounded-lg"
+              onError={(e: any) => {
+                e.currentTarget.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde";
+              }}
+            />
+          </div>
           <div>
             <h2 className="text-2xl font-bold text-white mb-4">{member?.name}</h2>
             <p className="text-xl text-gray-300 mb-4">{member?.role}</p>

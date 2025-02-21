@@ -5,7 +5,7 @@ export const NAV_LINKS = [
     { href: '/blog', key: 'blog', label: 'Blog' },
     { href: '/team', key: 'team ', label: 'Team ' },
     { href: '/live-news', key: 'live_news', label: 'Live News' },
-    { href: '/careers', key: 'careers', label: 'Careers' },
+    // { href: '/careers', key: 'careers', label: 'Careers' },
 ];
 
 
