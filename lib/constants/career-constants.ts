@@ -59,7 +59,7 @@ export const CAREER_CONSTANTS = {
         ],
 
     JOB_INPUTS: [
-        { id: "full_name", label: "Name", type: "text", placeholder: "e.g. Robin Singh", value: "" },
+        { id: "name", label: "Name", type: "text", placeholder: "e.g. Robin Singh", value: "" },
         { id: "email", label: "Email", type: "email", placeholder: "e.g. name@example.com", value: "" },
         { id: "phone", label: "Phone", type: "tel", placeholder: "e.g. +919876543210", value: "" },
         { id: "address", label: "Address", type: "text", placeholder: "e.g. New Delhi, India", value: "" },

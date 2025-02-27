@@ -67,7 +67,7 @@ export const PersonalInput: React.FC<PersonalInputFields> = ({
     onChange, 
     placeholder,
     min,
-    required = id !== 'address' && id !== 'additional' // Set default based on field id
+    required = id !== 'additional'
 }) => {
     const getValidationProps = () => {
         const props: any = {

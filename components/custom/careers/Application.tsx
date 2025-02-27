@@ -243,8 +243,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                     label={personalInput.label} 
                     type={personalInput.type} 
                     placeholder={personalInput.placeholder}
-                    value={personalInput.id === 'full_name' ? formData.full_name : 
-                            formData.contact_information[personalInput.id as keyof typeof formData.contact_information] || ''} 
+                    value={personalInput.id === 'name' ? formData.full_name : formData.contact_information[personalInput.id as keyof typeof formData.contact_information] || ''} 
                     onChange={handleInputChange(personalInput.id)}
                 />
             ))}
