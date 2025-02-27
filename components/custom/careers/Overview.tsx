@@ -23,6 +23,14 @@ const Overview: React.FC<TabProps> = ({ setActiveTab }) => {
     return <div>{CAREER_CONSTANTS.NOT_AVAILABLE.job}</div>;
   }
 
+  const handleClick = () => {
+    setActiveTab("application");
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+  }
+
   return (
     <div className="lg:py-8 text-sm">
       <h1 className="lg:text-xl text-lg lg:font-bold font-semibold text-white mb-4">
@@ -49,7 +57,7 @@ const Overview: React.FC<TabProps> = ({ setActiveTab }) => {
       
       <div className="pt-4 flex flex-col gap-3 items-center">
         <Button 
-          onClick={() => setActiveTab("application")} 
+          onClick={handleClick} 
           size="lg" 
           className="w-full text-lg rounded-xl text-black bg-[#D9D9D9]"
         >

@@ -41,13 +41,18 @@ const Footer = () => {
                 className="text-white text-sm underline hover:no-underline"
               >
                 {FOOTER?.CONTACT_US_EMAIL}
-              </Link>
+                </Link>
             </div>
 
             <div className=''>
               <p className="text-xl text-white font-bold "></p>
               <p className="text-white text-sm">
+              <Link
+                href='https://maps.app.goo.gl/ZoqAm539tpTHBoZW8'
+                className="text-white text-sm underline hover:no-underline"
+              >
                 {FOOTER?.ADDRESS}
+              </Link>
               </p>
             </div>
             {/* TODO: Add careers link */}

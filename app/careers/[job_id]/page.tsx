@@ -10,7 +10,6 @@ import { useParams } from "next/navigation"
 import { useSelector, useDispatch } from "react-redux"
 import { RootState } from "@/lib/redux/store"
 import { setSelectedJob } from "@/lib/redux/features/careerSlice"
-import AppApi from "@/service/app.api"
 import Loader from "@/components/custom/Loader"
 import Preview from "@/components/custom/careers/Preview"
 
@@ -28,7 +27,7 @@ export default function CareersPage() {
             try {
                 setIsLoading(true)
                 if (!selectedJob || selectedJob.job_id !== job_id) {
-                    const jobData = await AppApi.getJobById(job_id as string)
+                    const jobData = await fetch(`/careers/api/jobs?id=${job_id}`).then(res => res.json());
                     dispatch(setSelectedJob(jobData.data))
                 }
             } catch (error) {

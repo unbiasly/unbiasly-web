@@ -1,3 +1,4 @@
+'use client'
 import { RelevantCertifications, PersonalInput } from '@/components/custom/careers/ApplicationInput'
 import { Button } from '@/components/ui/button'
 import Autofill from "@/public/career-icons/ai-beautify.svg"
@@ -7,14 +8,12 @@ import Link from 'next/link'
 import { Loader2, Upload } from 'lucide-react'
 import { EducationSection } from '@/components/custom/careers/ApplicationInput';
 import { EmploymentInput } from '@/components/custom/careers/ApplicationInput';
-import AppApi from '@/service/app.api'
 import { SkillsSection } from '@/components/custom/careers/ApplicationInput'
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFormData } from '@/lib/redux/features/applicationSlice';
 import { RootState } from '@/lib/redux/store';
 import { TabProps } from './Overview'
 import { validateJobApplication } from '@/lib/utils/jobApplicationValidation'
-import { toDate } from 'date-fns'
 
 export interface FormData {
     full_name: string;
@@ -67,6 +66,9 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
     const [formData, setFormData] = useState<FormData>(savedFormData);
     const { setResumeFile } = useContext(ResumeFileContext);
     const [isLoading, setIsLoading] = useState(false);
+    const [isUploaded, setIsUploaded] = useState(false);
+
+    
 
     // Update Redux when form data changes
     useEffect(() => {
@@ -94,8 +96,15 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                 const fileFormData = new FormData();
                 fileFormData.append('file', file);
                 
-                const response = await AppApi.postAutofillResume(fileFormData);
-                if (response.data) {
+                const response = await fetch('/careers/api/autofillResume', {
+                    method: 'POST',
+                    body: fileFormData
+                }).then(res => res.json());
+                console.log(response);
+                setIsUploaded(true);
+                
+                
+                if (response.data && response.data.contact_information) {
                     interface EducationData {
                         degree?: string;
                         institution?: string;
@@ -202,13 +211,13 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                 </div>
                 <p className="lg:text-lg text-sm text-[#d9d9d9]">
                     {CAREER_CONSTANTS?.UPLOAD}
-                </p>
+                </p>    
             </div>
             <label htmlFor="file-upload" className="lg:w-30 rounded-2xl lg:text-lg lg:font-bold p-1 lg:px-4 lg:text-[#D9D9D9] border border-gray-30 bg-[#1E1E1E] cursor-pointer flex items-center justify-center hover:scale-95">
                 {isLoading ? <Loader2 className="animate-spin" /> : (
                     <div className='flex items-center p-2 lg:p-0'>
                         <p className="lg:block hidden">
-                            {CAREER_CONSTANTS?.UPLOAD_FILE}
+                            {isUploaded ? CAREER_CONSTANTS?.RESUME_UPLOADED : CAREER_CONSTANTS?.UPLOAD_FILE}
                         </p>
                         <Upload color="white" className="lg:hidden block" />
                     <input
@@ -226,8 +235,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
         <form 
             className="lg:space-y-6 space-y-5 my-3 text-lg font-medium text-white bg-transparent rounded-xl"
             onSubmit={handleSubmit}
-            noValidate={false}
-        >
+            noValidate={false}>
             {CAREER_CONSTANTS?.JOB_INPUTS.map((personalInput, index) => (
                 <PersonalInput 
                     key={index} 
@@ -235,7 +243,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                     label={personalInput.label} 
                     type={personalInput.type} 
                     placeholder={personalInput.placeholder}
-                    value={personalInput.id === 'name' ? formData.full_name : 
+                    value={personalInput.id === 'full_name' ? formData.full_name : 
                             formData.contact_information[personalInput.id as keyof typeof formData.contact_information] || ''} 
                     onChange={handleInputChange(personalInput.id)}
                 />
@@ -281,6 +289,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                     key={index} 
                     id={input.id} 
                     label={input.label} 
+                    min={input.min}   
                     type={input.type} 
                     value={formData[input.id] || ''}
                     placeholder={input.placeholder}

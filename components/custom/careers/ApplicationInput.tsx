@@ -12,10 +12,15 @@ interface PersonalInputFields {
     value: string;
     onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     required?: boolean;
+    min?: string;
 }
 
 interface TitleInputFields {
     title: string;
+    onClick: () => void;
+}
+
+interface RemoveButtonProps {
     onClick: () => void;
 }
 
@@ -61,6 +66,7 @@ export const PersonalInput: React.FC<PersonalInputFields> = ({
     value, 
     onChange, 
     placeholder,
+    min,
     required = id !== 'address' && id !== 'additional' // Set default based on field id
 }) => {
     const getValidationProps = () => {
@@ -111,6 +117,7 @@ export const PersonalInput: React.FC<PersonalInputFields> = ({
                     type={type} 
                     className="lg:rounded-xl border-gray-30 rounded-full" 
                     value={value} 
+                    min={min}
                     onChange={onChange} 
                     placeholder={placeholder}
                     {...getValidationProps()}
@@ -136,6 +143,16 @@ const TitleAddButton: React.FC<TitleInputFields> = ({ title, onClick }) => {
     )
 }
 
+const RemoveButton: React.FC<RemoveButtonProps> = ({ onClick }) => {
+    return (
+        <div className="w-full flex justify-end">
+            <button aria-label="Remove" type="button" onClick={onClick} className="flex bg-[#D9D9D98A] rounded-full items-center space-x-1 p-1 text-gray-400">
+                <X color="white" className="h-5 w-5" />
+            </button>
+        </div>
+    )
+}
+
 export const EmploymentInput: React.FC<EmploymentInputFields> = ({ employment = [], onChange }) => {
     const [employeeInputs, setEmployeeInputs] = useState(employment);
 
@@ -148,6 +165,12 @@ export const EmploymentInput: React.FC<EmploymentInputFields> = ({ employment = 
         setEmployeeInputs(newInputs);
         onChange?.(newInputs);
     };
+
+    const removeEmployeeInput = (index: number) => {
+        const newInputs = employeeInputs.filter((_, i) => i !== index);
+        setEmployeeInputs(newInputs);
+        onChange?.(newInputs);
+    }
 
     const handleInputChange = (index: number, field: string, value: string) => {
         const newInputs = employeeInputs.map((input, i) => {
@@ -163,9 +186,8 @@ export const EmploymentInput: React.FC<EmploymentInputFields> = ({ employment = 
     return (
         <div className="py-1">
             <TitleAddButton title="Recent Employment" onClick={addEmployeeInput} />
-            
             {employeeInputs.map((employeeInput, index) => (
-                <div className="rounded-lg mb-8 mt-3 space-y-4" key={index}>
+                <div className=" relative rounded-lg mb-8 mt-3 space-y-4" key={index}>
                     <div className="border-gray-30 space-y-2">
                         <label htmlFor={`position-${index}`} className="block text-sm font-medium">
                             {CAREER_CONSTANTS?.EMPLOYMENT_INPUTS.position}
@@ -210,6 +232,7 @@ export const EmploymentInput: React.FC<EmploymentInputFields> = ({ employment = 
                             />
                         </div>
                     </div>
+                    <RemoveButton onClick={() => removeEmployeeInput(index)} />
                 </div>
             ))}
         </div>
@@ -233,6 +256,12 @@ export const EducationSection: React.FC<EducationInputFields> = ({ education = [
             status: 'completed' as const
         };
         const newInputs = [...educationInputs, newInput];
+        setEducationInputs(newInputs);
+        onChange?.(newInputs);
+    };
+
+    const removeEducationInput = (index: number) => {
+        const newInputs = educationInputs.filter((_, i) => i !== index);
         setEducationInputs(newInputs);
         onChange?.(newInputs);
     };
@@ -343,6 +372,7 @@ export const EducationSection: React.FC<EducationInputFields> = ({ education = [
                             )}
                         </div>
                     </div>
+                    <RemoveButton onClick={() => removeEducationInput(index)} />
                 </div>
             ))}
         </div>

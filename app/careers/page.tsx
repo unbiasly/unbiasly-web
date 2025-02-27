@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import CareerContact from "@/components/custom/careers/CareerContact";
 import { CAREER_CONSTANTS } from '@/lib/constants/career-constants'
 import { CareerDropdown } from "@/components/custom/careers/CareerDropdown";
-import AppApi from "@/service/app.api";
 import { useDispatch } from 'react-redux';
 import { setSelectedJob } from '@/lib/redux/features/careerSlice';
 import { Job } from '@/service/api.interface';
@@ -23,8 +22,13 @@ export default function CareerIntro() {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await AppApi.getDepartment();
-        const departmentOptions = response.data.map(dept => ({
+        const response = await fetch(`/careers/api/jobs`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json());
+        const departmentOptions = response.data.map((dept: { name: string }) => ({
           value: dept.name,
           label: dept.name
         }));
@@ -42,16 +46,16 @@ export default function CareerIntro() {
       if (!selectedDepartment) return;
       
       try {
-        const response = await AppApi.getJobByDepartment(selectedDepartment);
+        const response = await fetch(`/careers/api/jobs?department=${selectedDepartment}`).then(res => res.json());
         
-        // Store full job data
-        setJobsData(response);
+        // Store full job data - now accessing the data array
+        setJobsData(response.data);
 
-
-        const positionOptions = response.map(job => ({
+        // Map through response.data instead of response
+        const positionOptions = response.data.map((job: Job) => ({
           value: job.job_name,
           label: `${job.job_name}${job.description?.title ? ` - ${job.description.title}` : ''}`
-        })).filter(option => option.value !== '');
+        })).filter((option: {value: string; label: string}) => option.value !== '');
 
         setPositions(positionOptions);
       } catch (error) {
@@ -133,7 +137,7 @@ export default function CareerIntro() {
               onClick={handleSubmit}
               className="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition-colors text-lg"
             >
-                Let&apos;s get started!
+                {CAREER_CONSTANTS?.STARTED}
             </button>
           </form>
         </div>

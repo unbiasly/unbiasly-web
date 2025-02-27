@@ -34,7 +34,6 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
         alert('Please upload a resume first');
         return;
     }
-
     try {
         dispatch(updateFormData(applicationData.formData));
 
@@ -71,7 +70,9 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
             job_id: documentJobId || ''
         });
 
-        alert('Application submitted successfully');
+        console.log(response);
+        // if(response.message)
+
     } catch (error) {
         console.error('Error submitting application:', error);
     }
@@ -158,13 +159,13 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
             size="lg" 
             className="w-full text-black hover:bg-gray-200 transition-colors bg-[#D9D9D9]"
           >
-            Edit Application
+            {CAREER_CONSTANTS?.PREVIEW.EDIT}
           </Button>
           <Button 
             onClick={handleSubmit}
             className="w-full bg-[#D9D9D9] text-black hover:bg-gray-200 transition-colors"
           >
-            Submit Application
+            {CAREER_CONSTANTS?.PREVIEW.SUBMIT}
           </Button>
         </div>
       </div>

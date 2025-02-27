@@ -12,14 +12,16 @@ export const CAREER_CONSTANTS = {
     OVERVIEW: "Overview",
     APPLICATION: "Application",
 
-    AUTOFILL: "Autofill from resume",
-    UPLOAD: "Upload resume here to autofill key application fields",
+    AUTOFILL: "Autofill from Résumé",
+    UPLOAD: "Upload Résumé here to autofill key application fields",
     UPLOAD_FILE: "Upload File",
+    RESUME_UPLOADED: "Résumé uploaded",
+    STARTED: "Let's get started!",
 
     APPLY: "Apply for this role",
     OPEN_POSTIONS : "Browse Open Positions",
 
-    RESUME: "Resume",
+    RESUME: "Résumé",
 
     SOCIALS: {
         title: 'Social',
@@ -38,23 +40,26 @@ export const CAREER_CONSTANTS = {
             title: "Chat with us",
             subtitle: "Our team is ready to help.",
             contact: "contact@unbiasly.ai",
+            href: "mailto:contact@unbiasly.ai"
           },
           {
             icon: "/career-icons/location.svg",
             title: "Visit Us",
             subtitle: "Come say Hello to us at the hq",
             contact: `Basement C11, Green Park <br /> Extension, New Delhi-110016`,
+            href: "https://maps.app.goo.gl/ZoqAm539tpTHBoZW8"
           },
           {
             icon: "/career-icons/call-outline.svg",
             title: "Call Us",
             subtitle: "Mon-Fri 9am-6pm",
             contact: "contact@unbiasly.ai",
+            href: "mailto:contact@unbiasly.ai"
           },
         ],
 
     JOB_INPUTS: [
-        { id: "name", label: "Name", type: "text", placeholder: "e.g. Robin Singh", value: "" },
+        { id: "full_name", label: "Name", type: "text", placeholder: "e.g. Robin Singh", value: "" },
         { id: "email", label: "Email", type: "email", placeholder: "e.g. name@example.com", value: "" },
         { id: "phone", label: "Phone", type: "tel", placeholder: "e.g. +919876543210", value: "" },
         { id: "address", label: "Address", type: "text", placeholder: "e.g. New Delhi, India", value: "" },
@@ -102,6 +107,7 @@ export const CAREER_CONSTANTS = {
             id: "possible_join_date", 
             label: "Earliest Possible Start Date", 
             type: "date",
+            min: new Date().toISOString().split('T')[0],
             value: "" 
         },
         { 
@@ -137,5 +143,10 @@ export const CAREER_CONSTANTS = {
         location: "Location Not Available",
         type: "Job Type Not Available"
     },
+
+    PREVIEW: {
+        EDIT: "Edit Application",
+        SUBMIT: "Submit Application"
+    }
 
     }

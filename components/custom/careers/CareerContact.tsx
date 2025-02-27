@@ -22,7 +22,7 @@ const ContactContainer: React.FC<ContactContainerProps> = ({ title, subtitle, li
                 <h2 className="text-xl font-semibold">{title}</h2>
                 <p className="text-white">{subtitle}</p>
                 <Link
-                href={`mailto:${href}`}
+                href={href || ''} 
                 className="text-white hover:underline block"
                 dangerouslySetInnerHTML={{ __html: link }}/>
             </div>
@@ -43,7 +43,7 @@ const CareerContact = () => {
                 title={contact.title}
                 subtitle={contact.subtitle}
                 link={contact.contact}
-                href={contact.contact}
+                href={contact.href}
                 imageUrl={contact.icon}
                 />
             ))}
