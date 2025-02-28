@@ -7,6 +7,7 @@ import { TabProps } from './Overview';
 import AppApi from '@/service/app.api';
 import { ResumeFileContext } from './Application';
 import { updateFormData } from '@/lib/redux/features/applicationSlice';
+import toast from 'react-hot-toast';
 
 const PreviewSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-6 bg-[#1E1E1E] p-4 rounded-xl">
@@ -31,47 +32,30 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
 
   const handleSubmit = async () => {
     if (!resumeFile) {
-        alert('Please upload a resume first');
+        toast.error('Please upload a resume first');
         return;
     }
     try {
         dispatch(updateFormData(applicationData.formData));
 
-        const parsedData = {
-            full_name: applicationData.formData.full_name,
-            contact_information: {
-                email: applicationData.formData.contact_information.email,
-                phone: applicationData.formData.contact_information.phone,
-                address: applicationData.formData.contact_information.address
-            },
-            education: applicationData.formData.education.map(edu => ({
-                degree: edu.degree,
-                institution: edu.institution,
-                dates: edu.dates
-            })),
-            employment: applicationData.formData.employment.map(emp => ({
-                position: emp.position,
-                company_name: emp.company_name,
-                date: emp.date || ''
-            })),
-            job_titles: applicationData.formData.job_titles,
-            company_names: applicationData.formData.company_names,
-            key_skills: applicationData.formData.key_skills,
-            relevant_certifications: applicationData.formData.relevant_certifications,
-            possible_join_date: applicationData.formData.possible_join_date || '',
-            additional_information: applicationData.formData.additional_information || ''
-        };
+        const formData = new FormData();
+        formData.append('file', resumeFile);
+        formData.append('parsed_data', JSON.stringify(applicationData.formData));
+        formData.append('resume_email', applicationData.formData.contact_information.email);
+        formData.append('resume_name', applicationData.formData.full_name);
+        formData.append('job_id', documentJobId || '');
 
-        const response = await AppApi.postJobApply({
-            file: resumeFile,
-            parsed_data: parsedData,
-            resume_email: applicationData.formData.contact_information.email,
-            resume_name: applicationData.formData.full_name,
-            job_id: documentJobId || ''
-        });
+        const data = await fetch('/careers/api/jobApply', {
+            method: 'POST',
+            body: formData
+        })
+        const response = await data.json();
+        
+            toast.success(response.message, {
+                id: "application-success",
+            });
 
-        console.log(response);
-        // if(response.message)
+       
 
     } catch (error) {
         console.error('Error submitting application:', error);

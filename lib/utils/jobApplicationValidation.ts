@@ -16,7 +16,7 @@ export const validateJobApplication = (formData: FormData): string[] => {
     }
 
     if (!formData.contact_information.phone?.trim()) {
-        errors.push("Phone number is required");
+        errors.push("Phone No. is required");
     }
 
     if (!formData.contact_information.address?.trim()) {
@@ -25,41 +25,39 @@ export const validateJobApplication = (formData: FormData): string[] => {
 
     // Validate education
     if (!formData.education.length) {
-        errors.push("At least one education entry is required");
+            errors.push("Please add at least one educational qualification");
     } else {
         formData.education.forEach((edu, index) => {
-            if (!edu.degree?.trim()) {
-                errors.push(`Degree is required for education entry ${index + 1}`);
-            }
-            if (!edu.institution?.trim()) {
-                errors.push(`Institution is required for education entry ${index + 1}`);
-            }
-            if (!edu.dates?.trim()) {
-                errors.push(`Dates are required for education entry ${index + 1}`);
+            const missingFields = [];
+            if (!edu.degree?.trim()) missingFields.push("Degree");
+            if (!edu.institution?.trim()) missingFields.push("Institution");
+            if (!edu.dates?.trim()) missingFields.push("Dates");
+            
+            if (missingFields.length > 0) {
+                errors.push(`Fill all Required Fields\n (Education Entry ${index + 1}) \n ${missingFields.join("\n ")}`);
             }
         });
     }
 
     // Validate employment
     if (!formData.employment.length) {
-        errors.push("At least one employment entry is required");
+        errors.push("Please add at least one Employment History");
     } else {
         formData.employment.forEach((emp, index) => {
-            if (!emp.position?.trim()) {
-                errors.push(`Position is required for employment entry ${index + 1}`);
-            }
-            if (!emp.company_name?.trim()) {
-                errors.push(`Company name is required for employment entry ${index + 1}`);
-            }
-            if (!emp.date?.trim()) {
-                errors.push(`Date is required for employment entry ${index + 1}`);
+            const missingFields = [];
+            if (!emp.position?.trim()) missingFields.push("Position");
+            if (!emp.company_name?.trim()) missingFields.push("Company Name");
+            if (!emp.date?.trim()) missingFields.push("Date");
+            
+            if (missingFields.length > 0) {
+                errors.push(`Fill all Required Fields\n (Employment Entry ${index + 1}) \n ${missingFields.join("\n ")}`);
             }
         });
     }
 
     // Validate skills
     if (!formData.key_skills?.length) {
-        errors.push("At least one skill is required");
+        errors.push("Please add at least one skill");
     }
 
     return errors;

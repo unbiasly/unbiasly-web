@@ -21,8 +21,10 @@ const ContactContainer: React.FC<ContactContainerProps> = ({ title, subtitle, li
             
                 <h2 className="text-xl font-semibold">{title}</h2>
                 <p className="text-white">{subtitle}</p>
-                <Link
+                <a
+                aria-label={title}
                 href={href || ''} 
+                target="_blank"
                 className="text-white hover:underline block"
                 dangerouslySetInnerHTML={{ __html: link }}/>
             </div>

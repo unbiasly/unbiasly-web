@@ -7,6 +7,7 @@ import { CareerDropdown } from "@/components/custom/careers/CareerDropdown";
 import { useDispatch } from 'react-redux';
 import { setSelectedJob } from '@/lib/redux/features/careerSlice';
 import { Job } from '@/service/api.interface';
+import toast from "react-hot-toast";
 
 export default function CareerIntro() {
   const [selectedDepartment, setSelectedDepartment] = useState<string | null>(null);
@@ -95,6 +96,14 @@ export default function CareerIntro() {
     } else {
         console.log('No matching job found:', { selectedPosition, selectedDepartment })
     }
+    } else if(!selectedDepartment) {
+        toast.error("Select the Department", {
+            id: "department-error",
+        });
+    } else if(!selectedPosition) {
+        toast.error("Select your choice of Position", {
+            id: "position-error",
+        });
     }
   };
 

@@ -4,6 +4,7 @@ import { CAREER_CONSTANTS } from '@/lib/constants/career-constants'
 import { RootState } from '@/lib/redux/store';
 import { validateJobApplication } from '@/lib/utils/jobApplicationValidation';
 import React from 'react'
+import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 
 export type PageNavProps = {
@@ -19,8 +20,13 @@ const PageNav: React.FC<PageNavProps> = ({ activeTab, setActiveTab }) => {
             if (errors.length === 0) {
                 setActiveTab(tab);
             } else {
-                // Show error toast or alert
-                alert("Please fill in all required fields:\n\n" + errors.join("\n"));
+                errors.forEach((error, index) => {
+                    setTimeout(() => {
+                        toast.error(error, {
+                            id: error,
+                        });
+                    }, index * 200);
+                });
             }
         } else {
             setActiveTab(tab);

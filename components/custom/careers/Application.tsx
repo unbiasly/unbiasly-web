@@ -14,6 +14,7 @@ import { updateFormData } from '@/lib/redux/features/applicationSlice';
 import { RootState } from '@/lib/redux/store';
 import { TabProps } from './Overview'
 import { validateJobApplication } from '@/lib/utils/jobApplicationValidation'
+import toast from 'react-hot-toast'
 
 export interface FormData {
     full_name: string;
@@ -81,12 +82,17 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
             dispatch(updateFormData(formData));
             setActiveTab("preview");
         } else {
-            // Show error toast or alert
-            alert("Problems Found:\n\n" + errors.join("\n"));
+            errors.forEach((error, index) => {
+                setTimeout(() => {
+                    toast.error(error, {
+                        id: error,
+                    });
+                }, index * 200);
+            });
         }
     };
 
-    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             try {
