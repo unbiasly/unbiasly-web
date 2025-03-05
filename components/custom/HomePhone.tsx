@@ -93,12 +93,10 @@ export default function HomePhone() {
           {/* News app content */}
           {showVerticalSlide && (
             <div className="absolute inset-0 z-20 slide-up">
-              <Image
-                src="@/public/app-images/Hindi-Feed.png"
+              <img
+                src="/app-images/Hindi-Feed.png"
                 alt="App Screenshot"
                 className="w-full h-full object-contain"
-                quality={100}
-                
               />
             </div>
           )}
@@ -112,30 +110,27 @@ export default function HomePhone() {
             >
             <CarouselContent className="-ml-0">
               <CarouselItem className="pl-0">
-                <Image
-                  src="@/public/app-images/login.png"
+                <img
+                  src="/app-images/login.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   
-                  quality={100}
                 />
               </CarouselItem>
 
               <CarouselItem className="pl-0">
-                <Image
-                  src="@/public/app-images/Categories.png"
+                <img
+                  src="/app-images/Categories.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  quality={100}
                   
                 />
               </CarouselItem>
               <CarouselItem className="pl-0">
-                <Image
-                  src="@/public/app-images/English-Feed.png"
+                <img
+                  src="/app-images/English-Feed.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  quality={100}
                   
                 />
               </CarouselItem>
