@@ -4,8 +4,8 @@ import { useEffect, useState, useRef } from "react"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import LoginImage from "@/public/app-images/login.png"
 import CategoriesImage from "@/public/app-images/Categories.png"
-import EnglishNews from "@/public/app-images/news feed.png"
-import HindiNews from "@/public/app-images/news feed hindi.png"
+import EnglishNews from "@/public/app-images/English-Feed.png"
+import HindiNews from "@/public/app-images/Hindi-Feed.png"
 import Image from "next/image"
 
 export default function HomePhone() {
@@ -98,7 +98,7 @@ export default function HomePhone() {
                 alt="App Screenshot"
                 className="w-full h-full object-contain"
                 quality={100}
-                priority
+                
               />
             </div>
           )}
@@ -116,7 +116,7 @@ export default function HomePhone() {
                   src={LoginImage}
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  priority
+                  
                   quality={100}
                 />
               </CarouselItem>
@@ -127,7 +127,7 @@ export default function HomePhone() {
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   quality={100}
-                  priority
+                  
                 />
               </CarouselItem>
               <CarouselItem className="pl-0">
@@ -136,7 +136,7 @@ export default function HomePhone() {
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   quality={100}
-                  priority
+                  
                 />
               </CarouselItem>
             </CarouselContent>
