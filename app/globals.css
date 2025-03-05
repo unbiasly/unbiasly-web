@@ -4,7 +4,7 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sofia+Sans&display=swap');  
   
-  html, 
+  /* html, 
   .hide-scrollbar {
     overflow: scroll;
     -ms-overflow-style: none;
@@ -16,6 +16,34 @@
     width: 0;
     background: transparent;
     height: 0;
+  } */
+
+body {
+    --sb-track-color: #1e1e1e;
+    --sb-thumb-color: #4b4b4b;
+    --sb-size: 4px;
+  }
+  
+  body::-webkit-scrollbar {
+    width: var(--sb-size)
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 8px;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 8px;
+    
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    body {
+      scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
   }
 
 
@@ -155,9 +183,51 @@
     .get-app {
       @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
     }
+
+    .animate-slide-up {
+      animation: slideUp 0.5s ease-in-out forwards;
+      transform: translateY(0);
+    }
   }
   
 
   ::-webkit-calendar-picker-indicator {
     filter: invert(1);
 }
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+}
+
+@keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.5s ease-in-out;
+  }
+  
+  .slide-down {
+    animation: slideDown 0.5s ease-in-out;
+  }
+  
+  

@@ -5,8 +5,9 @@ import ParticlesBackground from "../components/custom/Particle";
 import AppStoresV2 from "@/components/custom/AppStoreV2";
 import { useEffect, useState } from "react";
 import Loader from "@/components/custom/Loader";
-import {HOME_PAGE } from "@/lib/constants";
+import { HOME_PAGE } from "@/lib/constants";
 import AppSplashScreenV2 from "@/public/app-images/AppSplashScreenV2.png"
+import HomePhone from "@/components/custom/HomePhone";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,18 +28,19 @@ export default function Home() {
         <ParticlesBackground />
       </div>
 
-      <div className=" mx-auto max-container md:padding-container flex flex-col md:flex-row items-center justify-center text-white text-5xl md:text-7xl py-16 gap-10 relative  z-10 ">
+      <div className=" md:mx-auto md:padding-container max-container flex flex-col md:flex-row items-center justify-center text-white text-5xl md:text-7xl py-16 gap-10 relative  z-10 ">
         <div className="flex flex-col items-center justify-center text-center px-12 py-12 w-full md:w-4/6 cursor-default ">
             {HOME_PAGE?.HEADLINE}
         </div>
 
-        <div className="flex flex-col items-center justify-center w-full md:w-2/6">
-          <Image
+        <div className="flex flex-col max-container items-center justify-center w-full md:w-2/6">
+          <HomePhone/>
+        {/* <Image
             src={AppSplashScreenV2}
             alt="App Screenshot"
             className="w-[200px] md:w-[263px] lg:w-[263px]"
             quality={100}
-          />
+          /> */}
           <AppStoresV2 />
 
         </div>
