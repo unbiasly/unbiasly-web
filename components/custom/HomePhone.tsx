@@ -2,10 +2,10 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-import LoginImage from "@/public/app-images/login.png"
-import CategoriesImage from "@/public/app-images/Categories.png"
-import EnglishNews from "@/public/app-images/English-Feed.png"
-import HindiNews from "@/public/app-images/Hindi-Feed.png"
+// import LoginImage from "@/public/app-images/login.png"
+// import CategoriesImage from "@/public/app-images/Categories.png"
+// import EnglishNews from "@/public/app-images/English-Feed.png"
+// import HindiNews from "@/public/app-images/Hindi-Feed.png"
 import Image from "next/image"
 
 export default function HomePhone() {
@@ -94,7 +94,7 @@ export default function HomePhone() {
           {showVerticalSlide && (
             <div className="absolute inset-0 z-20 slide-up">
               <Image
-                src={HindiNews}
+                src="@/public/app-images/Hindi-Feed.png"
                 alt="App Screenshot"
                 className="w-full h-full object-contain"
                 quality={100}
@@ -113,7 +113,7 @@ export default function HomePhone() {
             <CarouselContent className="-ml-0">
               <CarouselItem className="pl-0">
                 <Image
-                  src={LoginImage}
+                  src="@/public/app-images/login.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   
@@ -123,7 +123,7 @@ export default function HomePhone() {
 
               <CarouselItem className="pl-0">
                 <Image
-                  src={CategoriesImage}
+                  src="@/public/app-images/Categories.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   quality={100}
@@ -132,7 +132,7 @@ export default function HomePhone() {
               </CarouselItem>
               <CarouselItem className="pl-0">
                 <Image
-                  src={EnglishNews}
+                  src="@/public/app-images/English-Feed.png"
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
                   quality={100}
