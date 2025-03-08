@@ -59,6 +59,23 @@ export const validateJobApplication = (formData: FormData): string[] => {
     if (!formData.key_skills?.length) {
         errors.push("Please add at least one skill");
     }
+    if (!formData.possible_join_date) {
+        errors.push("Please select a possible join date");
+    } else {
+        const selectedDate = new Date(formData.possible_join_date);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Reset time portion for date comparison
+
+        if (isNaN(selectedDate.getTime())) {
+            errors.push("Invalid join date format");
+        } else if (selectedDate < today) {
+            errors.push("Join date cannot be in the past");
+        } else if (selectedDate.getFullYear() > today.getFullYear() + 100) {
+            errors.push("Please select a reasonable join date");
+        }
+    }
+
+    
 
     return errors;
 };

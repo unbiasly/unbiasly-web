@@ -1,3 +1,4 @@
+"use client"
 
 import HighlightContent from "@/components/custom/highlight-content";
 import SubTitle from "@/components/custom/page-subtitle";
@@ -7,10 +8,15 @@ import Screen from "@/public/app-images/group-screen4.png";
 import { ABOUT_US_CONSTANTS } from "@/lib/constants/aboutUs-constants";
 import { KeyFeatures } from "@/components/custom/KeyFeatures";
 import { Objective } from "@/components/custom/Objective";
+import { useEffect } from "react";
+
 
 
 
 export default function Page() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <main className="padding-container max-container text-xs leading-consistent lg:text-base  text-white pt-[58px] md:pt-[120px] pb-6 lg:pb-12">
     

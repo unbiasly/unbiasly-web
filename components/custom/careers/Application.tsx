@@ -65,7 +65,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
     const dispatch = useDispatch();
     const savedFormData = useSelector((state: RootState) => state.application.formData);
     const [formData, setFormData] = useState<FormData>(savedFormData);
-    const { setResumeFile } = useContext(ResumeFileContext);
+    const { resumeFile, setResumeFile } = useContext(ResumeFileContext);
     const [isLoading, setIsLoading] = useState(false);
     const [isUploaded, setIsUploaded] = useState(false);
 
@@ -92,7 +92,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
         }
     };
 
-        const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if (file) {
             try {
@@ -108,6 +108,7 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                 }).then(res => res.json());
                 console.log(response);
                 setIsUploaded(true);
+                
                 
                 
                 if (response.data && response.data.contact_information) {
@@ -217,7 +218,10 @@ const JobApplication: React.FC<TabProps> = ({ setActiveTab }) => {
                 </div>
                 <p className="lg:text-lg text-sm text-[#d9d9d9]">
                     {CAREER_CONSTANTS?.UPLOAD}
-                </p>    
+                </p> 
+                <p className="text-sm text-[#d9d9d9]">
+                    {isUploaded || resumeFile ? `Uploaded: ${resumeFile?.name}` : ""}
+                </p>   
             </div>
             <label htmlFor="file-upload" className="lg:w-30 rounded-2xl lg:text-lg lg:font-bold p-1 lg:px-4 lg:text-[#D9D9D9] border border-gray-30 bg-[#1E1E1E] cursor-pointer flex items-center justify-center hover:scale-95">
                 {isLoading ? <Loader2 className="animate-spin" /> : (

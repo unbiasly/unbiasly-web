@@ -1,11 +1,14 @@
-
+'use client'
 import TeamMemberCarousel from "@/components/custom/TeamMemberCarousel"
 import { TEAM_PAGE } from "@/lib/constants/team"
 import Image from "next/image"
 import Link from "next/link"
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const page = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <div className='bg-black w-full h-full py-8 '>
       <div className="padding-container max-container w-full flex flex-col justify-center ">

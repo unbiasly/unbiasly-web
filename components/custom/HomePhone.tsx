@@ -2,10 +2,10 @@
 
 import { useEffect, useState, useRef } from "react"
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
-// import LoginImage from "@/public/app-images/login.png"
-// import CategoriesImage from "@/public/app-images/Categories.png"
-// import EnglishNews from "@/public/app-images/English-Feed.png"
-// import HindiNews from "@/public/app-images/Hindi-Feed.png"
+import LoginImage from "@/public/app-images/login.png"
+import CategoriesImage from "@/public/app-images/Categories.png"
+import EnglishNews from "@/public/app-images/English-Feed.png"
+import HindiNews from "@/public/app-images/Hindi-Feed.png"
 import Image from "next/image"
 
 export default function HomePhone() {
@@ -78,7 +78,12 @@ export default function HomePhone() {
   }, [current, manualControl, api]);
 
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="flex items-center justify-center p-4" 
+    style={{
+        pointerEvents: 'none',
+        userSelect: 'none',
+        touchAction: 'none',
+    }}>
       {/* Phone mockup container */}
       <div className="relative w-[250px] lg:w-[270px] h-[515px] lg:h-[563px] bg-[#1e1e1e] rounded-[40px] shadow-xl overflow-hidden border-[10px] border-[#1e1e1e]">
         {/* Notch */}
@@ -93,8 +98,8 @@ export default function HomePhone() {
           {/* News app content */}
           {showVerticalSlide && (
             <div className="absolute inset-0 z-20 slide-up">
-              <img
-                src="/app-images/Hindi-Feed.png"
+              <Image
+                src={HindiNews}
                 alt="App Screenshot"
                 className="w-full h-full object-contain"
               />
@@ -104,34 +109,31 @@ export default function HomePhone() {
             className="w-full h-[calc(100%-90px)]" 
             setApi={setApi} 
             opts={{
-                align: "start", 
+                align: "start",
                 loop: true,
             }}
             >
             <CarouselContent className="-ml-0">
               <CarouselItem className="pl-0">
-                <img
-                  src="/app-images/login.png"
+                <Image
+                  src={LoginImage}
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  
                 />
               </CarouselItem>
 
               <CarouselItem className="pl-0">
-                <img
-                  src="/app-images/Categories.png"
+                <Image
+                  src={CategoriesImage}
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  
                 />
               </CarouselItem>
               <CarouselItem className="pl-0">
-                <img
-                  src="/app-images/English-Feed.png"
+                <Image
+                  src={EnglishNews}
                   alt="App Screenshot"
                   className="w-full h-full object-contain"
-                  
                 />
               </CarouselItem>
             </CarouselContent>
@@ -141,4 +143,3 @@ export default function HomePhone() {
     </div>
   )
 }
-

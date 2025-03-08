@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Button } from '@/components/ui/button';
 import { CAREER_CONSTANTS } from '@/lib/constants/career-constants';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/lib/redux/store';
 import { TabProps } from './Overview';
-import AppApi from '@/service/app.api';
 import { ResumeFileContext } from './Application';
 import { updateFormData } from '@/lib/redux/features/applicationSlice';
 import toast from 'react-hot-toast';
@@ -54,7 +53,9 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
             toast.success(response.message, {
                 id: "application-success",
             });
-
+            setTimeout(() => {
+                window.location.href = '/careers';
+            }, 2000);
        
 
     } catch (error) {
@@ -140,14 +141,13 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
         <div className="flex gap-4 pt-4">
           <Button 
             onClick={() => setActiveTab("application")} 
-            size="lg" 
             className="w-full text-black hover:bg-gray-200 transition-colors bg-[#D9D9D9]"
           >
             {CAREER_CONSTANTS?.PREVIEW.EDIT}
           </Button>
           <Button 
             onClick={handleSubmit}
-            className="w-full bg-[#D9D9D9] text-black hover:bg-gray-200 transition-colors"
+            className="w-full text-black hover:bg-gray-200 transition-colors bg-[#D9D9D9]"
           >
             {CAREER_CONSTANTS?.PREVIEW.SUBMIT}
           </Button>

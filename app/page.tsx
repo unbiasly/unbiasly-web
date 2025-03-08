@@ -13,6 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsLoading(false), 300); 
+    window.scrollTo(0, 0); 
     return () => clearTimeout(timeout); 
   }, []);
 

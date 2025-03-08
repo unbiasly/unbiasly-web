@@ -22,7 +22,7 @@ export default async function Blog() {
       lastPage.meta.hasNextPage ? lastPage.meta.currentPage + 1 : undefined,
   });
 
-  
+ 
 
     return (
         <main className="padding-container p-10 max-container ">

@@ -62,11 +62,18 @@ const Carousel = React.forwardRef<
       {
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
+        dragFree: false,
+        draggable: false,
+        watchDrag: false,
+        loop: true,
+        inViewThreshold: 0,
+        align: "center",
       },
       plugins
     )
     const [canScrollPrev, setCanScrollPrev] = React.useState(false)
     const [canScrollNext, setCanScrollNext] = React.useState(false)
+    const [autoScrollInterval, setAutoScrollInterval] = React.useState<NodeJS.Timeout | null>(null)
 
     const onSelect = React.useCallback((api: CarouselApi) => {
       if (!api) {
@@ -87,15 +94,9 @@ const Carousel = React.forwardRef<
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "ArrowLeft") {
-          event.preventDefault()
-          scrollPrev()
-        } else if (event.key === "ArrowRight") {
-          event.preventDefault()
-          scrollNext()
-        }
+        // Do nothing - keyboard navigation disabled
       },
-      [scrollPrev, scrollNext]
+      []
     )
 
     React.useEffect(() => {
@@ -125,7 +126,14 @@ const Carousel = React.forwardRef<
         value={{
           carouselRef,
           api: api,
-          opts,
+          opts: {
+            ...opts,
+            loop: true,
+            watchDrag: false,
+            watchResize: false,
+            duration: 25, 
+            draggable: false,
+          },
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
           scrollPrev,
