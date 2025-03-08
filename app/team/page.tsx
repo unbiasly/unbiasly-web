@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React, { useEffect } from 'react'
 
-const page = () => {
+const Page = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -70,4 +70,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

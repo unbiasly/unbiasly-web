@@ -63,7 +63,6 @@ const Carousel = React.forwardRef<
         ...opts,
         axis: orientation === "horizontal" ? "x" : "y",
         dragFree: false,
-        draggable: false,
         watchDrag: false,
         loop: true,
         inViewThreshold: 0,
@@ -131,8 +130,7 @@ const Carousel = React.forwardRef<
             loop: true,
             watchDrag: false,
             watchResize: false,
-            duration: 25, 
-            draggable: false,
+            duration: 25,
           },
           orientation:
             orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
