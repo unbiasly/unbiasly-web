@@ -64,6 +64,7 @@ export default function LiveNews() {
         );
     }
 
+
   return (
     <main className=" padding-container max-container  ">
 
@@ -95,6 +96,7 @@ export default function LiveNews() {
                     date={newsArticle.date}
                     articleUrl={newsArticle?.link}
                     publisher={newsArticle?.source?.source_id}
+                    isHindiSelected={isHindiSelected}
                 />
                     </motion.div>
               ))
@@ -132,6 +134,7 @@ export default function LiveNews() {
                                 date={newsArticle.date}
                         articleUrl={newsArticle?.link}
                                 publisher={newsArticle?.source?.source_id}
+                                isHindiSelected={isHindiSelected}
                             />
                         </motion.div>
                     ))

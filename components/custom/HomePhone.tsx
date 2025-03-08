@@ -104,7 +104,7 @@ export default function HomePhone() {
             className="w-full h-[calc(100%-90px)]" 
             setApi={setApi} 
             opts={{
-                align: "start",
+                align: "start", 
                 loop: true,
             }}
             >

@@ -91,10 +91,12 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
             {/* Featured Image */}
             <div className="relative w-full aspect-[16/9] mb-8 rounded-lg overflow-hidden">
                 <Image
+                    alt={`Blog post thumbnail for ${blogPost.title}`}
                     src={blogPost.thumbnail}
-                    alt="Featured image"
                     fill
                     className="rounded-lg object-cover"
+                    quality={100}
+                    priority={true}
                 />
             </div>
 

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { timeElapsed } from "@/lib/utils";
 import Link from "next/link";
+import { APP_CONSTANTS } from "@/lib/constants/constants";
 
 
 type NewsCardProps = {
@@ -9,8 +10,8 @@ type NewsCardProps = {
     description: string;
     date: string;
     articleUrl:string,
-    publisher:string
-
+    publisher:string,
+    isHindiSelected:boolean
   };
   
   export const NewsCard: React.FC<NewsCardProps> = ({
@@ -19,9 +20,10 @@ type NewsCardProps = {
     date,
     image,
     articleUrl,
-    publisher
+    publisher,
+    isHindiSelected
   }) => {
-    // console.log(publisher)
+
     return (
     <div className="w-full bg-[#1e1e1e] rounded-2xl overflow-hidden">
       {/* Mobile and Tablet View */}
@@ -47,7 +49,7 @@ type NewsCardProps = {
             target="_blank"
             className=""
           >
-            Click to read full article <span className="">{
+            {isHindiSelected ? APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_HINDI : APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_ENGLISH}<span className="">{
              publisher.charAt(0).toUpperCase()
              + publisher.slice(1)}</span>
           </Link>
@@ -82,7 +84,7 @@ type NewsCardProps = {
             target="_blank"
             className=""
           >
-            • Click to read full article <span className="">{
+            • {isHindiSelected ? APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_HINDI : APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_ENGLISH} <span className="">{
              publisher.charAt(0).toUpperCase()
              + publisher.slice(1)}</span>
           </Link>

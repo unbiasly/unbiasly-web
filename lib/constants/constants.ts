@@ -4,6 +4,12 @@ export const APP_CONSTANTS = {
     ENGLISH: "English",
     HINDI: "हिन्दी",
 
+    NEWS_CARD: {
+        PUBLISHER: "Publisher",
+        READ_FULL_ARTICLE_ENGLISH: "Click to read full article",
+        READ_FULL_ARTICLE_HINDI: "क्लिक करें पूरी लेख पढ़ने के लिए", 
+    },
+
     NAVIGATION: {
         HOME: "Home",
         ABOUT_US: "About Us",
