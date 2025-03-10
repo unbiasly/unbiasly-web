@@ -15,10 +15,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode; 
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en">
+      <script
+        async
+        src="https://cdn.branch.io/branch-latest.min.js"
+      ></script>
       <body className={inter.className}>
         <Providers>
           <div className="min-h-screen flex flex-col">
