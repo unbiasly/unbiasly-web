@@ -55,7 +55,7 @@ const Preview: React.FC<TabProps> = ({ setActiveTab }) => {
             });
             setTimeout(() => {
                 window.location.href = '/careers';
-            }, 2000);
+            }, 20);
        
 
     } catch (error) {

@@ -12,9 +12,39 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function timeElapsed(dateString: string): string {
+const timeStrings = {
+  false: {
+    minute: "minute",
+    minutes: "minutes",
+    hour: "hour",
+    hours: "hours",
+    day: "day",
+    days: "days",
+    week: "week",
+    weeks: "weeks",
+    month: "month",
+    months: "months",
+    ago: "ago"
+  },
+  true: {
+    minute: "मिनट",
+    minutes: "मिनट",
+    hour: "घंटा",
+    hours: "घंटे",
+    day: "दिन",
+    days: "दिन",
+    week: "सप्ताह",
+    weeks: "सप्ताह",
+    month: "महीना",
+    months: "महीने",
+    ago: "पहले"
+  }
+};
+
+export function timeElapsed(dateString: string, language: boolean): string {
   const date = new Date(dateString);
   const now = new Date();
+  const strings = timeStrings[language ? "true" : "false"];
 
   const minutesElapsed = differenceInMinutes(now, date);
   const hoursElapsed = differenceInHours(now, date);
@@ -23,14 +53,14 @@ export function timeElapsed(dateString: string): string {
   const monthsElapsed = differenceInMonths(now, date);
 
   if (minutesElapsed < 60) {
-    return `${minutesElapsed} minute${minutesElapsed !== 1 ? "s" : ""} ago`;
+    return `${minutesElapsed} ${minutesElapsed === 1 ? strings.minute : strings.minutes} ${strings.ago}`;
   } else if (hoursElapsed < 24) {
-    return `${hoursElapsed} hour${hoursElapsed !== 1 ? "s" : ""} ago`;
+    return `${hoursElapsed} ${hoursElapsed === 1 ? strings.hour : strings.hours} ${strings.ago}`;
   } else if (daysElapsed < 7) {
-    return `${daysElapsed} day${daysElapsed !== 1 ? "s" : ""} ago`;
+    return `${daysElapsed} ${daysElapsed === 1 ? strings.day : strings.days} ${strings.ago}`;
   } else if (weeksElapsed < 4) {
-    return `${weeksElapsed} week${weeksElapsed !== 1 ? "s" : ""} ago`;
+    return `${weeksElapsed} ${weeksElapsed === 1 ? strings.week : strings.weeks} ${strings.ago}`;
   } else {
-    return `${monthsElapsed} month${monthsElapsed !== 1 ? "s" : ""} ago`;
+    return `${monthsElapsed} ${monthsElapsed === 1 ? strings.month : strings.months} ${strings.ago}`;
   }
 }

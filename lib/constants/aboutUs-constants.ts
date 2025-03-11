@@ -65,8 +65,8 @@ export const ABOUT_US_CONSTANTS = {
     OTHER_FEATURES: [
         {
             imageSrc: "/other-features/community.svg",
-            imageAlt: "Community Driver Campaign",
-            title: "Community Driver Campaign",
+            imageAlt: "Community Driven Campaign",
+            title: "Community Driven Campaign",
             description: "Beyond being a news app, UnbiaslyAI engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption."
         },
         {

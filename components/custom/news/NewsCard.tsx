@@ -43,7 +43,7 @@ type NewsCardProps = {
         <div className="flex flex-col flex-grow">
             <h3 className="text-white text-md  ">{title}</h3>
             <div className="flex flex-col  text-left gap-2 text-sm text-gray-400 py-2">
-            <span>{timeElapsed(date)}</span>
+            <span>{timeElapsed(date, isHindiSelected)}</span>
             <Link
             href={articleUrl}
             target="_blank"
@@ -78,7 +78,7 @@ type NewsCardProps = {
                     <div className="lg:text-2xl text-2xl leading-consistent text-white ">{title}</div>
                 </div>
              <div className="max-md:mt-3 mt-4 text-xs leading-consistent lg:text-sm lg:leading-consistent flex tex text-gray-400 py-2">
-         <div className="mr-1"> {timeElapsed(date)}  </div>
+         <div className="mr-1"> {timeElapsed(date, isHindiSelected)}  </div>
           <Link
             href={articleUrl}
             target="_blank"

@@ -6,9 +6,9 @@ import Link from "next/link"
 import React, { useEffect } from 'react'
 
 const Page = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // window.onload = function() {
+    //     window.scrollTo(0, 0); // Scroll to the top (0, 0) coordinates
+    // };
   return (
     <div className='bg-black w-full h-full py-8 '>
       <div className="padding-container max-container w-full flex flex-col justify-center ">
