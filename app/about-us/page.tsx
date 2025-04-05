@@ -65,7 +65,7 @@ export default function Page() {
             imageAlt={feature.imageAlt}
             title={feature.title}
             description={feature.description}
-            tagValue={feature.tagValue}
+            // tagValue={feature.tagValue}
             className={index == 0 ? "mt-12" : ""}
           />
         ))}

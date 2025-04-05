@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useState } from "react";
 import { ABOUT_US_CONSTANTS } from "@/lib/constants/aboutUs-constants";
+import PhoneMockup from "./PhoneMockup";
 
 
 export const KeyFeatures = ({ ...props }) => {
@@ -50,13 +51,7 @@ export const KeyFeatures = ({ ...props }) => {
                             </div>
 
                             <div className="relative mt-8 lg:mt-0 mx-10">
-                                <Image
-                                    src={feature.imageSrc || "/placeholder.svg"}
-                                    alt={feature.title}
-                                    width={260}
-                                    height={524}
-                                    className="min-w-[173px] object-contain"
-                                    priority />
+                                <PhoneMockup imageSrc={feature.imageSrc} />
                             </div>
                         </div>
                     ))}
