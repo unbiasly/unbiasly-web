@@ -121,6 +121,11 @@ export function BlogPosts() {
         return <Loader color="black"/>;
       }
 
+    // Add a check for empty blog posts
+    if (data.pages.length === 0 || data.pages.every(page => page.data.length === 0)) {
+        return <div className="w-full h-full flex justify-center text-4xl text-center text-gray-500">No blog posts available at the moment.</div>;
+    }
+
     return (
         <div className="flex flex-col items-center">
             <div className={cn(

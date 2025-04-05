@@ -24,11 +24,11 @@ const AppApi = {
         }),
     getBlogPosts: (page: number, limit = "4") =>
         fetchClient.get<BlogPostResponse>(
-        `${devURL}/blogs?` +
+        `${baseURL}/blogs?` +
             new URLSearchParams({ page: page.toString(), limit }).toString()
         ),
     getBlogPost: (id: string) =>
-        fetchClient.get<BlogPost>(`${devURL}/blog/${id}`),
+        fetchClient.get<BlogPost>(`${baseURL}/blog/${id}`),
 
     getDepartment: () =>
         fetchClient.get<DepartmentResponse>(`${devURL}/v1/guest-user/department`),

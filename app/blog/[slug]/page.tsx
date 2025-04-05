@@ -71,7 +71,7 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
                 </div>
             </div>
 
-            <div className="border-t border-b border-white border-opacity-50 mb-8">
+            {/* <div className="border-t border-b border-white border-opacity-50 mb-8">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center">
                         <Button variant="ghost" size="icon" className="">
@@ -86,7 +86,7 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
                         </Button>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* Featured Image */}
             <div className="relative w-full aspect-[16/9] mb-8 rounded-lg overflow-hidden">

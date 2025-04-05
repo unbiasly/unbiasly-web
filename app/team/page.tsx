@@ -24,7 +24,7 @@ const Page = () => {
                {TEAM_PAGE?.JOIN_TEAM_HEADLINE}
               </p>
               <Link
-                href="/careers"
+                href="https://www.linkedin.com/company/unbiasly-ai/jobs/"
                 target="_blank"
                 className="max-w-lg rounded-xl text-center text-black bg-[#D9D9D9] px-6 w-full text-sm md:text-md mt-5 py-2 "
               >
