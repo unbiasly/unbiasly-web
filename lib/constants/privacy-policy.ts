@@ -18,7 +18,7 @@ export const PRIVACY_POLICY_CONSTANTS = {
             },
             {
                 term: "Application",
-                definition: "means the software program provided by the Company downloaded by You on any electronic device, named Unbiasly."
+                definition: "means the software program provided by the Company downloaded by You on any electronic device, named UnbiaslyAI."
             },
             {
                 term: "Company",
@@ -146,7 +146,7 @@ export const PRIVACY_POLICY_CONSTANTS = {
 
     SECURITY: {
         TITLE: "Security",
-        CONTENT: "We prioritize the security of your personal information and employ a range of security measures to safeguard your data from unauthorized access, alteration, disclosure, loss, misuse, or destruction. These measures encompass physical, managerial, operational, and technical safeguards, tailored to the type and sensitivity of the data we collect.",
+        CONTENT: "We prioritize the security of your personal information and employ a range of security measures to safeguard your data from unauthorized access, alteration, disclosure, loss, misuse, or destruction. These measures encompass physical, managerial, operational, and technical safeguards, tailored to the type and sensitivity of the data we collect. We are using same security measures as mentioned here under:-",
         MEASURES: [
             {
                 title: "Data Encryption",
@@ -207,9 +207,8 @@ export const PRIVACY_POLICY_CONSTANTS = {
 
     QUERIES: {
         TITLE: "Queries and Complaints",
-        CONTENT: "If you have any inquiries or complaints related to the protection of your personal information or privacy concerns, we are dedicated to safeguarding your data. For any feedback or concerns, you can get in touch with our designated contact person:",
+        CONTENT: "If you have any inquiries or complaints related to the protection of your personal information or privacy concerns, we are dedicated to safeguarding your data. For any feedback or concerns, you can get in touch with us:",
         CONTACT: {
-            NAME: "UnbiaslyAI",
             ADDRESS: "C-11, Basement, Green Park Extension, Delhi, India - 110016",
             EMAIL: "contact@unbiasly.ai"
         }

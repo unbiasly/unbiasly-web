@@ -19,25 +19,25 @@ export const ABOUT_US_CONSTANTS = {
             title: "Easy-to-understand",
             description:
                 "Get concise 55-word news summaries that are quick to read and easy to understand. Stay informed without the clutter.",
-            imageSrc: "/key-features/key-feature-1.png",
+            imageSrc: "/key-features/key-feature-1.PNG",
             },
             {
             title: "Source of verification",
             description:
                 "Every article is thoroughly verified to ensure it comes from reliable and authentic sources. Trust the news you read.",
-            imageSrc: "/key-features/key-feature-2.png",
+            imageSrc: "/key-features/key-feature-2.PNG",
             },
             {
             title: "Personalized news",
             description:
                 "Receive news tailored to your interests with our advanced AI and machine learning technology. Stay updated on what matters most to you.",
-            imageSrc: "/key-features/key-feature-3.png",
+            imageSrc: "/key-features/key-feature-3.PNG",
             },
             {
             title: "Multilingual support",
             description:
                 "Access news in your preferred language, including Hindi and English. Breaking barriers with multilingual support.",
-            imageSrc: "/key-features/key-feature-4.png",
+            imageSrc: "/key-features/key-feature-4.PNG",
             },
         ],
 
@@ -81,12 +81,12 @@ export const ABOUT_US_CONSTANTS = {
             title: "Combating Misinformation and Fake News",
             description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
         },
-        {
-            imageSrc: "/other-features/sentiment-analysis.svg",
-            imageAlt: "Sentiment Analysis",
-            title: "Sentiment Analysis",
-            description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.',
-            tagValue: "Upcoming"
-        },
+        // {
+        //     imageSrc: "/other-features/sentiment-analysis.svg",
+        //     imageAlt: "Sentiment Analysis",
+        //     title: "Sentiment Analysis",
+        //     description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.',
+        //     tagValue: "Upcoming"
+        // },
     ]
 };

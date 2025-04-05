@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -50,24 +50,24 @@ const SubscribeForm = () => {
     );
   });
   return (
-
-<div className="flex items-center bg-transparent rounded-md lg:w-[462px] h-10 border-white border-2 overflow-hidden ">
-  <input
-    type="email"
-    placeholder="Enter your email..."
-    className="h-full text-white px-4 bg-[#1E1E1E] w-4/6 placeholder:text-white focus:outline-none"
-    {...register("email")}
-    aria-label="Subscriber email"
-  />
-  <button
-    className="h-full text-black bg-[#D9D9D9] px-6 w-2/6 text-sm"
-    type="submit"
-    disabled={useSubscribe.isPending}
-  >
-    Join Us
-  </button>
-</div>
-
+    <form onSubmit={onSubmit}>
+        <div className="flex items-center bg-transparent rounded-md lg:w-[462px] h-10 border-white border-2 overflow-hidden">
+          <input
+            type="email"
+            placeholder="Enter your email..."
+            className="h-full text-white px-4 bg-[#1E1E1E] w-4/6 placeholder:text-white focus:outline-none"
+            {...register("email")}
+            aria-label="Subscriber email"
+          />
+          <button
+            className="h-full text-black bg-[#D9D9D9] px-6 w-2/6 text-sm"
+            type="submit"
+            disabled={useSubscribe.isPending}
+          >
+            Join Us
+          </button>
+        </div>
+    </form>
   );
 };
 

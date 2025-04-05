@@ -26,11 +26,11 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             },
             {
                 term: "AppStore",
-                definition: "means the service provided by Apple Inc. and/or its affiliates, a third -party, through which You may use in order to download the App."
+                definition: "means the service provided by Apple Inc. and/or its affiliates, a third-party, through which You may use in order to download the App."
             },
             {
-                term: "AppStore Terms And Conditions",
-                definition: "means terms and conditions that apply to the use of AppStore platform and as available at https://www.apple.com/legal/internet-services/itunes/us/terms.html."
+                term: "AppStore Terms and Conditions",
+                definition: "means terms and conditions that apply to the use of AppStore platform and as available at <a className='text-blue-500' href='https://www.apple.com/legal/internet-services/itunes/us/terms.html'>https://www.apple.com/legal/internet-services/itunes/us/terms.html</a>."
             },
             {
                 term: "Company",
@@ -54,11 +54,11 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             },
             {
                 term: "Google Play",
-                definition: "means the service provided by Google Ireland Limited, a third party, and/or its affiliates, which You may use in order to download the App."
+                definition: "means the service provided by Google Ireland Limited, a third-party, and/or its affiliates, which You may use in order to download the App."
             },
             {
                 term: "Google Play Terms of Service",
-                definition: "means terms of service that apply to the use of Google Play and available at https://play.google.com/about/play-terms.html"
+                definition: "means terms of service that apply to the use of Google Play and available at <a href='https://play.google.com/about/play-terms.html'>https://play.google.com/about/play-terms.html</a>"
             },
             {
                 term: "Service",
@@ -66,7 +66,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             },
             {
                 term: "Sponsored Content",
-                definition: "means content distinct from other regular editorial content displayed on the App, in the form of audio, video, text and/or image media which supports a third party Person’s brand message or views that is readily identifiable upfront through distinct and distinguishable font, colour, display schemes and/or usage of disclaiming words other than those used for regular editorial content (such as“Ad”, “Powered by”, “Sponsored by”, “With”, “Advertorial” and such other phrase of like meaning)."
+                definition: "means content distinct from other regular editorial content displayed on the App, in the form of audio, video, text and/or image media which supports a third-party Person’s brand message or views that is readily identifiable upfront through distinct and distinguishable font, colour, display schemes and/or usage of disclaiming words other than those used for regular editorial content (such as“Ad”, “Powered by”, “Sponsored by”, “With”, “Advertorial” and such other phrase of like meaning)."
             },
             {
                 term: "Terms and Conditions",
@@ -83,7 +83,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
         ]
     },
     ACKNOWLEDGEMENT: {
-        TITLE: "ACKNOWLWDGEMENT",
+        TITLE: "ACKNOWLEDGEMENT",
         CONTENT: "These are the Terms and Conditions that govern the use of this Service and establish the agreement between You and the Company. These Terms and Conditions outline the rights and obligations of all Users concerning the use of the Service.",
         ACCEPTANCE: [
             "Your access to and use of the Service are contingent upon your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions are applicable to all visitors, users, and others who access or use the Service",
@@ -97,13 +97,13 @@ export const TERMS_CONDITIONS_CONSTANTS = {
                 "(c) You are not prohibited by applicable laws from using the App."
             ]
         },
-        ENDING: "Your access to and use of the Service is also contingent upon your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your personal information when you use the Application or the Website. It also informs you about your privacy rights and how the law protects you. Please read our Privacy Policy carefully before using our Service."
+        ENDING: "Your access to and use of the Service is also contingent upon your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your personal information when you use the Application or the Website. It also informs you about your privacy rights and how the law protects you. Please read our <a href='/privacy-policy'>Privacy Policy</a> carefully before using our Service."
     },
     USER_ACCOUNTS: {
         TITLE: "User Accounts",
         CONTENT: ["When you create an account with us, it is essential that you provide accurate, complete, and up-to-date information. Failure to do so may result in a breach of the Terms, and we reserve the right to take appropriate actions, which may include the termination of your account on our service at our discretion.",
         "You bear the responsibility for safeguarding the password you use to access our service. This includes being vigilant about any activities or actions carried out under your password, whether on our service or via a third-party social media service.",
-        "Furthermore, you agree not to disclose your password to any third party, as this is crucial for maintaining the security of your account. It's important to note that our company will never solicit your password through unsolicited communications. In the event that you become aware of a breach of security or unauthorized use of your account, it is your responsibility to notify us immediately. This ensures that we can take prompt action to secure your account and investigate any potential breaches."
+        "Furthermore, you agree not to disclose your password to any third-party, as this is crucial for maintaining the security of your account. It's important to note that our company will never solicit your password through unsolicited communications. In the event that you become aware of a breach of security or unauthorized use of your account, it is your responsibility to notify us immediately. This ensures that we can take prompt action to secure your account and investigate any potential breaches."
     ],
         USERNAME_GUIDELINES: {
             CONTENT: "Additionally, when selecting a username, please adhere to the following guidelines:",
@@ -133,7 +133,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             CONTENT: [
                 "Any content you create with the App grants us a limited, non-exclusive, transferable, and assignable license to use it in accordance with our terms and policies, including the content regulation policy and any agreements between you and us. This license may also include our right to sublicense.",
                 "We also provide you with a limited, non-exclusive, non-transferable right to install and use the App on your device. Please refrain from copying the App or its components, except for creating a single archival backup copy.",
-                "Additionally, we grant you a non-exclusive, non-transferable license to access the content on the App that is owned by us. However, for any content owned by a third party, you need to obtain a license from that third party. We do not license such third-party content to you, and your usage is subject to the terms and conditions set forth by the respective third party."
+                "Additionally, we grant you a non-exclusive, non-transferable license to access the content on the App that is owned by us. However, for any content owned by a third-party, you need to obtain a license from that third-party. We do not license such third-party content to you, and your usage is subject to the terms and conditions set forth by the respective third-party."
             ]
         },
         WARRANTIES: {
@@ -151,6 +151,10 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             TITLE: "App Functionality",
             DESCRIPTION: "This Application is primarily designed to provide Users with an in-app browsing experience through an embedded browser. The core function of the App is to offer Users succinct summaries of third-party content within a unified platform, simplifying access to content relevant to their interests."
         },
+        THIRD_PARTY_CONTENT: {
+            TITLE: "Third-Party Content",
+            DESCRIPTION: "It's important to note that the App does not store, display, or transmit any content owned by third parties on its servers unless we have a valid license to do so or are otherwise authorized by applicable laws."
+        },
         LEAVING_APP: {
             TITLE: "Leaving the App",
             DESCRIPTION: "When Users read a summary and decide to access the source of that summary by following an external link, they should be aware that they are leaving the App. In such cases, the App and the Company do not assume any responsibility, liability, or obligation for any data breaches or damages that may occur as a result of using these external sources on third-party websites."
@@ -161,7 +165,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
         },
         USER_RESPONSIBILITY: {
             TITLE: "User Responsibility",
-            DESCRIPTION: "We are not responsible for the content posted by users of the Service. It is your responsibility to ensure that the content you post complies with the Terms and Conditions. You expressly understand and agree that you are solely responsible for the Content and for all activity that occurs under your account, whether conducted by you or any third party using your account."
+            DESCRIPTION: "We are not responsible for the content posted by users of the Service. It is your responsibility to ensure that the content you post complies with the Terms and Conditions. You expressly understand and agree that you are solely responsible for the Content and for all activity that occurs under your account, whether conducted by you or any third-party using your account."
         },
         PROHIBITED_CONTENT: {
             TITLE: "Prohibited Content",
@@ -177,7 +181,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             "Content containing viruses, worms, malware, trojan horses, or other disruptive elements.",
             "Infringement on the proprietary rights of any party, including patents, trademarks, trade secrets, copyrights, right of publicity, or other rights.",
             "Impersonation of any person or entity, including the Company and its employees or representatives.",
-            "Violation of the privacy of any third party.",
+            "Violation of the privacy of any third-party.",
             "Dissemination of false information and features."
         ]
     },
@@ -205,7 +209,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
             NOTICE: {
                 TITLE: "Written Notice",
                 CONTENT: "Submit your copyright infringement claim in writing to our designated copyright agent. You can reach us via email at info@unbiasly.ai. In your written notice, provide a detailed description of the alleged infringement.",
-                WARNING: "Please note that making a false claim of copyright infringement can have legal consequences. You may be held accountable for damages, which can include costs and attorneys' fees, if you misrepresent that any Content is infringing your copyright."
+                WARNING: "Please note that making a false claim of copyright infringement can have legal consequences. You may be held accountable for damages, which can include costs and legal fees, if you misrepresent that any Content is infringing your copyright."
             }
         }
     },
@@ -296,7 +300,7 @@ export const TERMS_CONDITIONS_CONSTANTS = {
 
     GRIEVANCE: {
         TITLE: "Notice for Grievances",
-        CONTENT: "If you have any grievances in relation to the platform or its Content, you may send a notice to the Grievance Redressal Officer at info@unbiasly.ai. We shall try to resolve the grievances as per timelines prescribed as per timelines prescribed in applicable law.",
+        CONTENT: "If you have any grievances in relation to the platform or its Content, you may send a notice to the Grievance Redressal Officer at info@unbiasly.ai. We shall try to resolve the grievances as per timelines prescribed in applicable law.",
         EMAIL: "contact@unbiasly.ai"
     }
 };

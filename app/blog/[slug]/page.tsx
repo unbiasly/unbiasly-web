@@ -53,15 +53,17 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
             </div>
 
             {/* Author Info */}
-            <div className="mb-8">
+            {/* <div className="mb-8">
                 <div className="flex items-center gap-4">
+                    <div className="w-[40px] h-[40px] p-1 rounded-full overflow-hidden">
                     <Image
-                        src="https://gravatar.com/avatar/5323657fa12994e98edbf93bbe8fdb56?s=400&d=robohash&r=x"
+                        src="/unbiasly-ai-logo-new.svg"
                         alt={blogPost.author}
                         width={40}
                         height={40}
-                        className="w-[40px] h-[40px] rounded-full"
-                    />
+                        className="object-contain "
+                        />
+                    </div>
                     <div>
                         <p className="font-medium underline">{blogPost.author}</p>
                         <div className="text-sm text-muted-foreground">
@@ -69,7 +71,7 @@ export default async function BlogPost({ params, searchParams }: PageProps) {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* <div className="border-t border-b border-white border-opacity-50 mb-8">
                 <div className="flex items-center justify-between">

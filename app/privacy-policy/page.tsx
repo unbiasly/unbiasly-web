@@ -134,7 +134,7 @@ export default function PrivacyPolicy() {
             content: <>
                 <p>{PRIVACY_POLICY_CONSTANTS.QUERIES.CONTENT}</p>
                 <ul>
-                    <li>Name: {PRIVACY_POLICY_CONSTANTS.QUERIES.CONTACT.NAME}</li>
+                    {/* <li>Name: {PRIVACY_POLICY_CONSTANTS.QUERIES.CONTACT.NAME}</li> */}
                     <li>Address: {PRIVACY_POLICY_CONSTANTS.QUERIES.CONTACT.ADDRESS}</li>
                     <li>Email: <Link href={`mailto:${PRIVACY_POLICY_CONSTANTS.QUERIES.CONTACT.EMAIL}`} className="underline text-white">
                         {PRIVACY_POLICY_CONSTANTS.QUERIES.CONTACT.EMAIL}
