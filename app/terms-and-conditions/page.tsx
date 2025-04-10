@@ -3,11 +3,16 @@ import Link from "next/link";
 import { TERMS_CONDITIONS_CONSTANTS } from "@/lib/constants/terms-and-conditions";
 
 export default function TermsAndConditions() {
+    // Helper function to render HTML content safely
+    const renderHtml = (content: string) => {
+        return <span dangerouslySetInnerHTML={{ __html: content }} />;
+    };
+
     // Helper function to render sections with title and content
     const renderSection = (title: string, content: string | React.ReactNode) => (
         <>
             <h2>{title}</h2>
-            {typeof content === 'string' ? <p>{content}</p> : content}
+            {typeof content === 'string' ? <p>{renderHtml(content)}</p> : content}
         </>
     );
 
@@ -17,11 +22,11 @@ export default function TermsAndConditions() {
             {items.map((item, index) => (
                 <li key={index}>
                     {typeof item === 'string' 
-                        ? item 
+                        ? renderHtml(item) 
                         : 'term' in item && item.term
-                            ? <>&quot;{item.term}&quot; {item.definition}</>
+                            ? <>&quot;{item.term}&quot; {renderHtml(item.definition)}</>
                             : 'title' in item && item.title
-                                ? <><strong>{item.title}:</strong> {item.description}</>
+                                ? <><strong>{item.title}:</strong> {renderHtml(item.description)}</>
                                 : item}
                 </li>
             ))}
@@ -53,7 +58,7 @@ export default function TermsAndConditions() {
                 ))}
                 <h3>{TERMS_CONDITIONS_CONSTANTS.ACKNOWLEDGEMENT.ELIGIBILITY.TITLE}</h3>
                 {renderList(TERMS_CONDITIONS_CONSTANTS.ACKNOWLEDGEMENT.ELIGIBILITY.ITEMS)}
-                <p>{TERMS_CONDITIONS_CONSTANTS.ACKNOWLEDGEMENT.ENDING}</p>
+                <p>{renderHtml(TERMS_CONDITIONS_CONSTANTS.ACKNOWLEDGEMENT.ENDING)}</p>
             </>
         },
         {
@@ -85,6 +90,8 @@ export default function TermsAndConditions() {
             content: <>
                 <h3>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.APP_FUNCTIONALITY.TITLE}</h3>
                 <p>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.APP_FUNCTIONALITY.DESCRIPTION}</p>
+                <h3>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.THIRD_PARTY_CONTENT.TITLE}</h3>
+                <p>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.THIRD_PARTY_CONTENT.DESCRIPTION}</p>
                 <h3>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.LEAVING_APP.TITLE}</h3>
                 <p>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.LEAVING_APP.DESCRIPTION}</p>
                 <h3>{TERMS_CONDITIONS_CONSTANTS.CONTENT_RESTRICTIONS.APP_AS_INTERMEDIARY.TITLE}</h3>
@@ -213,7 +220,7 @@ export default function TermsAndConditions() {
         <main className="mt-[58px] padding-container max-container md:mt-[120px]">
             <div className="flex flex-col text-white py-10">
                 <PageTitle>{TERMS_CONDITIONS_CONSTANTS.TITLE}</PageTitle>
-                <div className="prose prose-white prose-lg max-w-none mt-6 prose-p:text-white prose-headings:text-white prose-strong:text-white prose-li:text-white">
+                <div className="prose [&_a]:text-white [&_a]:font-bold prose-white prose-lg max-w-none mt-6 prose-p:text-white prose-headings:text-white prose-strong:text-white prose-li:text-white">
                     {sections.map((section, index) => (
                         <div key={index}>
                             {renderSection(section.title, section.content)}
