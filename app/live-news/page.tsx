@@ -86,7 +86,7 @@ export default function LiveNews() {
     }, [isFetching]);
     
     const handleOnViewportEnter = useCallback((index: number, entry?: IntersectionObserverEntry | null) => {
-        if (index === 18 || !entry?.isIntersecting) {
+        if (index === 18 || entry?.isIntersecting) {
             console.log("fetching next page");
             fetchNextPage();
         }
