@@ -26,6 +26,11 @@ type NewsCardProps = {
 
     return (
     <div className="w-full bg-[#1e1e1e] rounded-2xl overflow-hidden">
+        <Link
+            href={articleUrl}
+            target="_blank"
+            className=""
+          >
       {/* Mobile and Tablet View */}
       <div className="md:hidden flex items-center gap-4 p-2">
         <div className="relative min-w-24 min-h-24">
@@ -44,15 +49,11 @@ type NewsCardProps = {
             <h3 className="text-white text-md  ">{title}</h3>
             <div className="flex flex-col  text-left gap-2 text-sm text-gray-400 py-2">
             <span>{timeElapsed(date, isHindiSelected)}</span>
-            <Link
-            href={articleUrl}
-            target="_blank"
-            className=""
-          >
-            {isHindiSelected ? APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_HINDI : APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_ENGLISH}<span className="">{
+            
+            {/* {isHindiSelected ? APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_HINDI : APP_CONSTANTS?.NEWS_CARD?.READ_FULL_ARTICLE_ENGLISH}<span className="">{
              publisher.charAt(0).toUpperCase()
              + publisher.slice(1)}</span>
-          </Link>
+          </Link> */}
             </div>
         </div>
       </div>
@@ -92,6 +93,8 @@ type NewsCardProps = {
             </div>
        
         </div>
+        </Link>
     </div>
+
     );
   };

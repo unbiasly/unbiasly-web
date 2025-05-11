@@ -2,7 +2,7 @@
 export const NAV_LINKS = [
     { href: '/', key: 'home', label: 'Home' },
     { href: '/about-us', key: 'about_us', label: 'About Us' },
-    { href: '/blog', key: 'blog', label: 'Blog' },
+    // { href: '/blog', key: 'blog', label: 'Blog' },
     { href: '/team', key: 'team ', label: 'Team ' },
     { href: '/live-news', key: 'live_news', label: 'Live News' },
     // { href: '/careers', key: 'careers', label: 'Careers' },
