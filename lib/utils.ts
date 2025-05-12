@@ -13,7 +13,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 const timeStrings = {
-  false: {
+  english: {
     minute: "minute",
     minutes: "minutes",
     hour: "hour",
@@ -26,7 +26,7 @@ const timeStrings = {
     months: "months",
     ago: "ago"
   },
-  true: {
+  hindi: {
     minute: "मिनट",
     minutes: "मिनट",
     hour: "घंटा",
@@ -38,13 +38,28 @@ const timeStrings = {
     month: "महीना",
     months: "महीने",
     ago: "पहले"
+  },
+  bengali: {
+    minute: "মিনিট",
+    minutes: "মিনিট",
+    hour: "ঘণ্টা",
+    hours: "ঘণ্টা",
+    day: "দিন",
+    days: "দিন",
+    week: "সপ্তাহ",
+    weeks: "সপ্তাহ",
+    month: "মাস",
+    months: "মাস",
+    ago: "আগে"
   }
 };
 
-export function timeElapsed(dateString: string, language: boolean): string {
+type SupportedLanguage = keyof typeof timeStrings;
+
+export function timeElapsed(dateString: string, language: string): string {
   const date = new Date(dateString);
   const now = new Date();
-  const strings = timeStrings[language ? "true" : "false"];
+  const strings = timeStrings[language as SupportedLanguage] || timeStrings.english;
 
   const minutesElapsed = differenceInMinutes(now, date);
   const hoursElapsed = differenceInHours(now, date);

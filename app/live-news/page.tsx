@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { Language, NewsArticlesResponse } from "@/service/api.interface";
 import { handleResponse } from "@/service/fetchClient";
-import LanguageToggle from "@/components/custom/language-toggle/LanguageToggle";
 import Loader from "@/components/custom/Loader";
 import NewsLoader from "@/components/custom/news/NewsLoader";
 import { NewsCard } from "@/components/custom/news/NewsCard";
 import { useFilter } from "./hooks/useFilter";
+import { LanguageAccordion } from "@/components/custom/news/LanguageAccordion";
 
 // Custom hook for prefetching both language news
 const usePrefetchNews = () => {
@@ -36,6 +36,16 @@ const usePrefetchNews = () => {
         }).then<NewsArticlesResponse>(handleResponse),
       initialPageParam: 1,
     });
+    
+    queryClient.prefetchInfiniteQuery({
+      queryKey: ["articles", Language.BENGALI],
+      queryFn: () =>
+        fetch("/live-news/api", {
+          method: "POST",
+          body: JSON.stringify({ language: Language.BENGALI, page: 1 }),
+        }).then<NewsArticlesResponse>(handleResponse),
+      initialPageParam: 1,
+    });
   }, [queryClient]);
 };
 
@@ -57,14 +67,14 @@ const useArticles = (language: Language) =>
 export default function LiveNews() {
   usePrefetchNews();
   const [isLoading, setIsLoading] = useState(true);
-  const { isHindiSelected, onLanguageCheckChanged } = useFilter(false);
+  const { selectedLanguage, changeLanguage } = useFilter(Language.ENGLISH);
   const {
     data: newsArticlesData,
     fetchNextPage,
     isError,
     isFetching,
     hasNextPage,
-  } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH);
+  } = useArticles(selectedLanguage);
 
   const lastScrollY = useRef(0); 
   const fetchedPages = useRef(new Set<number>()); 
@@ -83,7 +93,7 @@ export default function LiveNews() {
 
   useEffect(() => {
     fetchedPages.current.clear();
-  }, [isHindiSelected]);
+  }, [selectedLanguage]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -150,12 +160,13 @@ export default function LiveNews() {
             date={newsArticle.date}
             articleUrl={newsArticle?.link}
             publisher={newsArticle?.source?.source_id}
-            isHindiSelected={isHindiSelected}
+            selectedLanguage={selectedLanguage}
+            // isHindiSelected={isHindiSelected}
           />
         </motion.div>
       ))
     );
-  }, [newsArticlesData, isHindiSelected, handleOnViewportEnter]);
+  }, [newsArticlesData, selectedLanguage, handleOnViewportEnter]);
 
   if (isLoading) {
     return <Loader color="black" />;
@@ -165,9 +176,13 @@ export default function LiveNews() {
     <main className="padding-container max-container">
       <div className="block lg:hidden w-full">
         <div className="pt-10">
-          <LanguageToggle
+          {/* <LanguageToggle
             checked={isHindiSelected}
             onCheckedChange={onLanguageCheckChanged}
+          /> */}
+          <LanguageAccordion 
+            selectedLanguage={selectedLanguage} 
+            onChange={(language) => changeLanguage(language)}
           />
         </div>
         <div className="h-[1px] w-full my-4" />
@@ -179,9 +194,13 @@ export default function LiveNews() {
 
       <div className="hidden lg:block w-full">
         <div className="text-base leading-consistent font-bold text-white flex-col pt-10 w-full">
-          <LanguageToggle
+          {/* <LanguageToggle
             checked={isHindiSelected}
             onCheckedChange={onLanguageCheckChanged}
+          /> */}
+          <LanguageAccordion 
+            selectedLanguage={selectedLanguage} 
+            onChange={(language) => changeLanguage(language)}
           />
         </div>
         <div className="h-[1px] w-full mt-7 mb-9" />
