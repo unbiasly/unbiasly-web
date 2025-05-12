@@ -3,9 +3,9 @@ import Footer from "@/components/custom/footer";
 import './globals.css'
 import { Providers } from "./providers";
 import Navbar from "@/components/custom/Navbar";
-import { Poppins } from "next/font/google";
+import { Merriweather } from "next/font/google";
 import { Toaster } from "react-hot-toast";
-const inter = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
+const inter = Merriweather({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Unbiasly AI",

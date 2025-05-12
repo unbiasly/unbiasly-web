@@ -28,6 +28,7 @@ interface Meta {
 export enum Language {
   ENGLISH = "english",
   HINDI = "hindi",
+  BENGALI = "bengali",
 }
 
 export interface NewsArticlesRequest {

@@ -1,16 +1,21 @@
+import { Language } from "@/service/api.interface";
 import { useState } from "react";
 
 export const useFilter = (
-  isHindiSelectedInitial: boolean,
+  selectedLanguageInitial: Language,
 ) => {
-  const [isHindiSelected, setIsHindiSelected] = useState(isHindiSelectedInitial);
+  const [selectedLanguage, setSelectedLanguage] = useState(selectedLanguageInitial);
 
-  const onLanguageCheckChanged = (checked: boolean) => {
-    setIsHindiSelected(checked);
+//   const onLanguageCheckChanged = (checked: boolean) => {
+//     setSelectedLanguage(checked);
+//   };
+    const changeLanguage = (language: Language) => {
+    setSelectedLanguage(language);
   };
 
   return {
-    isHindiSelected,
-    onLanguageCheckChanged,
+    selectedLanguage,
+    // onLanguageCheckChanged,
+    changeLanguage,
   };
 };

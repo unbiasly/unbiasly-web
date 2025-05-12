@@ -4,41 +4,49 @@ import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useFilter } from "./hooks/useFilter";
 import { handleResponse } from "@/service/fetchClient";
-import LanguageToggle from "@/components/custom/language-toggle/LanguageToggle";
 import Loader from "@/components/custom/Loader";
 import NewsLoader from "@/components/custom/news/NewsLoader";
 import { NewsCard } from "@/components/custom/news/NewsCard";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { LanguageAccordion } from "@/components/custom/news/LanguageAccordion";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // Custom hook for prefetching both language news
 const usePrefetchNews = () => {
-    const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+    queryClient.prefetchInfiniteQuery({
+      queryKey: ["articles", Language.ENGLISH],
+      queryFn: () =>
+        fetch("/live-news/api", {
+          method: "POST",
+          body: JSON.stringify({ language: Language.ENGLISH, page: 1 }),
+        }).then<NewsArticlesResponse>(handleResponse),
+      initialPageParam: 1,
+    });
+
+    queryClient.prefetchInfiniteQuery({
+      queryKey: ["articles", Language.HINDI],
+      queryFn: () =>
+        fetch("/live-news/api", {
+          method: "POST",
+          body: JSON.stringify({ language: Language.HINDI, page: 1 }),
+        }).then<NewsArticlesResponse>(handleResponse),
+      initialPageParam: 1,
+    });
     
-    useEffect(() => {
-      // Prefetch English news
-      queryClient.prefetchInfiniteQuery({
-        queryKey: ["articles", Language.ENGLISH],
-        queryFn: () => {
-          return fetch("/live-news/api", {
-            method: "POST",
-            body: JSON.stringify({ language: Language.ENGLISH, page: 1 }),
-          }).then<NewsArticlesResponse>(handleResponse);
-        },
-        initialPageParam: 1,
-      });
-      
-      // Prefetch Hindi news
-      queryClient.prefetchInfiniteQuery({
-        queryKey: ["articles", Language.HINDI],
-        queryFn: () => {
-          return fetch("/live-news/api", {
-            method: "POST",
-            body: JSON.stringify({ language: Language.HINDI, page: 1 }),
-          }).then<NewsArticlesResponse>(handleResponse);
-        },
-        initialPageParam: 1,
-      });
-    }, [queryClient]);
+    queryClient.prefetchInfiniteQuery({
+      queryKey: ["articles", Language.BENGALI],
+      queryFn: () =>
+        fetch("/live-news/api", {
+          method: "POST",
+          body: JSON.stringify({ language: Language.BENGALI, page: 1 }),
+        }).then<NewsArticlesResponse>(handleResponse),
+      initialPageParam: 1,
+    });
+  }, [queryClient]);
 };
 
 const useArticles = (language: Language) =>
@@ -58,66 +66,108 @@ const useArticles = (language: Language) =>
   });
 
 export default function LiveNews() {
-    usePrefetchNews();
+  usePrefetchNews();
+  const [isLoading, setIsLoading] = useState(true);
+  const { selectedLanguage, changeLanguage } = useFilter(Language.ENGLISH);
+  const {
+    data: newsArticlesData,
+    fetchNextPage,
+    isError,
+    isFetching,
+    hasNextPage,
+  } = useArticles(selectedLanguage);
 
-    const [isLoading, setIsLoading] = useState(true);
+  const lastScrollY = useRef(0); 
+  const fetchedPages = useRef(new Set<number>()); 
+  const sentinelRef = useRef<HTMLDivElement>(null); 
 
-    const {
-        isHindiSelected,
-        onLanguageCheckChanged,
-    } = useFilter(false);
+  const articles = useMemo(() => {
+    if (!newsArticlesData) return [];
+    return newsArticlesData.pages.flatMap((page) => page.articles);
+  }, [newsArticlesData]);
 
-    const {
-        data: newsArticlesData,
-        fetchNextPage,
-        isError,
-        isFetching,
-    } = useArticles(isHindiSelected ? Language.HINDI : Language.ENGLISH);
-    
-    const articles = useMemo(() => {
-        if (!newsArticlesData) return [];
-        return newsArticlesData.pages.flatMap(page => page.articles);
-    }, [newsArticlesData]);
+  useEffect(() => {
+    if (!isFetching) {
+      setIsLoading(false);
+    }
+  }, [isFetching]);
 
-    useEffect(() => {
-        if (!isFetching) {
-            setIsLoading(false);
-        }
-    }, [isFetching]);
-    
-    const handleOnViewportEnter = useCallback((index: number, entry?: IntersectionObserverEntry | null) => {
-        if (index === 18) {
-            console.log("fetching next page");
+  useEffect(() => {
+    fetchedPages.current.clear();
+  }, [selectedLanguage]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && hasNextPage && !isFetching) {
+          const nextPage = (newsArticlesData?.pages.length || 0) + 1;
+          if (!fetchedPages.current.has(nextPage)) {
+            console.log(`Sentinel triggered: Fetching page ${nextPage}`);
+            fetchedPages.current.add(nextPage);
             fetchNextPage();
+          }
         }
-        // || entry?.isIntersecting
-    }, [fetchNextPage]);
+      },
+      { threshold: 0.1 } 
+    );
 
-    // Memoize the card rendering function - MOVED HERE BEFORE ANY CONDITIONALS
-    const renderNewsCards = useMemo(() => {
-        return newsArticlesData?.pages.map((page, pageIndex) =>
-          page.articles.map((newsArticle, articleIndex) => (
-            <motion.div
-              key={`${pageIndex}-${articleIndex}`}
-              initial="hidden"
-              whileInView="visible"
-              onViewportEnter={() => handleOnViewportEnter(articleIndex)}
-              className="w-full"
-            >
-              <NewsCard
-                key={newsArticle._id}
-                image={newsArticle.thumbnail_url}
-                title={newsArticle.title}
-                description={newsArticle.body_short}
-                date={newsArticle.date}
-                articleUrl={newsArticle?.link}
-                publisher={newsArticle?.source?.source_id}
-                isHindiSelected={isHindiSelected}
-              />
-            </motion.div>
-          ))
-        );
-    }, [newsArticlesData, isHindiSelected, handleOnViewportEnter]);
+    if (sentinelRef.current) {
+      observer.observe(sentinelRef.current);
+    }
+
+    return () => {
+      if (sentinelRef.current) {
+        observer.unobserve(sentinelRef.current);
+      }
+    };
+  }, [fetchNextPage, hasNextPage, isFetching, newsArticlesData]);
+
+  const handleOnViewportEnter = useCallback(
+    (index: number, pageIndex: number) => {
+      if (index !== 18 || !hasNextPage || isFetching) return;
+
+      // Check scroll direction
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY > lastScrollY.current;
+      lastScrollY.current = currentScrollY;
+
+      // Check if the next page has already been fetched
+      const nextPage = pageIndex + 2; // pageIndex is 0-based, pages are 1-based
+      if (isScrollingDown && !fetchedPages.current.has(nextPage)) {
+        console.log(`Viewport triggered: Fetching page ${nextPage}`);
+        fetchedPages.current.add(nextPage);
+        fetchNextPage();
+      }
+    },
+    [fetchNextPage, hasNextPage, isFetching]
+  );
+
+  const renderNewsCards = useMemo(() => {
+    return newsArticlesData?.pages.map((page, pageIndex) =>
+      page.articles.map((newsArticle, articleIndex) => (
+        <motion.div
+          key={`${pageIndex}-${articleIndex}`}
+          initial="hidden"
+          whileInView="visible"
+          onViewportEnter={() => handleOnViewportEnter(articleIndex, pageIndex)}
+          className="w-full"
+        >
+          <NewsCard
+            key={newsArticle._id}
+            image={newsArticle.thumbnail_url}
+            title={newsArticle.title}
+            description={newsArticle.body_short}
+            date={newsArticle.date}
+            articleUrl={newsArticle?.link}
+            publisher={newsArticle?.source?.source_id}
+            selectedLanguage={selectedLanguage}
+            // isHindiSelected={isHindiSelected}
+          />
+        </motion.div>
+      ))
+    );
+  }, [newsArticlesData, selectedLanguage, handleOnViewportEnter]);
 
     if (isLoading) {
         return (
@@ -125,41 +175,53 @@ export default function LiveNews() {
         );
     }
 
-    return (
-        <main className="padding-container max-container">
-            <div className="block lg:hidden w-full">
-                <div className="pt-10">
-                    <LanguageToggle 
-                        checked={isHindiSelected} 
-                        onCheckedChange={onLanguageCheckChanged}/>
-                </div>
-                <div className="h-[1px] w-full my-4" />
-                <div className="flex flex-col gap-y-3 w-full">
-                    {renderNewsCards}
-                </div>
-            </div>
+  return (
+    <main className="padding-container max-container">
+      <div className="block lg:hidden w-full">
+        <div className="pt-10">
+          {/* <LanguageToggle
+            checked={isHindiSelected}
+            onCheckedChange={onLanguageCheckChanged}
+          /> */}
+          <LanguageAccordion 
+            selectedLanguage={selectedLanguage} 
+            onChange={(language) => changeLanguage(language)}
+          />
+        </div>
+        <div className="h-[1px] w-full my-4" />
+        <div className="flex flex-col gap-y-3 w-full">
+          {renderNewsCards}
+          <div ref={sentinelRef} className="h-10" /> 
+        </div>
+      </div>
 
-            <div className="hidden lg:block w-full">
-                <div className="text-base leading-consistent font-bold text-white flex-col pt-10 w-full">
-                    <LanguageToggle 
-                        checked={isHindiSelected} 
-                        onCheckedChange={onLanguageCheckChanged} 
-                    />
-                </div>
-                <div className="h-[1px] w-full mt-7 mb-9" />
-                <div className="w-full">
-                    <div className="flex flex-col gap-y-7">
-                        {renderNewsCards}
-                        <motion.div
-                            initial="hidden"
-                            whileInView="visible"
-                            className="flex text-white pb-5 justify-center w-full">
-                            {isError ? "Failed to load news" : <NewsLoader />}
-                        </motion.div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    );
+      <div className="hidden lg:block w-full">
+        <div className="text-base leading-consistent font-bold text-white flex-col pt-10 w-full">
+          {/* <LanguageToggle
+            checked={isHindiSelected}
+            onCheckedChange={onLanguageCheckChanged}
+          /> */}
+          <LanguageAccordion 
+            selectedLanguage={selectedLanguage} 
+            onChange={(language) => changeLanguage(language)}
+          />
+        </div>
+        <div className="h-[1px] w-full mt-7 mb-9" />
+        <div className="w-full">
+          <div className="flex flex-col gap-y-7">
+            {renderNewsCards}
+            <div ref={sentinelRef} className="h-10" /> 
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              className="flex text-white pb-5 justify-center w-full"
+            >
+              {isError ? "Failed to load news" : <NewsLoader />}
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
 }
 
