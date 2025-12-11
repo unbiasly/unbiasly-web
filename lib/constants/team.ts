@@ -42,21 +42,21 @@ export const TEAM_PAGE = {
                     twitter: "https://x.com/KritiAgarwal29"
                 }
             },
-            {
-                id: 3,
-                name: "Rajveer Kaur",
-                role: "Chief Content Officer",
-                bio: "University of Delhi",
-                image: "/people/rajveer-kaur.png",
-                social: {
-                    linkedin: "https://www.linkedin.com/in/rajveer-kaur-b493b1265",
-                    twitter: ""
-                }
-                },
+            // {
+            //     id: 3,
+            //     name: "Rajveer Kaur",
+            //     role: "Chief Content Officer",
+            //     bio: "University of Delhi",
+            //     image: "/people/rajveer-kaur.png",
+            //     social: {
+            //         linkedin: "https://www.linkedin.com/in/rajveer-kaur-b493b1265",
+            //         twitter: ""
+            //     }
+            //     },
                 {
                 id: 4,
                 name: "Umesh Sharma",
-                role: "Chief Technology Officer",
+                role: "Chief AI Officer",
                 bio: "Carnegie Mellon University, USA",
                 image: "/people/umesh-sharma.png",
                 social: {
