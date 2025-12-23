@@ -55,12 +55,12 @@ const Footer = () => {
               </Link>
               </p>
             </div>
-            {/* TODO: Add careers link */}
-            {/* <div>
-                <Link href="/careers" target="_blank" className="text-white text-sm no-underline hover:underline">
-                    {FOOTER?.CAREERS}
+               {/* TODO: Add careers link */}
+               <div>
+                <Link href={FOOTER?.CAREERS_V1?.link} target="_blank" className="text-white text-sm underline hover:underline">
+                    {FOOTER?.CAREERS_V1?.title}
                 </Link>
-            </div> */}
+            </div>
 
             <div className="flex gap-4">
               {FOOTER?.SOCIALS?.links.map((link, index) => (

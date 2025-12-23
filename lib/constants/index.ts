@@ -31,7 +31,12 @@ export const FOOTER = {
             { href: "https://www.facebook.com/UnbiaslyAI", src: "/facebookW.svg", alt: "UnbiaslyAI Facebook page" },
             // { href: "https://www.quora.com/profile/UnbiaslyAI", src: "/quora.svg", alt: "UnbiaslyAI Quora page" },
         ],
-    }
+    },
+    CAREERS_V1: {
+        title: "Careers",
+        link:"https://app.pyjamahr.com/careers?company=Triverge%20Insight%20Pvt%20Ltd&company_uuid=4EBE640A51"
+    },
+
 
 };
 
