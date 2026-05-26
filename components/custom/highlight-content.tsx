@@ -8,12 +8,12 @@ const HighlightContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   return (
     <div
       className={cn(
-        "border-y border-rule bg-rule-soft/50 py-12 lg:py-20",
+        "w-full text-center px-5 py-5 lg:py-8 text-lg sm:text-xl text-[#FFFFFF] bg-[#191919] mt-6 lg:mt-12",
         className
       )}
       {...props}
     >
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-12">{children}</div>
+      {children}
     </div>
   );
 };
