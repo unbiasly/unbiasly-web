@@ -11,16 +11,12 @@ const commonHeaders = {
 
 const fetchClient = {
   get: <T>(url: string) => fetch(url).then<T>(handleResponse),
-  post: <T>(url: string, body: object | FormData) => {
-    const headers = body instanceof FormData ? {} : commonHeaders;
-    
-    const requestBody = body instanceof FormData ? body : JSON.stringify(body);
-    return fetch(url, {
+  post: <T>(url: string, body: object) =>
+    fetch(url, {
       method: "POST",
-      body: requestBody,
-      headers: headers as HeadersInit,
-    }).then<T>(handleResponse);
-  },
+      body: JSON.stringify(body),
+      headers: commonHeaders,
+    }).then<T>(handleResponse),
 };
 
 export default fetchClient;
