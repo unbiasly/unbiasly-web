@@ -7,9 +7,10 @@ const PageTitle: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
 }) => {
   return (
     <div className={cn("inline-block", className)} {...props}>
-      <div className="text-2xl leading-consistent lg:text-4xl lg:leading-consistent font-bold text-white">
+      <h1 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-[0.95] tracking-tightest text-ink">
         {children}
-      </div>
+      </h1>
+      <div className="h-[3px] bg-accent w-16 mt-4" />
     </div>
   );
 };
