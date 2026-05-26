@@ -1,0 +1,92 @@
+export const ABOUT_US_CONSTANTS = {
+    PAGE_TITLE: "About UnbiaslyAI",
+
+    ABOUT_US: `UnbiaslyAI is an <strong className="font-bold"> AI-powered news aggregator</strong> app dedicated to combating misinformation and fake news. We curate reliable content from authentic national and international sources, providing <strong className="font-bold text-white"> easy-to-understand 55-word summaries </strong> with <strong className="font-bold text-white"> source verification</strong>. Our personalized news delivery, supported by advanced AI technology, ensures you stay informed about what matters most to you. With <strong className="font-bold text-white"> multilingual support</strong>, we aim to break language barriers and bring <strong className="font-bold text-white"> trustworthy news </strong> to everyone. 
+    Join us in promoting a culture of accurate information consumption and rebuilding trust in the media.`,
+
+    SECOND_LINE: `We will engage in community-driven campaigns to raise awareness
+                about the harmful impact of misinformation and fake news.`,
+
+    DIVIDER_1: `We are not just an app but a <strong className="font-bold"> COMMITTED COMMUNITY SERVICE</strong>, promoting a culture of <strong className="font-bold"> ACCURATE INFORMATION CONSUMPTION</strong> for everyone.`,
+
+    DIVIDER_2: `By choosing UnbiaslyAI, you are not just getting an app, you are joining a movement towards a more informed, aware, and engaged society. Trust UnbiaslyAI to be your reliable source for news and help us build a stronger, more informed community.`,
+
+    FEATURES_TITLE: "Key Features include",
+    
+    FEATURES: [
+        
+        {
+            title: "Easy-to-understand",
+            description:
+                "Get concise 55-word news summaries that are quick to read and easy to understand. Stay informed without the clutter.",
+            imageSrc: "/key-features/key-feature-1.PNG",
+            },
+            {
+            title: "Source of verification",
+            description:
+                "Every article is thoroughly verified to ensure it comes from reliable and authentic sources. Trust the news you read.",
+            imageSrc: "/key-features/key-feature-2.PNG",
+            },
+            {
+            title: "Personalized news",
+            description:
+                "Receive news tailored to your interests with our advanced AI and machine learning technology. Stay updated on what matters most to you.",
+            imageSrc: "/key-features/key-feature-3.PNG",
+            },
+            {
+            title: "Multilingual support",
+            description:
+                "Access news in your preferred language, including Hindi and English. Breaking barriers with multilingual support.",
+            imageSrc: "/key-features/key-feature-4.PNG",
+            },
+        ],
+
+    VISION: "To empower individuals with reliable and accurate news, fostering an informed society and rebuilding trust in the media.",
+
+    MISSION: `UnbiaslyAI is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community.`,
+
+    
+
+    OBJECTIVES: [
+        {
+            imageSrc: "/vision.svg",
+            imageAlt: "UnbiaslyAI Vision",
+            title: "Vision",
+            description: "To empower individuals with reliable and accurate news, fostering an informed society and rebuilding trust in the media."
+        },
+        {
+            imageSrc: "/mission.svg",
+            imageAlt: "UnbiaslyAI Mission",
+            title: "Mission",
+            description: "UnbiaslyAI is committed to delivering trustworthy, fact-checked news through advanced AI technology. We aim to combat misinformation by verifying sources, providing concise summaries, and promoting media literacy. Our mission is to ensure that everyone has access to accurate information and to support a well-informed community."
+        },
+    ],
+
+    OTHER_FEATURES: [
+        {
+            imageSrc: "/other-features/community.svg",
+            imageAlt: "Community Driven Campaign",
+            title: "Community Driven Campaign",
+            description: "Beyond being a news app, UnbiaslyAI engages in community-driven campaigns to raise awareness about the harmful impact of misinformation and fake news, fostering a culture of accurate information consumption."
+        },
+        {
+            imageSrc: "/other-features/literacy.svg",
+            imageAlt: "Promoting Media Literacy",
+            title: "Promoting Media Literacy",
+            description: "We are committed to promoting media literacy, helping users develop the skills to critically evaluate the information they encounter and make informed decisions."
+        },
+        {
+            imageSrc: "/other-features/information.svg",
+            imageAlt: "Combating Misinformation and Fake News",
+            title: "Combating Misinformation and Fake News",
+            description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.'
+        },
+        // {
+        //     imageSrc: "/other-features/sentiment-analysis.svg",
+        //     imageAlt: "Sentiment Analysis",
+        //     title: "Sentiment Analysis",
+        //     description: 'At UnbiaslyAI, we aim to change the way people consume news, making a big impact and building trust in "The Fourth Pillar of Democracy." We are dedicated to delivering trustworthy news through AI-powered technology, ensuring source verification and personalized content. Our goal is to combat misinformation, promote media literacy, and uphold the integrity of journalism as the cornerstone of democracy.',
+        //     tagValue: "Upcoming"
+        // },
+    ]
+};
